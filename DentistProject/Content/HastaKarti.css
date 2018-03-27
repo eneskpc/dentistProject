@@ -1,0 +1,13 @@
+﻿#cardHeader {
+    background: #2CA8FF;
+    color: white !important;
+    padding-bottom: 5px;
+}
+
+.card {
+    margin-top: -30px;
+}
+
+.btn {
+    float: right;
+}

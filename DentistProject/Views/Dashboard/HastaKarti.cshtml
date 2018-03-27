@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = "HastaKarti";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+    <title> Hasta Kartı </title>
+    <link href="~/Content/HastaKarti.css" rel="stylesheet" />
+</head>
+<div class="content">
+    <div class="card">
+        <h5 class="card-header" id="cardHeader">Hasta Kartı</h5>
+        <div class="card-body">
+            <h5 class="card-title" style="color:white;">Special title treatment</h5>
+            <form>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Ad</label>
+                        <input type="text" class="form-control" id="inputName" placeholder="İsim">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputPassword4">Soyad</label>
+                        <input type="text" class="form-control" id="inputPassword4" placeholder="Soyad">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Adres</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Adres">
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress2">Address 2</label>
+                    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputCity">Şehir</label>
+                        <input type="text" class="form-control" id="inputCity">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputState">Ülke</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Seçiniz...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="inputZip">Zip</label>
+                        <input type="text" class="form-control" id="inputZip">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn">Ekle</button>
+            </form>
+        </div>
+    </div>
+</div>
