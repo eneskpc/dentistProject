@@ -183,7 +183,6 @@
     <Content Include="Views\Dashboard\Randevu.cshtml" />
     <Content Include="Views\Dashboard\Stok.cshtml" />
     <Content Include="Views\Dashboard\Tedarikci.cshtml" />
-    <Content Include="Views\Dashboard\Tedarikciguncel.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Partials\NavbarItems.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -193,6 +192,8 @@
     <Content Include="Views\Dashboard\Oral.cshtml" />
     <Content Include="Views\Dashboard\StokGuncelle.cshtml" />
     <Content Include="Views\Dashboard\StokListele.cshtml" />
+    <Content Include="Views\Dashboard\TedarikciGuncel.cshtml" />
+    <Content Include="Views\Dashboard\TedarikciEkle.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

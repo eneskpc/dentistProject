@@ -1,4 +1,5 @@
-﻿#ul1 {
+﻿
+.ul1 {
     list-style-type: none;
     margin-top: auto;
     overflow: hidden;
@@ -7,15 +8,16 @@
     margin-left: 0%;
     margin-right: 10%;
     width: 100%;
-    border-radius: 25px;
+    border-radius: 5px;
+    border-bottom: 4px solid #2ca8ff;
 }
 
 
-#li1 {
+.li1 {
     float: left;
 }
 
-    #li1 a {
+    .li1 a {
         display: block;
         color: white;
         text-align: center;
@@ -23,14 +25,107 @@
         text-decoration: none;
     }
 
-        #li1 a:hover:not(.active) {
-            background-color: #007bff;
-        }
-
 .active {
-    background-color: #007bff;
+    background-color: #2ca8ff;
+    border-radius: 5px;
 }
 
-body {
-    margin: 0;
+.li1 a:hover:not(.active) {
+    background-color: #2ca8ff;
 }
+
+.table1 {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+   
+}
+.table1 td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+.table1 th{
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.table1 tr:nth-child(even) {
+    background-color: #dddddd;
+}
+button {
+    border-width: 2px;
+    font-weight: 400;
+    font-size: .8571em;
+    line-height: 1.35em;
+    margin-left:100%;
+    border: none;
+    float:right;
+    border-radius: .1875rem;
+    padding: 11px 22px;
+    cursor: pointer;
+    background-color: #888;
+    color: #fff;
+}
+
+.item1 {
+    grid-area: search;
+}
+
+.item2 {
+    grid-area: left;
+    font-size: 30px;
+}
+
+.item3 {
+    grid-area: right;
+    font-size: 30px;
+}
+
+.item4 {
+    grid-area: grid;
+    font-size: 30px;
+}
+
+.item5 {
+    grid-area: button;
+}
+
+.item6 {
+    grid-area: update;
+}
+
+.item7 {
+    grid-area: label;
+    font-size:25px;
+}
+
+.item8 {
+    grid-area: text;
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-areas: 'label label  search search button button update  update' ' left left left left right right right right' ' grid grid grid grid grid grid grid grid';
+    grid-gap: 5px;
+    padding: 5px;
+}
+
+    .grid-container > div {
+        text-align: center;
+        padding: 10px 0;
+    }
+
+.grid-container-1 {
+    display: grid;
+    grid-template-areas: 'label  label text  text' 'label  label text  text' 'label  label text  text';
+    grid-gap: 5px;
+    padding: 5px;
+}
+
+    .grid-container-1 > div {
+        text-align: center;
+        padding: 10px 0;
+    }

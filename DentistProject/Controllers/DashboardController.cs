@@ -106,13 +106,20 @@ namespace DentistProject.Controllers
             {
                 return RedirectToAction("Login");
             }
-            if (pageName == "Ekle")
-            {
-
+            if (pageName == "" && id == 0)
+            {   //    /Tedarikci Listele
+                return View("Tedarikci");
             }
-            else if (pageName == "" && id > 0)
+            else if (pageName == "Guncelle" && id > 0)
             {
-
+                //Verileri çekip modeli viewa yollicuk.
+                //   /Tedarikci/Guncelle/5(giderID)
+                return View("TedarikciGuncel");
+            }
+            if (pageName == "Ekle" && id == 0)
+            {
+                //   /Tedarikci/Ekle
+                return View("TedarikciEkle");
             }
             return View();
         }
