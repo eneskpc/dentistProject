@@ -5,9 +5,13 @@
 }
 
 .card {
-    margin-top: -30px;
+    margin-top: -70px;
 }
 
 .btn {
     float: right;
+}
+
+label {
+    margin-left: 13px;
 }

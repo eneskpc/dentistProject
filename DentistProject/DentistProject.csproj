@@ -92,6 +92,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Dashboard.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\HastaKarti.css" />
     <Content Include="Content\hesap.css" />
     <Content Include="Content\images\32teeth.jpg" />
     <Content Include="Content\images\about-img.jpg" />
