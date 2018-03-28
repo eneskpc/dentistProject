@@ -53,6 +53,15 @@ namespace DentistProject.Controllers
             return View();
         }
 
+        public ActionResult Oral()
+        {
+            return View();
+        }
+        public ActionResult OralDeneme()
+        {
+            return View();
+        }
+
         public ActionResult Randevu()
         {
             return View();
