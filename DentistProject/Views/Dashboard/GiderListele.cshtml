@@ -68,36 +68,110 @@
         border-radius: 5px;
         box-shadow: 0 2px 22px 0 rgba(0,0,0,.2), 0 2px 30px 0 rgba(0,0,0,.35);
     }
+    .active {
+        background-color: #2ca8ff;
+        border-radius: 5px;
+    }
 
         .dropdown1 option {
         }
+
 </style>
 
 
 
 
 <div id="gider">
-   this is a listele.
-    <div class="menu">
-        <ul>
-            <li><a href="#">Giderler</a></li>
-            <li><a href="~/Dashboard/Gider">Gider Ekle</a></li>
-            <li><a href="~/Dashboard/GiderGuncelle">Gider Güncelle</a></li>
-            <li><a href="~/Dashboard/GiderListele">Gider Listele</a></li>
+  
+        <div class="menu">
+            <ul>
+                <li><a href="~/Dashboard/Gider/Ekle">Gider Ekle</a></li>               
+                <li><a href="~/Dashboard/Gider/Listele" class="active">Giderler</a></li>
+            </ul>
+        </div>
+        <br />
+        <div class="container">
+            <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"><h5>Gider Türü</h5></th>
+                    <th scope="col"><h5>Tutar</h5></th>
+                    <th scope="col"><h5>Ödeme Şekli</h5></th>
+                    <th scope="col"><h5>Tarih</h5></th>
+                    <th scope="col"><h5>Açıklama</h5></th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Diğer Giderler</td>
+                    <td>300 TL</td>
+                    <td>Kredi Kartı</td>
+                    <td>20.03.2018</td>
+                    <td>Elektirk Fatura Ödemesi</td>
+                    <td>
+                        <a href=""><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a><br />
+                    </td>
+                    <td>
+                        <a href=""><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Diğer Giderler</td>
+                    <td>300 TL</td>
+                    <td>Kredi Kartı</td>
+                    <td>20.03.2018</td>
+                    <td>Elektirk Fatura Ödemesi</td>
+                    <td>
+                        <a href=""><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a><br />
+                    </td>
+                    <td>
+                        <a href=""><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Diğer Giderler</td>
+                    <td>300 TL</td>
+                    <td>Kredi Kartı</td>
+                    <td>20.03.2018</td>
+                    <td>Elektirk Fatura Ödemesi</td>
+                    <td>
+                        <a href=""><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a><br />
+                    </td>
+                    <td>
+                        <a href=""><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Asistan</td>
+                    <td>2000 TL</td>
+                    <td>Havale</td>
+                    <td>20.03.2018</td>
+                    <td>Maaş Ödemesi</td>
+                    <td>
+                        <a href=""><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a><br />
+                    </td>
+                    <td>
+                        <a href=""><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Dişçi</td>
+                    <td>6000 TL</td>
+                    <td>Havale</td>
+                    <td>20.03.2018</td>
+                    <td>Maaş Ödemesi</td>
+                    <td>
+                        <a href=""><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a><br />
+                    </td>
+                    <td>
+                        <a href=""><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+            </table>
 
-        </ul>
+            
+        </div>
     </div>
-
-    <form class="form-inline" action="/action_page.php">
-
-        <table border="0" class="gdr">
-            <tr> <th colspan="4">Ad Soyad</th><th colspan="4"></th></tr>
-
-
-
-        </table>
-    </form>
-
-
-</div>
 
