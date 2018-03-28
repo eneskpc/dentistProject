@@ -1,8 +1,41 @@
 ﻿
 @{
-    ViewBag.Title = "Tedarikcigüncel";
+    ViewBag.Title = "TedarikciGüncel";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Tedarikcigüncel</h2>
+    <link href="~/Content/tedarikci.css" rel="stylesheet" />
 
+    <div style="margin-left:10%;margin-right:10%; background-color:#fff; border-radius:5px;" id="tedarikci">
+        <div>
+            <ul class="ul1">
+                <li class="li1"><a href="~/Dashboard/Tedarikci" >Tedarikçi Listesi</a></li>
+                <li class="li1"><a href="~/Dashboard/Tedarikci/Ekle">Tedarikçi Ekle</a></li>
+                <li class="li1"><a href="~/Dashboard/Tedarikci/Guncelle/5" class="active">Tedarikçi Güncelle</a></li>
+
+            </ul>
+        </div>
+
+        <div class="grid-container">
+            
+                <div class="item7">
+                    <label for="ad">Firma Adı</label>
+                </div>
+            
+            <div class="item1">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="firma" placeholder="Lütfen Firma Adını Giriniz...">
+
+                </div>
+            </div>
+            <div class="item5">
+                <button type="submit">Ara</button>
+            </div>
+            <div class="item6">
+                <button type="submit">Güncelle</button>
+            </div>
+            <div class="item2">textbox</div>
+            <div class="item3">textbox</div>
+            <div class="item4">gridview</div>
+        </div>
+    </div>

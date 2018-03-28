@@ -3,186 +3,63 @@
     ViewBag.Title = "Tedarikci";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<head>
-    <meta charset="utf-8" />
-    <title> Tedarikçi Paneli </title>
 
     <link href="~/Content/tedarikci.css" rel="stylesheet" />
 
-</head>
-
-<body>
-    <div style="margin-left:10%;margin-right:10%; background-color:#fff; border-radius:25px;" id="tedarikci">
+    <div style="margin-left:10%;margin-right:10%; background-color:#fff; border-radius:5px;" id="tedarikci">
 
         <div>
-            <ul id="ul1">
-                <li id="li1"><a href="#home">Tedarikçiler</a></li>
-                <li id="li1"><a href="#news">Tedarikçi Ekle</a></li>
-                <li id="li1"><a href="Dashboard/Tedarikciguncel">Tedarikçi Güncelle</a></li>
-                <li id="li1"><a href="#about">Malzeme Bilgileri</a></li>
+            <ul class="ul1">
+                <li class="li1"><a href="~/Dashboard/Tedarikci" class="active">Tedarikçi Listesi</a></li>
+                <li class="li1"><a href="~/Dashboard/Tedarikci/Ekle">Tedarikçi Ekle</a></li>
+                <li class="li1"><a href="~/Dashboard/Tedarikci/Guncelle/5">Tedarikçi Güncelle</a></li>
+                
             </ul>
         </div>
 
-        <form class="form-inline" action="/action_page.php">
-
-            <table style="margin-right: auto;  margin-left: auto;" border="0" cellpadding="5">
-
-                <tr> <td colspan="4"></td></tr>
-                <tr> <th colspan="4"><h4>Firma Bilgileri</h4></th></tr>
-                <tr> <td colspan="4"></td></tr>
+        <div style="margin-left:10%; margin-right:10%;">
+   
+            <table class="table1" >
                 <tr>
-                    <td>
-                        <div class="form-group">
-                            <label for="ad">Firma Adı</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="fad">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <label for="hsp1">Vergi Dairesi</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="vergidairesi">
-                        </div>
-                    </td>
+                    <th><h6>Firma Adı </h6> </th>
+                    <th><h6>Alınan Ürün</h6></th>
+                    <th><h6>Düzenle</h6></th>
                 </tr>
                 <tr>
-                    <td>
-                        <div class="form-group">
-                            <label for="hspno">Firma Yekilisi</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="yetkili">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <label for="prbrm">Vergi Numarası</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="vergino">
-                        </div>
-                    </td>
+                    <td>Alfreds Futterkiste</td>
+                    <td>Maria Anders</td>
+                    <td>icon</td>
                 </tr>
                 <tr>
-                    <td>
-                        <div class="form-group">
-                            <label for="verg2">Hesap Numarası</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="hesapno">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <label for="verg1">Banka</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="banka">
-                        </div>
-                    </td>
+                    <td>Centro comercial Moctezuma</td>
+                    <td>Francisco Chang</td>
+                    <td>icon</td>
                 </tr>
                 <tr>
-                    <td colspan="4"></td>
-                </tr>
-                <tr><th colspan="4"><h4>İletişim Bilgileri</h4></th></tr>
-                <tr> <td colspan="4"></td></tr>
-                <tr>
-                    <td>
-                        <div class="form-group">
-                            <label for="cep">Cep Telefonu</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="cep">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <label for="sabit">Sabit Telefon</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="sabit">
-                        </div>
-                    </td>
+                    <td>Ernst Handel</td>
+                    <td>Roland Mendel</td>
+                    <td>icon</td>
                 </tr>
                 <tr>
-                    <td>
-                        <div class="form-group">
-                            <label for="tlf">Telefon</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="tlf">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <label for="email">E-Posta</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="email">
-                        </div>
-                    </td>
+                    <td>Island Trading</td>
+                    <td>Helen Bennett</td>
+                    <td>icon</td>
                 </tr>
                 <tr>
-                    <td>
-                        <div class="form-group">
-                            <label for="postkod">Posta Kodu</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="pkod">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <label for="ilce">İl</label>
-
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="il">
-                        </div>
-                    </td>
-
-                <tr> <td colspan="4"></td></tr>
-
-                <tr>
-                    <td colspan="4">
-                        <button type="submit" class="btn btn-default" style="float:right">Kaydet</button>
-                    </td>
+                    <td>Laughing Bacchus Winecellars</td>
+                    <td>Yoshi Tannamuri</td>
+                    <td>icon</td>
                 </tr>
-
+                <tr>
+                    <td>Magazzini Alimentari Riuniti</td>
+                    <td>Giovanni Rovelli</td>
+                    <td>icon</td>
+                </tr>
             </table>
-        </form>
 
-
+        </div>
     </div>
 
-</body>
 
 
 
