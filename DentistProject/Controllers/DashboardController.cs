@@ -124,6 +124,39 @@ namespace DentistProject.Controllers
             }
             return View();
         }
+        public ActionResult StokGuncelle(string pageName = "", int id = 0)
+        {
+            if (!Helpers.CheckAuthentication())
+            {
+                return RedirectToAction("Login");
+            }
+            if (pageName == "Ekle")
+            {
+
+            }
+            else if (pageName == "" && id > 0)
+            {
+
+            }
+            return View();
+        }
+        public ActionResult StokListele(string pageName = "", int id = 0)
+        {
+            if (!Helpers.CheckAuthentication())
+            {
+                return RedirectToAction("Login");
+            }
+            if (pageName == "Ekle")
+            {
+
+            }
+            else if (pageName == "" && id > 0)
+            {
+
+            }
+            return View();
+        }
+
 
         public ActionResult Hesap(string pageName = "", int id = 0)
         {

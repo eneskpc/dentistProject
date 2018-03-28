@@ -1,14 +1,13 @@
-﻿@{
-    ViewBag.Title = "Stok";
+﻿
+
+@{
+    ViewBag.Title = "StokGuncelle";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-
 <style>
 
 
-    #stok {
+    #stokguncelle {
         margin-left: 10%;
         margin-right: 10%;
         background-color: #fff;
@@ -76,13 +75,14 @@
                 }
 </style>
 
-<div id="stok">
+<div id="stokguncelle">
     <div class="menu">
         <ul>
-            <li><a class="active" href="~/Dashboard/Stok">Ürün Ekle</a></li>
 
-            <li><a href="~/Dashboard/StokGuncelle">Ürün Güncelle</a></li>
-            <li><a  href="~/Dashboard/StokListele">Ürünleri Listele</a></li>
+
+            <li><a href="~/Dashboard/Stok">Ürün Ekle</a></li>
+            <li><a class="active" href="~/Dashboard/StokGuncelle">Ürün Güncelle</a></li>
+            <li><a href="~/Dashboard/StokListele">Ürünleri Listele</a></li>
 
         </ul>
     </div>
@@ -120,7 +120,7 @@
 
 
             </tr>
-            
+          
             <tr>
                 <td>
                     <div class="form-group">
