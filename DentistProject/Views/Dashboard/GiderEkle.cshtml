@@ -6,118 +6,95 @@
 
 
 
-    <style>
+<style>
 
-        {
-            margin: 0;
-            padding: 0;
+    {
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu {
+        width: 100%;
+        height: 48px;
+        background: #204065;
+        border-bottom: 4px solid #2ca8ff;
+        box-shadow: 0 2px 22px 0 rgba(0,0,0,.2), 0 2px 30px 0 rgba(0,0,0,.35);
+        border-radius: 5px;
+    }
+
+        .menu ul li {
+            float: left;
+            list-style-type: none;
         }
 
-        .menu {
-            width: 100%;
-            height: 48px;
-            background: #204065;
-            border-bottom: 4px solid #2ca8ff;      
-            box-shadow: 0 2px 22px 0 rgba(0,0,0,.2), 0 2px 30px 0 rgba(0,0,0,.35);
-            border-radius: 5px;
-        }
-
-            .menu ul li {
-                float: left;
-                list-style-type: none;
+            .menu ul li a {
+                color: #fff;
+                font: 17px Arial;
+                text-decoration: none;
+                display: block;
+                padding: 14px 15px;
+                transition: all .5s;
+                -webkit-transition: all .5s;
+                -moz-transition: all .5s;
             }
 
-                .menu ul li a {
-                    color: #fff;
-                    font: 17px Arial;
-                    text-decoration: none;
-                    display: block;
-                    padding: 14px 15px;
-                    transition: all .5s;
-                    -webkit-transition: all .5s;
-                    -moz-transition: all .5s;
+                .menu ul li a:hover {
+                    background: #00bfae;
+                    color: white;
                 }
 
-                    .menu ul li a:hover {
-                        background: #00bfae;
-                        color: white;
-                        
-                    }
+    #gider {
+        margin-left: 10%;
+        margin-right: 10%;
+        background-color: #fff;
+        margin-top: -10px;
+        margin-bottom: 0px;
+    }
 
-        #gider {
-            margin-left: 10%;
-            margin-right: 10%;
-            background-color: #fff;
-            margin-top: -10px;
-            margin-bottom: 0px;
-        }
-        .gdr {
-            margin-right: auto;
-            margin-left: auto;
-        }
-        .btn btn-default dropdown-toggle {
-            font-family: Arial;
-            color: steelblue;
-            width:100px;
-            
-        }
-      
-        /*  .dropdown1 {
+    .gdr {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .btn btn-default dropdown-toggle {
+        font-family: Arial;
+        color: steelblue;
+        width: 100px;
+    }
+
+    .active {
+        background-color: #2ca8ff;
+        border-radius: 5px;
+    }
+    /*  .dropdown1 {
             width: 100%;
             height: 30px;
-            
+
             border-radius: 5px;
             box-shadow: 0 2px 22px 0 rgba(0,0,0,.2), 0 2px 30px 0 rgba(0,0,0,.35);
         }
             .dropdown1 option {
-                
+
             }*/
-       
-    </style>
 
-
-
-
+</style>
 <div id="gider">
-   
     <div class="menu">
         <ul>
-            <li><a href="~/Dashboard/Gider">Giderler</a></li>
-            <li><a href="~/Dashboard/Gider/Ekle">Gider Ekle</a></li>
-            <li><a href="~/Dashboard/Gider/Guncelle/5">Gider Güncelle</a></li>
+            <li><a href="~/Dashboard/Gider/Ekle" class="active">Gider Ekle</a></li>
+            <li><a href="~/Dashboard/Gider/Listele">Giderler</a></li>
         </ul>
     </div>
     <br />
-    <form action="/action_page.php">
+    <div class="container">
 
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <h3>Hesap Bilgileri</h3>
-                    </div>
-                </div>
-                </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <hr />
-                </div>
-                
-            </div>
+        <form action="/action_page.php">
+
+            <br /><br />
             <div class="row">
                 <div class="col-sm-3">
                     <div class="form-group">
-                        <label for="ad">Ad</label>
-                    </div>
-                    </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="hspno">
-                    </div>
-                    </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label for="hsp1">Hesap Türü</label>
+                        <label for="gider1">Gider Türü</label>
                     </div>
                 </div>
                 <div class="col-sm-3">
@@ -130,16 +107,17 @@
                         </select>
                     </div>
                 </div>
-                </div>
+            </div>
+
             <div class="row">
                 <div class="col-sm-3">
                     <div class="form-group">
-                        <label for="hspno">Hesap No</label>
+                        <label for="Tarih">Tarih</label>
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="ad">
+                        <input type="date" class="form-control" id="tarih">
                     </div>
                 </div>
                 <div class="col-sm-3">
@@ -157,158 +135,21 @@
                         </select>
                     </div>
                 </div>
-                </div>
-            <div class="row">
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label for="verg2">Vergi Numarası</label>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="verg2">
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <label for="verg1">Vergi Dairesi</label>
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="verg1">
-                    </div>
-                </div>
-                </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <h3>İletişim Bilgileri</h3>
-                    </div>
-                </div>
-
-                </div>
-            <div class="row-12">
-                <div class="col-sm-12">
-
-                    <hr />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label for="cep">Cep Telefonu</label>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="cep">
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label for="sabit">Sabit Telefon</label>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="sabit">
-                    </div>
-                </div>
-                </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label for="tlf">Telefon</label>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="tlf">
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label for="email">E-Posta</label>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="email">
-                    </div>
-                </div>
-                </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label for="postkod">Posta Kodu</label>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="postkod">
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label for="ilce">İlçe</label>
-                    </div></div>
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="ilce">
-                    </div>
-                </div>
-                </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        <label for="adres">Adres</label>
-                    </div>
-                    </div>
-                <div class="col-sm-9">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="adres">
-                    </div>
-                </div>
-
-                </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="form-group">
-                        <h3>Diğer Bilgiler</h3>
-                    </div>
-                  </div>
-                </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <hr />
-                </div>
             </div>
 
+
+
             <div class="row">
                 <div class="col-sm-3">
                     <div class="form-group">
-                        <label for="gider1">Gider Türü</label>
+                        <label for="od1">Ödenen Tutar</label>
                     </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="gider1">
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="gider2">Gider Sebebi</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="gider2">
-                        </div>
-                    </div>
-                
                 </div>
-            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="od2">
+                    </div>
+                </div>
                 <div class="col-sm-3">
                     <div class="form-group">
                         <label for="od">Ödeme Şekli</label>
@@ -321,23 +162,33 @@
                             <option>Kredi Kartı</option>
                             <option>Çek</option>
                             <option>Havale</option>
-                            <option>Bitcoin</option>
-                            <option>Dogecoin</option>
+
                         </select>
                     </div>
                 </div>
-                   
-
-                </div>
+            </div>
             <div class="row">
-                <div class="col-sm-4" style="">
-                    <button type="submit" class="btn btn-default">Ekle</button>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="aciklama">Açıklama</label>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="acik">
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-default" style="float:right;">Kaydet</button>
                 </div>
             </div>
-           
 
-        </div>
         </form>
-       
+    </div>
 </div>
 
