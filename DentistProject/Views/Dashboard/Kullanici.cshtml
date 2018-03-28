@@ -1,269 +1,279 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Kullanici";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link href="~/Content/hesap.css" rel="stylesheet" />
-<div id="hesapayarlari">
-    <div class="menu">
-        <ul>
-            <li><a class="active" href="#home">Diş Hekimi</a></li>
-            <li><a href="#news">Asistan</a></li>
 
-        </ul>
-    </div>
+<head>
+    <meta charset="utf-8" />
+    <title> Hesap Ayarları </title>
 
-    <table>
+    <link href="~/Content/hesap.css" rel="stylesheet" />
 
-        <td>
-            <div style="margin-top:10%; margin-left:30%;" class="form-group">
-                <label for="verg1">Diş Hekimi</label>
-            </div>
-        </td>
-        <td>
-            <div style="margin-top:10%;margin-left:30%" class="form-group">
-                <select name="doktorlar">
-                    <option value="UmitSokullu">Dt. Ümit Sokullu</option>
-                    <option value="Dt2"> </option>
-                    <option value="Dt3"> </option>
-                </select>
-            </div>
-        </td>
+</head>
+
+
+<form class="form-inline" action="/action_page.php">
+    <tr> <th colspan="4"><h2 style="margin-top:4%; margin-left:15%;">Hesap Ayarları</h2></th></tr>
+    <table style="margin-right: auto;  margin-left: auto;" border="0" cellpadding="3">
+        <div class="row">
+            <div class="col-md-8">
+               
+                <tr> <th colspan="4"><h4>Kişisel Bilgiler</h4></th></tr>
+                <tr>
+
+                    <td>
+                        <div class="form-group">
+                            <label for="prbrm">TC Kimlik No</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="TCNo">
+                        </div>
+                    </td>
+
+                    <td>
+                        <div style="margin-top:5%;"class="form-group">
+                            <label for="uzm">Uzmanlık</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-row align-items-center">
+                            <div class="col-auto my-1">
+                                <label class="mr-sm-2" for="inlineFormCustomSelect"></label>
+                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                                    <option selected>Seciniz..</option>
+                                    <option value="1">Çene Cerrahisi</option>
+                                    <option value="2">Ortodonti</option>
+                                    <option value="3"> </option>
+                                </select>
+                            </div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="ad">Ad</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control" class="ad">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="hspno">Soyad</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="soyad">
+                        </div>
+                    </td>
+                    <td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="verg2">Cinsiyet</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="radio" class="form-control" name="cinsiyet" value="erkek">Erkek &emsp;
+                            <input type="radio" class="form-control" name="cinsiyet" value="kadin">Kadin
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="verg1">Doğum Tarihi</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="date" class="form-control" name="dogumTarihi">
+                        </div>
+                    </td>
+
+                </tr>
+
+                <tr><th colspan="4"><h4>Randevu Saatleri</h4></th></tr>
+                <tr> <td colspan="4"></td></tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="tarih">Pazartesi</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="time" class="form-control" id="tarih">
+                        </div>
+                    </td>
+
+
+
+                    <td>
+                        <div class="form-group">
+                            <label for="tarih">Salı</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="time" class="form-control" id="tarih">
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="form-group">
+                            <label for="tarih">Çarşamba</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="time" class="form-control" id="tarih">
+                        </div>
+                    </td>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="tarih">Perşembe</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="time" class="form-control" id="tarih">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="tarih">Cuma</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="time" class="form-control" id="tarih">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="tarih">Cumartesi</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="time" class="form-control" id="tarih">
+                        </div>
+                    </td>
+                </tr>
+                </tr>
+
+                <tr><th colspan="4"><h4>İletişim Bilgileri</h4></th></tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="cep">Cep Telefonu</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="cep">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="sabit">Sabit Telefon</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="sabit">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="tlf">Telefon</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="tlf">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="email">E-Posta</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="email" class="form-control" name="email">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="ulke">Ülke</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="ulke">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="sehir">Şehir</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="sehir">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <label for="postaKodu">Posta Kodu</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="postaKodu">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="ilce">İlçe</label>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="ilce">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="4">
+                        <button style="margin-left:100%;" type="submit" class="btn btn-default" style="float:right">Kaydet</button>
+                    </td>
+                </tr>
+
     </table>
-    <form class="form-inline" action="/action_page.php">
-
-        <table style="margin-right: auto;  margin-left: auto;" border="0" cellpadding="3">
-            <div class="row">
-                <div class="col-md-8">
-                    <tr> <th colspan="4"><h4>Kişisel Bilgiler</h4></th></tr>
-                    <tr>
-                        <td>
-                            <div class="form-group">
-                                <label for="ad">Ad</label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" class="form-control" class="ad">
-                            </div>
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-group">
-                                <label for="hspno">Soyad</label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="soyad">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <label for="prbrm">TC Kimlik No</label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="TCNo">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-group">
-                                <label for="verg2">Cinsiyet</label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="radio" class="form-control" name="cinsiyet" value="erkek">Erkek &emsp;
-                                <input type="radio" class="form-control" name="cinsiyet" value="kadin">Kadin
-                            </div>
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-group">
-                                <label for="verg1">Doğum Tarihi</label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="date" class="form-control" name="dogumTarihi">
-                            </div>
-                        </td>
-
-                    </tr>
-                    <tr><th colspan="4"><h4>Randevu Saatleri</h4></th></tr>
-                    <tr> <td colspan="4"></td></tr>
-                    <tr>
-                        <td>
-                            <div class="form-group">
-                                <label for="tarih">Pazartesi</label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="time" class="form-control" id="tarih">
-                            </div>
-                        </td>
-
-
-
-                        <td>
-                            <div class="form-group">
-                                <label for="tarih">Salı</label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="time" class="form-control" id="tarih">
-                            </div>
-                        </td>
-
-                        <td>
-                            <div class="form-group">
-                                <label for="tarih">Çarşamba</label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="time" class="form-control" id="tarih">
-                            </div>
-                        </td>
-                    <tr>
-                        <td>
-                            <div class="form-group">
-                                <label for="tarih">Perşembe</label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="time" class="form-control" id="tarih">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <label for="tarih">Cuma</label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="time" class="form-control" id="tarih">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <label for="tarih">Cumartesi</label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="time" class="form-control" id="tarih">
-                            </div>
-                        </td>
-                    </tr>
-                    </tr>
-                    <tr><th colspan="4"><h4>İletişim Bilgileri</h4></th></tr>
-                    <tr>
-                        <td>
-                            <div class="form-group">
-                                <label for="cep">Cep Telefonu</label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="cep">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <label for="sabit">Sabit Telefon</label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="sabit">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-group">
-                                <label for="tlf">Telefon</label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="tlf">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <label for="email">E-Posta</label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="email" class="form-control" name="email">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-group">
-                                <label for="ulke">Ülke</label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="ulke">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <label for="sehir">Şehir</label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="sehir">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="form-group">
-                                <label for="postaKodu">Posta Kodu</label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="postaKodu">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <label for="ilce">İlçe</label>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="ilce">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="4">
-                            <button type="submit" class="btn btn-default" style="float:right">Kaydet</button>
-                        </td>
-                    </tr>
-
-        </table>
-    </form>
-</div>
+</form>
+    </div>
 <div class="col-md-4">
 </div>
+
+</body>
+
+
