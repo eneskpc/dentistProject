@@ -50,6 +50,10 @@ namespace DentistProject.Controllers
             {
 
             }
+            else if (pageName == "HastaListesi" && id > 0)
+            {
+
+            }
             return View();
         }
 
