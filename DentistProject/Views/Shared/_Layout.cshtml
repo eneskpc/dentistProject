@@ -10,6 +10,7 @@
     <!-- CSS Files -->
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/now-ui-dashboard.min.css?v=1.0.1" rel="stylesheet" />
+    <link href="~/Content/fullcalendar.min.css" rel="stylesheet" />
 </head>
 <body>
     <div class="wrapper">
@@ -74,18 +75,18 @@
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="~/Dashboard/Kullanici" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="now-ui-icons users_single-02"></i>
-                                        <p>
-                                            <span class="d-lg-none d-md-block">Some Actions</span>
-                                        </p>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="~/Dashboard/Kullanici">Hesap Ayarları</a>
-                                        <a class="dropdown-item" href="#">Çıkış</a>
-                                      
-                                    </div>
-</li>
-                            
+                                    <i class="now-ui-icons users_single-02"></i>
+                                    <p>
+                                        <span class="d-lg-none d-md-block">Some Actions</span>
+                                    </p>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="~/Dashboard/Kullanici">Hesap Ayarları</a>
+                                    <a class="dropdown-item" href="#">Çıkış</a>
+
+                                </div>
+                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -94,9 +95,9 @@
             <div class="panel-header panel-header-sm">
             </div>
             @*@Html.ActionLink("Dentist Automationnn", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
-            
+
             @RenderBody()
-                
+
             <footer class="footer">
                 <div class="container-fluid">
                     <nav>
@@ -133,9 +134,71 @@
     <script src="~/Scripts/jquery.min.js"></script>
     <script src="~/Scripts/popper.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/fullcalendar.min.js"></script>
+    <script src="~/Scripts/locale/tr.js"></script>
     <script src="~/Scripts/plugins/perfect-scrollbar.jquery.min.js"></script>
     <script src="~/Scripts/plugins/chartjs.min.js"></script>
     <script src="~/Scripts/plugins/bootstrap-notify.js"></script>
     <script src="~/Scripts/now-ui-dashboard.min.js?v=1.0.1"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#calendar').fullCalendar({
+                themeSystem: "bootstrap4",
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                defaultDate: '2018-03-12',
+                navLinks: true, // can click day/week names to navigate views
+                selectable: true,
+                selectHelper: true,
+                select: function (start, end) {
+                    var title = prompt('Event Title:');
+                    var eventData;
+                    if (title) {
+                        eventData = {
+                            title: title,
+                            start: start,
+                            end: end
+                        };
+                        $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+                    }
+                    $('#calendar').fullCalendar('unselect');
+                },
+                editable: true,
+                themeButtonIcons: {
+                    prev: 'now-ui-icons arrows-1_minimal-left',
+                    next: 'now-ui-icons arrows-1_minimal-right',
+                    prevYear: 'now-ui-icons arrows-1_minimal-left',
+                    nextYear: 'now-ui-icons arrows-1_minimal-right'
+                },
+                eventLimit: true, // allow "more" link when too many events
+                events: [
+                    {
+                        id: 18,
+                        title: 'Enes Kapucu',
+                        start: '2018-03-12T12:00:00'
+                    }, {
+                        id: 18,
+                        title: 'Emirhan Dağlıoğlu',
+                        start: '2018-03-12T12:30:00'
+                    },
+                    {
+                        id: 18,
+                        title: 'Handan Keleş',
+                        start: '2018-03-18T09:40:00'
+                    }, {
+                        id: 18,
+                        title: 'Defne Aynur Gökgöz',
+                        start: '2018-03-18T16:30:00'
+                    }
+                ]
+            });
+
+        });
+    </script>
 </body>
 </html>

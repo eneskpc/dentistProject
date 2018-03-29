@@ -2229,9 +2229,9 @@ nav a:hover {
     background-color: #222;
 }
 
-    .about-area * {
-        color: #fff;
-    }
+.about-area {
+    color: #fff;
+}
 
 .about-right {
     padding-right: 20%;
@@ -2706,11 +2706,11 @@ p {
     border: 1px solid #fff;
 }
 
-.appoinment-calendar *{
-    user-select: none;
-}
+    .appoinment-calendar * {
+        user-select: none;
+    }
 
-    .appoinment-calendar td,
+    .appoinment-calendar td:not(.choose-time),
     .appoinment-calendar th {
         position: relative;
         text-align: center;
@@ -2722,7 +2722,7 @@ p {
         border-bottom: 1px solid #fff;
     }
 
-    .appoinment-calendar td:after {
+    .appoinment-calendar td:not(.choose-time):after {
         content: '';
         padding-top: 50%;
         display: block;
@@ -2745,4 +2745,17 @@ p {
         opacity: 0.5;
         cursor: no-drop;
         background-color: rgba(0,0,0,0.5);
+    }
+
+.btn-outline-primary {
+    color: #007bff !important;
+    background-color: transparent !important;
+    background-image: none;
+    border-color: #007bff !important;
+}
+
+    .btn-outline-primary:hover {
+        color: #fff !important;
+        background-color: #007bff !important;
+        border-color: #007bff !important;
     }
