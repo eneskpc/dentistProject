@@ -269,6 +269,7 @@
     <Content Include="Views\Dashboard\StokListele.cshtml" />
     <Content Include="Views\Dashboard\TedarikciGuncel.cshtml" />
     <Content Include="Views\Dashboard\TedarikciEkle.cshtml" />
+    <Content Include="Views\Dashboard\HastaListesi.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
