@@ -1,0 +1,159 @@
+﻿
+
+@{
+    ViewBag.Title = "StokGuncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+
+
+    #stokguncelle {
+        margin-left: 10%;
+        margin-right: 10%;
+        background-color: #fff;
+        margin-top: -10px;
+        margin-bottom: 0px;
+    }
+
+    {
+        margin: 0;
+        padding: 0;
+    }
+
+    .active {
+        background-color: #007bff;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    select {
+        width: 180px;
+        height: 40px;
+        padding: 7px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        box-sizing: border-box;
+    }
+
+    {
+        margin: 0;
+        padding: 0;
+    }
+
+    .menu {
+        width: 100%;
+        height: 48px;
+        background: #204065;
+        border-bottom: 4px solid #2ca8ff;
+        box-shadow: 0 2px 22px 0 rgba(0,0,0,.2), 0 2px 30px 0 rgba(0,0,0,.35);
+        border-radius: 5px;
+    }
+
+        .menu ul li {
+            float: left;
+            list-style-type: none;
+        }
+
+            .menu ul li a {
+                color: #fff;
+                font: 17px Arial;
+                text-decoration: none;
+                display: block;
+                padding: 14px 15px;
+                transition: all .5s;
+                -webkit-transition: all .5s;
+                -moz-transition: all .5s;
+            }
+
+                .menu ul li a:hover {
+                    background: #00bfae;
+                    color: white;
+                }
+</style>
+
+<div id="stokguncelle">
+    <div class="menu">
+        <ul>
+
+
+            <li><a href="~/Dashboard/Stok">Ürün Ekle</a></li>
+            <li><a class="active" href="~/Dashboard/StokGuncelle">Ürün Güncelle</a></li>
+            <li><a href="~/Dashboard/StokListele">Ürünleri Listele</a></li>
+
+        </ul>
+    </div>
+
+    <form class="form-inline" action="/action_page.php">
+        <table style="margin-right: auto;  margin-left: auto;" border="0" cellpadding="3">
+            <tr> <th colspan="4"><h4>Ürün Güncelle</h4></th></tr>
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="hsp1">Ürün Kodu</label>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="kodu">
+                    </div>
+                </td>
+
+                <td>
+                    <div class="form-group">
+                        <label for="verg1">Ürün Adı</label>
+                    </div>
+                </td>
+
+                <td>
+                    <div class="form-group">
+                        <select name="tedarikci">
+                            <option value="UmitSokullu">Lütfen Seçiniz...</option>
+                            <option value="TD1">ASD</option>
+                            <option value="TD2">SDFGH</option>
+                        </select>
+                    </div>
+                </td>
+
+
+            </tr>
+          
+            <tr>
+                <td>
+                    <div class="form-group">
+                        <label for="hspno">Stok Adeti</label>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="soyad">
+                    </div>
+                </td>
+
+
+                <td>
+                    <div class="form-group">
+                        <label for="verg1">Son Kullanma Tarihi</label>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <input type="date" class="form-control" name="kayitTarihi">
+                    </div>
+                </td>
+            </tr>
+
+
+            <tr> <td colspan="4"></td></tr>
+
+            <tr>
+                <td colspan="4">
+                    <button type="submit" class="btn btn-default" style="float:right">Kaydet</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
