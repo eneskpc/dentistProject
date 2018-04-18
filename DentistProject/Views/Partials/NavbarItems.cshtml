@@ -1,58 +1,56 @@
-﻿<div class="sidebar-wrapper">
+﻿@{
+    var action = ViewContext.RouteData.Values["action"];
+}
+<div class="sidebar-wrapper">
     <ul class="nav">
-        
-
-        <li>
-            
-                <a href="~/Dashboard/HastaKarti">
+        <li @(action == "HastaKarti" ? "class=active" : "")>
+            <a href="~/Dashboard/HastaKarti">
                 <i class="now-ui-icons users_single-02"></i>
                 <p>Hasta</p>
             </a>
         </li>
-        <li>
-
+        <li @(action == "Randevu" ? "class=active" : "")>
             <a href="~/Dashboard/Randevu">
-            <i class="now-ui-icons ui-1_calendar-60"></i>
-            <p>Randevu</p>
+                <i class="now-ui-icons ui-1_calendar-60"></i>
+                <p>Randevu</p>
             </a>
         </li>
-        <li>
-
+        <li @(action == "Gider" ? "class=active" : "")>
             <a href="~/Dashboard/Gider">
-            <i class="now-ui-icons design_bullet-list-67"></i>
-            <p>Gider</p>
+                <i class="now-ui-icons design_bullet-list-67"></i>
+                <p>Gider</p>
             </a>
         </li>
-        <li>
+        <li @(action == "Rapor" ? "class=active" : "")>
             <a href="#">
                 <i class="now-ui-icons education_paper"></i>
                 <p>Rapor</p>
             </a>
         </li>
-        <li>
+        <li @(action == "Stok" ? "class=active" : "")>
             <a href="~/Dashboard/Stok">
                 <i class="now-ui-icons shopping_cart-simple"></i>
                 <p>Stok</p>
             </a>
         </li>
-        <li>
+        <li @(action == "Tedarikci" ? "class=active" : "")>
             <a href="~/Dashboard/Tedarikci">
                 <i class="now-ui-icons shopping_delivery-fast"></i>
                 <p>Tedarikçi</p>
             </a>
         </li>
-        
+
         @*<li>
-            <a href="../examples/typography.html">
-                <i class="now-ui-icons text_caps-small"></i>
-                <p>Typography</p>
-            </a>
-        </li>
-        <li class="active-pro">
-            <a href="../examples/upgrade.html">
-                <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-                <p>Upgrade to PRO</p>
-            </a>
-        </li>*@
+                <a href="../examples/typography.html">
+                    <i class="now-ui-icons text_caps-small"></i>
+                    <p>Typography</p>
+                </a>
+            </li>
+            <li class="active-pro">
+                <a href="../examples/upgrade.html">
+                    <i class="now-ui-icons arrows-1_cloud-download-93"></i>
+                    <p>Upgrade to PRO</p>
+                </a>
+            </li>*@
     </ul>
 </div>

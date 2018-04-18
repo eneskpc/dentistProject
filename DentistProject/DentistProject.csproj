@@ -215,7 +215,7 @@
     <Content Include="Scripts\plugins\perfect-scrollbar.jquery.min.js" />
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\waypoints.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Views\Dashboard\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -247,35 +247,42 @@
     <Content Include="fonts\nucleo-outline.woff2" />
     <None Include="packages.config" />
     <Content Include="Scripts\now-ui-dashboard.js.map" />
-    <Content Include="Views\Dashboard\Gider\GiderEkle.cshtml" />
-    <Content Include="Views\Dashboard\Gider\GiderGuncelle.cshtml" />
-    <Content Include="Views\Dashboard\Gider\GiderListele.cshtml" />
-    <Content Include="Views\Dashboard\Hasta\HastaKarti.cshtml" />
+    <Content Include="Views\Dashboard\GiderEkle.cshtml" />
+    <Content Include="Views\Dashboard\GiderGuncelle.cshtml" />
+    <Content Include="Views\Dashboard\GiderListele.cshtml" />
+    <Content Include="Views\Dashboard\HastaKarti.cshtml" />
     <Content Include="Views\Dashboard\Hesap.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Dashboard\Kullanici.cshtml" />
     <Content Include="Views\Dashboard\Login.cshtml" />
-    <Content Include="Views\Dashboard\Hasta\Randevu.cshtml" />
-    <Content Include="Views\Dashboard\Stok\Stok.cshtml" />
-    <Content Include="Views\Dashboard\Tedarikci\Tedarikci.cshtml" />
+    <Content Include="Views\Dashboard\Randevu.cshtml" />
+    <Content Include="Views\Dashboard\Stok.cshtml" />
+    <Content Include="Views\Dashboard\Tedarikci.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Partials\NavbarItems.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_SiteLayout.cshtml" />
     <Content Include="Views\View.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Dashboard\Tedavi\Oral.cshtml" />
-    <Content Include="Views\Dashboard\Stok\StokGuncelle.cshtml" />
-    <Content Include="Views\Dashboard\Stok\StokListele.cshtml" />
-    <Content Include="Views\Dashboard\Tedarikci\TedarikciGuncel.cshtml" />
-    <Content Include="Views\Dashboard\Tedarikci\TedarikciEkle.cshtml" />
-    <Content Include="Views\Dashboard\Hasta\HastaListesi.cshtml" />
-    <Content Include="Views\Dashboard\Tedavi\ReceteEkle.cshtml" />
-    <None Include="Web.Debug.config">
+    <Content Include="Views\Dashboard\Oral.cshtml" />
+    <Content Include="Views\Dashboard\StokGuncelle.cshtml" />
+    <Content Include="Views\Dashboard\StokListele.cshtml" />
+    <Content Include="Views\Dashboard\TedarikciGuncel.cshtml" />
+    <Content Include="Views\Dashboard\TedarikciEkle.cshtml" />
+    <Content Include="Views\Dashboard\HastaListesi.cshtml" />
+    <Content Include="Views\Dashboard\ReceteEkle.cshtml" />
+    <None Include="Views\Dashboard\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <None Include="Web.Release.config">
+    <None Include="Views\Dashboard\Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

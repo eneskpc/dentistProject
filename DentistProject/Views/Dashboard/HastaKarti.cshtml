@@ -1,0 +1,140 @@
+﻿
+@{
+    ViewBag.Title = "HastaKarti";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="content">
+    <div class="card">
+        <h5 class="card-header" id="cardHeader">Hasta Kartı</h5>
+        <div class="card-body">
+            <form class="mx-auto">
+                <h4>Kişisel Bilgiler</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label>Ad</label>
+                        <input type="text" class="form-control" id="inputName" placeholder="İsim">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Soyad</label>
+                        <input type="text" class="form-control" placeholder="Soyisim">
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4 ">
+                        <label>Tc Kimlik No</label>
+                        <input type="text" class="form-control" placeholder="Tc Kimlik No ">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputState">Uyruk</label>
+                        <select id="inputState" class="form-control">
+                            <option value="TR" selected="selected">TÜRKİYE</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label>Doğum Tarihi</label>
+                        <input type="date" class="form-control" placeholder="Soyisim">
+                    </div>
+
+                    <div class="form-group col-md-4">
+                        <label>Cinsiyet</label>
+                        <div class="form-check">
+                            <input class="form-check-input" name="group100" type="radio" id="radio100" style="margin-left: 2%;">
+                            <label class="form-check-label" for="radio100" style="margin-left: 1%;">Kadın</label>
+                            <input class="form-check-input" name="group100" type="radio" id="radio101" checked style="margin-left: 7%;">
+                            <label class="form-check-label" for="radio101" style="margin-left: 7%;">Erkek</label>
+                        </div>
+                    </div>
+                </div>
+                <h4>İletişim Bilgileri</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label>Cep Telefonu</label>
+                        <input type="text" class="form-control" id="inputName" placeholder="Cep Telefonu">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Sabit Telefon</label>
+                        <input type="text" class="form-control" placeholder="Sabit Telefon">
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label>E-posta</label>
+                        <input type="email" class="form-control" id="inputName" placeholder="E-Posta">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputState">Ülke</label>
+                        <select id="inputState" class="form-control">
+                            <option value="TR" selected="selected">TÜRKİYE</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-8">
+                        <textarea class="form-control" id="inputAddress" placeholder="Adres"></textarea>
+                    </div>
+                </div>
+
+                <h4>Diğer Bilgiler</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputState">Para Birimi</label>
+                        <select id="inputState" class="form-control">
+                            <option selected>Türk Lirası(TRY)</option>
+                            <option>Abd Doları(USD)</option>
+                            <option>Euro(EUR)</option>
+                            <option>İngiliz Sterlini(GBP)</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="inputState">Tarife</label>
+                        <select id="inputState" class="form-control">
+                            <option></option>
+                            <option>TDB</option>
+                            <option selected>Özel</option>
+
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="inputState">Kan Grubu</label>
+                        <select name="id_kangrubu" class="form-control" maxlength="" tabindex="26"><option value="0"></option><option value="1">0 Rh +</option><option value="2">0 Rh -</option><option value="3">A Rh +</option><option value="4">A Rh -</option><option value="5">B Rh +</option><option value="6">B Rh -</option><option value="7">AB Rh +</option><option value="8">AB Rh -</option></select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Meslek</label>
+                        <input type="text" class="form-control" id="inputName" placeholder="Meslek">
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label>Referans Adı</label>
+                        <input type="text" class="form-control" id="inputName" placeholder="Referans Adı">
+                    </div>
+                </div>
+                <button type="submit" class="btn">Ekle</button>
+            </form>
+
+            @*<div class="d-flex  flex-row-reverse ml-auto"><img src="~/Content/images/emptyProfile.png" /></div>*@
+
+            @*flex-row-reverse ml-auto*@
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+

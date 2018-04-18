@@ -28,7 +28,7 @@ namespace DentistProject.Controllers
         public ActionResult Login(LoginModel loginModel)
         {
             if (Helpers.Login(loginModel.txtUserName, loginModel.txtPassword))
-                return RedirectToAction("Index");
+                return Redirect("/Dashboard");
             return View();
         }
 
@@ -40,95 +40,20 @@ namespace DentistProject.Controllers
             }
             if (pageName == "Ekle")
             {
-                return View("TestView");
+                return View("HastaKarti");
             }
-            else if (pageName == "" && id > 0)
+            else if (pageName == "Guncelle" && id == 0)
             {
-
-            }
-            else if (pageName == "TedaviEkle" && id > 0)
-            {
-
-            }
-            else if (pageName == "HastaListesi" && id > 0)
-            {
-
-            }
-            else if (pageName == "Recete" && id > 0)
-            {
-                return View("ReceteEkle");
-            }
-            return View();
-        }
-
-        public ActionResult Oral()
-        {
-            return View();
-        }
-
-        public ActionResult Randevu()
-        {
-            return View();
-        }
-
-        public ActionResult Kullanici(string pageName = "")
-        {
-            if (!Helpers.CheckAuthentication())
-            {
-                return RedirectToAction("Login");
-            }
-            return View();
-        }
-
-        public ActionResult Gider(string pageName = "", int id = 0)
-        {
-            if (!Helpers.CheckAuthentication())
-            {
-                return RedirectToAction("Login");
-            }
-            if (pageName == "" && id == 0)
-            {   //    /Gider
-                return View("GiderListele");
+                return View("HastaListesi");
             }
             else if (pageName == "Guncelle" && id > 0)
             {
-                //Verileri çekip modeli viewa yollicuk.
-                //   /Gider/Guncelle/5(giderID)
-                return View("GiderGuncelle");
-            }
-            if (pageName == "Ekle" && id == 0)
-            {
-                //   /Gider/Ekle
-                return View("GiderEkle");
+                return View("HastaKarti");
             }
             return View();
         }
 
-        public ActionResult Tedarikci(string pageName = "", int id = 0)
-        {
-            if (!Helpers.CheckAuthentication())
-            {
-                return RedirectToAction("Login");
-            }
-            if (pageName == "" && id == 0)
-            {   //    /Tedarikci Listele
-                return View("Tedarikci");
-            }
-            else if (pageName == "Guncelle" && id > 0)
-            {
-                //Verileri çekip modeli viewa yollicuk.
-                //   /Tedarikci/Guncelle/5(giderID)
-                return View("TedarikciGuncel");
-            }
-            if (pageName == "Ekle" && id == 0)
-            {
-                //   /Tedarikci/Ekle
-                return View("TedarikciEkle");
-            }
-            return View();
-        }
-
-        public ActionResult Stok(string pageName = "", int id = 0)
+        public ActionResult Tedavi(string pageName = "", int id = 0)
         {
             if (!Helpers.CheckAuthentication())
             {
@@ -136,65 +61,13 @@ namespace DentistProject.Controllers
             }
             if (pageName == "Ekle")
             {
-
+                return View("Oral");
             }
-            else if (pageName == "" && id > 0)
+            else if (pageName == "Guncelle" && id == 0)
             {
-
+                return View("HastaListesi");
             }
             return View();
         }
-        public ActionResult StokGuncelle(string pageName = "", int id = 0)
-        {
-            if (!Helpers.CheckAuthentication())
-            {
-                return RedirectToAction("Login");
-            }
-            if (pageName == "Ekle")
-            {
-
-            }
-            else if (pageName == "" && id > 0)
-            {
-
-            }
-            return View();
-        }
-        public ActionResult StokListele(string pageName = "", int id = 0)
-        {
-            if (!Helpers.CheckAuthentication())
-            {
-                return RedirectToAction("Login");
-            }
-            if (pageName == "Ekle")
-            {
-
-            }
-            else if (pageName == "" && id > 0)
-            {
-
-            }
-            return View();
-        }
-
-
-        public ActionResult Hesap(string pageName = "", int id = 0)
-        {
-            if (!Helpers.CheckAuthentication())
-            {
-                return RedirectToAction("Login");
-            }
-            if (pageName == "Ekle")
-            {
-
-            }
-            else if (pageName == "" && id > 0)
-            {
-
-            }
-            return View();
-        }
-
-
     }
 }
