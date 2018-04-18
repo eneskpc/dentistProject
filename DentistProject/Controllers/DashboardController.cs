@@ -54,14 +54,14 @@ namespace DentistProject.Controllers
             {
 
             }
+            else if (pageName == "Recete" && id > 0)
+            {
+                return View("ReceteEkle");
+            }
             return View();
         }
 
         public ActionResult Oral()
-        {
-            return View();
-        }
-        public ActionResult OralDeneme()
         {
             return View();
         }
@@ -194,7 +194,7 @@ namespace DentistProject.Controllers
             }
             return View();
         }
-       
+
 
     }
 }

@@ -13,6 +13,12 @@ namespace DentistProject
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
+                name: "ReceteEklemeRoute",
+                /*     classs /  method or function / parameter     */
+                url: "Dashboard/Hasta/Recete",
+                defaults: new { controller = "Dashboard", action = "HastaKarti", pageName = "Recete", id = 5 }
+            );
+            routes.MapRoute(
                 name: "TedarikciEkleRoute",
                 /*     classs /  method or function / parameter     */
                 url: "Dashboard/Tedarikci/Ekle",
@@ -36,8 +42,6 @@ namespace DentistProject
                 url: "{controller}/{action}/{pageName}/{id}",
                 defaults: new { controller = "Home", action = "Index", pageName = UrlParameter.Optional, id = UrlParameter.Optional }
             );
-            
-
         }
     }
 }
