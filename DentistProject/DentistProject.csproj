@@ -229,7 +229,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Content\now-ui-dashboard.css.map" />
     <Content Include="fonts\.DS_Store" />
     <Content Include="fonts\fontawesome-webfont.eot" />
