@@ -1,24 +1,41 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Oral";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<br />
-<br />
-
 <div class="content">
-
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+        <a class="navbar-brand" href="#">Hasta</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/Dashboard/Hasta">Hasta Listesi</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/Dashboard/Hasta/Ekle">Hasta Ekle</a>
+            </li>
+        </ul>
+    </nav>
     <div class="row">
         <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <div class="media">
+                        <img class="mr-3 border rounded" src="https://i.cnnturk.com/ps/cnnturk/75/650x0/56b450776ce4362f1c60b552.jpg" width="100" height="100" alt="Aslı Demiroğ">
+                        <div class="media-body">
+                            <h5 class="m-0"><a href="/Dashboard/Hasta/Ekle" class="mt-0 mb-2 font-weight-bold text-uppercase">Aslı Demiroğ</a></h5>
+                            <p class="mb-0 text-nowrap">Doğum Tarihi : <i>18.08.1988</i></p>
+                            <p class="mb-0 text-nowrap">Kan Grubu : <i>A Rh +</i></p>
+                            <p class="mb-0 text-nowrap">Cinsiyet : <i class="text-danger">Bayan</i></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="card card-tasks">
                 <div class="card-header">
                     <h5 class="card-category">Diş Seçim Alanı</h5>
-
                 </div>
                 <div class="card-body">
-                    <div class="table-full-width table-responsive">      
-                                    <img src="~/Content/images/32teeth.jpg" />
+                    <div class="table-full-width table-responsive">
+                        <img src="~/Content/images/32teeth.jpg" />
                     </div>
                 </div>
             </div>
@@ -258,7 +275,7 @@
 
             </div>
         </div>
-        
+
 
     </div>
-    </div>
+</div>

@@ -3,177 +3,91 @@
     ViewBag.Title = "GiderListele";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-
-
-<style>
-
-    {
-        margin: 0;
-        padding: 0;
-    }
-
-    .menu {
-        width: 100%;
-        height: 48px;
-        background: #204065;
-        border-bottom: 4px solid #2ca8ff;
-        box-shadow: 0 2px 22px 0 rgba(0,0,0,.2), 0 2px 30px 0 rgba(0,0,0,.35);
-        border-radius: 5px;
-    }
-
-        .menu ul li {
-            float: left;
-            list-style-type: none;
-        }
-
-            .menu ul li a {
-                color: #fff;
-                font: 17px Arial;
-                text-decoration: none;
-                display: block;
-                padding: 14px 15px;
-                transition: all .5s;
-                -webkit-transition: all .5s;
-                -moz-transition: all .5s;
-            }
-
-                .menu ul li a:hover {
-                    background: #00bfae;
-                    color: white;
-                }
-
-    #gider {
-        margin-left: 10%;
-        margin-right: 10%;
-        background-color: #fff;
-        margin-top: -10px;
-        margin-bottom: 0px;
-    }
-
-    .gdr {
-        margin-right: auto;
-        margin-left: auto;
-    }
-
-    .btn btn-default dropdown-toggle {
-        font-family: Arial;
-        color: steelblue;
-        width: 100px;
-    }
-
-    .dropdown1 {
-        width: 100%;
-        height: 30px;
-        border-radius: 5px;
-        box-shadow: 0 2px 22px 0 rgba(0,0,0,.2), 0 2px 30px 0 rgba(0,0,0,.35);
-    }
-
-    .active {
-        background-color: #2ca8ff;
-        border-radius: 5px;
-    }
-
-    .dropdown1 option {
-    }
-</style>
-
-
-
-
-<div id="gider">
-        <div class="menu">
-            <ul>
-                <li><a href="~/Dashboard/Gider/Ekle">Gider Ekle</a></li>                   
-                <li><a href="~/Dashboard/Gider/Listele" class="active">Giderler</a></li>
-            </ul>
-        </div>
-        <br />
-        <div class="container">
+<div class="content">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+        <a class="navbar-brand" href="#">GİDER</a>
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/Dashboard/Gider">Gider Listesi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Dashboard/Gider/Ekle">Gider Ekle</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="card">
+        <div class="card-body" style="position:relative;">
+            <input type="text" name="q" class="form-control" style="position:absolute;right:15px;top:25px;width:225px;" placeholder="Ara..."/>
             <table class="table">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th scope="col"><b>Gider Türü</b></th>
-                    <th scope="col"><b>Tutar</b></th>
-                    <th scope="col"><b>Ödeme Şekli</b></th>
-                    <th scope="col"><b>Tarih</b></th>
-                    <th scope="col"><b>Açıklama</b></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>1</th>
-                    <td>Diğer Giderler</td>
-                    <td>300 TL</td>
-                    <td>Kredi Kartı</td>
-                    <td>20.03.2018</td>
-                    <td>Elektirk Fatura Ödemesi</td>
-                    <td>
-                        <a href="~/Dashboard/Gider/Guncelle/5"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a><br />
-                    </td>
-                    <td>
-                        <a href=""><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <th>2</th>
-                    <td>Diğer Giderler</td>
-                    <td>300 TL</td>
-                    <td>Kredi Kartı</td>
-                    <td>20.03.2018</td>
-                    <td>Elektirk Fatura Ödemesi</td>
-                    <td>
-                        <a href=""><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a><br />
-                    </td>
-                    <td>
-                        <a href=""><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <td>Diğer Giderler</td>
-                    <td>300 TL</td>
-                    <td>Kredi Kartı</td>
-                    <td>20.03.2018</td>
-                    <td>Elektirk Fatura Ödemesi</td>
-                    <td>
-                        <a href=""><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a><br />
-                    </td>
-                    <td>
-                        <a href=""><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <th>4</th>
-                    <td>Asistan</td>
-                    <td>2000 TL</td>
-                    <td>Havale</td>
-                    <td>20.03.2018</td>
-                    <td>Maaş Ödemesi</td>
-                    <td>
-                        <a href=""><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a><br />
-                    </td>
-                    <td>
-                        <a href=""><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <th>5</th>
-                    <td>Dişçi</td>
-                    <td>6000 TL</td>
-                    <td>Havale</td>
-                    <td>20.03.2018</td>
-                    <td>Maaş Ödemesi</td>
-                    <td>
-                        <a href=""><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a><br />
-                    </td>
-                    <td>
-                        <a href=""><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                <thead>
+                    <tr>
+                        <th scope="col">Gider Türü</th>
+                        <th scope="col">Tutar</th>
+                        <th scope="col">Ödeme Şekli</th>
+                        <th scope="col">Tarih</th>
+                        <th scope="col">Açıklama</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Diğer Giderler</td>
+                        <td>300 TL</td>
+                        <td>Kredi Kartı</td>
+                        <td>20.03.2018</td>
+                        <td>Elektirk Fatura Ödemesi</td>
+                        <td class="text-right">
+                            <a href="~/Dashboard/Gider/Guncelle/5"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
+                            <a href=""><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Diğer Giderler</td>
+                        <td>300 TL</td>
+                        <td>Kredi Kartı</td>
+                        <td>20.03.2018</td>
+                        <td>Elektirk Fatura Ödemesi</td>
+                        <td class="text-right">
+                            <a href=""><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
+                            <a href=""><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Diğer Giderler</td>
+                        <td>300 TL</td>
+                        <td>Kredi Kartı</td>
+                        <td>20.03.2018</td>
+                        <td>Elektirk Fatura Ödemesi</td>
+                        <td class="text-right">
+                            <a href=""><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
+                            <a href=""><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Asistan</td>
+                        <td>2000 TL</td>
+                        <td>Havale</td>
+                        <td>20.03.2018</td>
+                        <td>Maaş Ödemesi</td>
+                        <td class="text-right">
+                            <a href=""><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
+                            <a href=""><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Dişçi</td>
+                        <td>6000 TL</td>
+                        <td>Havale</td>
+                        <td>20.03.2018</td>
+                        <td>Maaş Ödemesi</td>
+                        <td class="text-right">
+                            <a href="#"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
+                            <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 

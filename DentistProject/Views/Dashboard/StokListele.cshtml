@@ -2,157 +2,71 @@
     ViewBag.Title = "StokListele";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<style>
-
-
-    #stok {
-        margin-left: 10%;
-        margin-right: 10%;
-        background-color: #fff;
-        margin-top: -10px;
-        margin-bottom: 0px;
-    }
-
-    {
-        margin: 0;
-        padding: 0;
-    }
-
-    .active {
-        background-color: #007bff;
-    }
-
-    body {
-        margin: 0;
-    }
-
-    select {
-        width: 180px;
-        height: 40px;
-        padding: 7px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        border-radius: 20px;
-        box-sizing: border-box;
-    }
-
-    {
-        margin: 0;
-        padding: 0;
-    }
-
-    .menu {
-        width: 100%;
-        height: 48px;
-        background: #204065;
-        border-bottom: 4px solid #2ca8ff;
-        box-shadow: 0 2px 22px 0 rgba(0,0,0,.2), 0 2px 30px 0 rgba(0,0,0,.35);
-        border-radius: 5px;
-    }
-
-        .menu ul li {
-            float: left;
-            list-style-type: none;
-        }
-
-            .menu ul li a {
-                color: #fff;
-                font: 17px Arial;
-                text-decoration: none;
-                display: block;
-                padding: 14px 15px;
-                transition: all .5s;
-                -webkit-transition: all .5s;
-                -moz-transition: all .5s;
-            }
-
-                .menu ul li a:hover {
-                    background: #00bfae;
-                    color: white;
-                }
-</style>
-
-<div id="stok">
-    <div class="menu">
-        <ul>
-            <li><a  href="~/Dashboard/Stok">Ürün Ekle</a></li>
-
-            <li><a href="~/Dashboard/StokGuncelle">Ürün Güncelle</a></li>
-            <li><a class="active" href="~/Dashboard/StokListele">Ürünleri Listele</a></li>
-
+<div class="content">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+        <a class="navbar-brand" href="#">STOK</a>
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/Dashboard/Stok">Stok</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Dashboard/Stok/Ekle">Malzeme Ekle</a>
+            </li>
         </ul>
+    </nav>
+    <div class="card">
+        <div class="card-body" style="position:relative;">
+            <input type="text" name="q" class="form-control" style="position:absolute;right:15px;top:25px;width:225px;" placeholder="Ara..." />
+            <form class="form-inline" action="/action_page.php">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Malzeme Kodu</th>
+                            <th scope="col">Malzeme Adı</th>
+                            <th scope="col">Adeti</th>
+                            <th scope="col">Eklendiği Tarih</th>
+                            <th scope="col">Son Kullanma Tarihi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">A5B6C7</th>
+                            <td>SİMAN FULVARI</td>
+                            <td scope="auto">20</td>
+                            <td>20.04.2018</td>
+                            <td>20.04.2018</td>
+                            <td class="text-right">
+                                <a href="#"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
+                                <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">E15R3F</th>
+                            <td>SOND(ORAK)</td>
+                            <td scope="auto">20</td>
+                            <td>20.04.2018</td>
+                            <td>20.04.2018</td>
+                            <td class="text-right">
+                                <a href="#"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
+                                <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">F5F5F5</th>
+                            <td>KUMPAS</td>
+                            <td scope="auto">55</td>
+                            <td>20.04.2018</td>
+                            <td>20.04.2018</td>
+                            <td class="text-right">
+                                <a href="#"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
+                                <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
     </div>
-
-    <form class="form-inline" action="/action_page.php">
-        <table style="margin-right:auto;  margin-left: auto;" border="0" cellpadding="3">
-
-
-            <table class="table table-hover" >
-                <thead>
-                    <tr style="font-size:x-small; ">
-                        <th scope="col">Ürün Kodu</th>
-                        <th scope="col">Ürün Adı</th>
-                        <th scope="col">Adeti</th>
-                        <th scope="col">Eklendiği Tarih</th>
-                        <th scope="col">Son Kullanma Tarihi</th>
-                        <th scope="col"  > </th>
-                        <th scope="col" > </th></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>SİMAN FULVARI</td>
-                        <td scope="auto">20</td>
-                        <td><input type="date" /> </td>
-                        <td><input type="date" /> </td>
-                        <td colspan="4">
-                            <button type="submit" class="btn btn-default" style="float:right">Güncelle</button>
-                        </td>
-
-
-                        <td colspan="4">
-                            <button type="submit" class="btn btn-default" style="float:right">Sil</button>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>SOND(ORAK)</td>
-                        <td scope="auto">20</td>
-                        <td><input type="date" /> </td>
-                        <td><input type="date" /> </td>
-                        <td colspan="4">
-                            <button type="submit" class="btn btn-default" style="float:right">Güncelle</button>
-                        </td>
-
-
-                        <td colspan="4">
-                            <button type="submit" class="btn btn-default" style="float:right">Sil</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>KUMPAS</td>
-                        <td scope="auto">55</td>
-                        <td><input type="date" /> </td>
-                        <td><input type="date" /> </td>
-                        <td colspan="4">
-                            <button type="submit" class="btn btn-default" style="float:right" >Güncelle</button>
-                        </td>
-
-
-                        <td colspan="4">
-                            <button type="submit" class="btn btn-default" style="float:right">Sil</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-
-        </table>
-    </form>
 </div>
 

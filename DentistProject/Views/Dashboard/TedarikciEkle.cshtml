@@ -4,202 +4,84 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="content">
 
-    <link href="~/Content/tedarikci.css" rel="stylesheet" />
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+        <a class="navbar-brand" href="#">TEDARİKÇİ</a>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/Dashboard/Tedarikci">Tedarikçi Listesi</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/Dashboard/Tedarikci/Ekle">Tedarikçi Ekle</a>
+            </li>
+        </ul>
+    </nav>
 
-    <div style="margin-left:10%;margin-right:10%; background-color:#fff; border-radius:5px;" id="tedarikci">
-
-        <div>
-            <ul class="ul1">
-                <li class="li1"><a href="~/Dashboard/Tedarikci">Tedarikçi Listesi</a></li>
-                <li class="li1"><a href="~/Dashboard/Tedarikci/Ekle" class="active">Tedarikçi Ekle</a></li>
-                <li class="li1"><a href="~/Dashboard/Tedarikci/Guncelle/5" >Tedarikçi Güncelle</a></li>
-
-            </ul>
+    <div class="card">
+        <div class="card-body">
+            <h5>Firma Bilgileri</h5>
+            <div class="row">
+                <div class="col-6">
+                    <label for="ad">Firma Adı</label>
+                    <input type="text" class="form-control" id="fad">
+                </div>
+                <div class="col-6">
+                    <label for="hsp1">Vergi Dairesi</label>
+                    <input type="text" class="form-control" id="vergidairesi">
+                </div>
+                <div class="col-6">
+                    <label for="hspno">Firma Yekilisi</label>
+                    <input type="text" class="form-control" id="yetkili">
+                </div>
+                <div class="col-6">
+                    <label for="prbrm">Vergi Numarası</label>
+                    <input type="text" class="form-control" id="vergino">
+                </div>
+                <div class="col-6">
+                    <label for="verg2">Hesap Numarası</label>
+                    <input type="text" class="form-control" id="hesapno">
+                </div>
+                <div class="col-6">
+                    <label for="verg1">Banka</label>
+                    <input type="text" class="form-control" id="banka">
+                </div>
+            </div>
+            <h5>İletişim Bilgileri</h5>
+            <div class="row">
+                <div class="col-6">
+                    <label for="cep">Cep Telefonu</label>
+                    <input type="text" class="form-control" id="cep">
+                </div>
+                <div class="col-6">
+                    <label for="sabit">Sabit Telefon</label>
+                    <input type="text" class="form-control" id="sabit">
+                </div>
+                <div class="col-6">
+                    <label for="email">E-Posta</label>
+                    <input type="email" class="form-control" id="email">
+                </div>
+                <div class="col-6">
+                    <label for="postkod">Posta Kodu</label>
+                    <input type="text" class="form-control" id="pkod">
+                </div>
+                <div class="col-6">
+                    <label for="ilce">İl</label>
+                    <input type="text" class="form-control" id="il">
+                </div>
+                <div class="col-6">
+                    <label for="postkod">Cadde</label>
+                    <input type="text" class="form-control" id="cad">
+                </div>
+                <div class="col-6">
+                    <label for="ilce">Sokak</label>
+                    <input type="text" class="form-control" id="sokak">
+                </div>
+                <div class="col-12">
+                    <button class="btn btn-primary" type="submit">Kaydet</button>
+                </div>
+            </div>
         </div>
-
-        <form class="form-inline" action="/action_page.php">
-
-            <table style="margin-right: auto;  margin-left: auto;" border="0" cellpadding="5">
-
-                <tr> <td colspan="4"></td></tr>
-                <tr> <th colspan="4">Firma Bilgileri</th></tr>
-                <tr>
-                    <td>
-                        <div class="form-group">
-                            <label for="ad">Firma Adı</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="fad">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <label for="hsp1">Vergi Dairesi</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="vergidairesi">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="form-group">
-                            <label for="hspno">Firma Yekilisi</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="yetkili">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <label for="prbrm">Vergi Numarası</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="vergino">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="form-group">
-                            <label for="verg2">Hesap Numarası</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="hesapno">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <label for="verg1">Banka</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="banka">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="4"></td>
-                </tr>
-                <tr><th colspan="4">İletişim Bilgileri</th></tr>
-                <tr> <td colspan="4"></td></tr>
-                <tr>
-                    <td>
-                        <div class="form-group">
-                            <label for="cep">Cep Telefonu</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="cep">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <label for="sabit">Sabit Telefon</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="sabit">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="form-group">
-                            <label for="tlf">Telefon</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="tlf">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <label for="email">E-Posta</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="email">
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="form-group">
-                            <label for="postkod">Posta Kodu</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="pkod">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <label for="ilce">İl</label>
-
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="il">
-                        </div>
-                    </td>
-
-                <tr>
-                    <td colspan="4"></td>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="form-group">
-                            <label for="postkod">Cadde</label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="cad">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <label for="ilce">Sokak</label>
-
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="sokak">
-                        </div>
-                    </td>
-
-                <tr>
-                    <td colspan="4"></td>
-                </tr>
-                <tr>
-                    <td colspan="4" >
-                        <button type="submit">Kaydet</button>
-                    </td>
-                </tr>
-
-            </table>
-        </form>
-
-
     </div>
+</div>
 

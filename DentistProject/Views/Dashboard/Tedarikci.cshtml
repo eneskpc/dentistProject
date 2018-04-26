@@ -4,61 +4,83 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <link href="~/Content/tedarikci.css" rel="stylesheet" />
+<div class="content">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+        <a class="navbar-brand" href="#">TEDARİKÇİ</a>
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="/Dashboard/Tedarikci">Tedarikçi Listesi</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Dashboard/Tedarikci/Ekle">Tedarikçi Ekle</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="card">
+        <div class="card-body" style="position:relative;">
+            <input type="text" name="q" class="form-control" style="position:absolute;right:15px;top:25px;width:225px;" placeholder="Ara..." />
 
-    <div style="margin-left:10%;margin-right:10%; background-color:#fff; border-radius:5px;" id="tedarikci">
-
-        <div>
-            <ul class="ul1">
-                <li class="li1"><a href="~/Dashboard/Tedarikci" class="active">Tedarikçi Listesi</a></li>
-                <li class="li1"><a href="~/Dashboard/Tedarikci/Ekle">Tedarikçi Ekle</a></li>
-                <li class="li1"><a href="~/Dashboard/Tedarikci/Guncelle/5">Tedarikçi Güncelle</a></li>
-                
-            </ul>
-        </div>
-
-        <div style="margin-left:10%; margin-right:10%;">
-   
-            <table class="table1" >
-                <tr>
-                    <th><h6>Firma Adı </h6> </th>
-                    <th><h6>Alınan Ürün</h6></th>
-                    <th><h6>Düzenle</h6></th>
-                </tr>
-                <tr>
-                    <td>Alfreds Futterkiste</td>
-                    <td>Maria Anders</td>
-                    <td>icon</td>
-                </tr>
-                <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>icon</td>
-                </tr>
-                <tr>
-                    <td>Ernst Handel</td>
-                    <td>Roland Mendel</td>
-                    <td>icon</td>
-                </tr>
-                <tr>
-                    <td>Island Trading</td>
-                    <td>Helen Bennett</td>
-                    <td>icon</td>
-                </tr>
-                <tr>
-                    <td>Laughing Bacchus Winecellars</td>
-                    <td>Yoshi Tannamuri</td>
-                    <td>icon</td>
-                </tr>
-                <tr>
-                    <td>Magazzini Alimentari Riuniti</td>
-                    <td>Giovanni Rovelli</td>
-                    <td>icon</td>
-                </tr>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Firma Adı</th>
+                        <th>Alınan Ürün</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Alfreds Futterkiste</td>
+                        <td>Maria Anders</td>
+                        <td class="text-right">
+                            <a href="#"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
+                            <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Centro comercial Moctezuma</td>
+                        <td>Francisco Chang</td>
+                        <td class="text-right">
+                            <a href="#"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
+                            <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ernst Handel</td>
+                        <td>Roland Mendel</td>
+                        <td class="text-right">
+                            <a href="#"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
+                            <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Island Trading</td>
+                        <td>Helen Bennett</td>
+                        <td class="text-right">
+                            <a href="#"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
+                            <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Laughing Bacchus Winecellars</td>
+                        <td>Yoshi Tannamuri</td>
+                        <td class="text-right">
+                            <a href="#"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
+                            <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Magazzini Alimentari Riuniti</td>
+                        <td>Giovanni Rovelli</td>
+                        <td class="text-right">
+                            <a href="#"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
+                            <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
-
         </div>
     </div>
+</div>
 
 
 

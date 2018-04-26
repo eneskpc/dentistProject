@@ -69,5 +69,61 @@ namespace DentistProject.Controllers
             }
             return View();
         }
+        public ActionResult Randevu()
+        {
+            if (!Helpers.CheckAuthentication())
+            {
+                return RedirectToAction("Login");
+            }
+            return View();
+        }
+        public ActionResult Gider(string pageName = "", int id = 0)
+        {
+            if (!Helpers.CheckAuthentication())
+            {
+                return RedirectToAction("Login");
+            }
+            if (pageName == "Ekle")
+            {
+                return View("GiderEkle");
+            }
+            else if (pageName == "Guncelle" && id > 0)
+            {
+                return View("GiderEkle");
+            }
+            return View("GiderListele");
+        }
+        public ActionResult Stok(string pageName = "", int id = 0)
+        {
+            if (!Helpers.CheckAuthentication())
+            {
+                return RedirectToAction("Login");
+            }
+            if (pageName == "Ekle")
+            {
+                return View("Stok");
+            }
+            else if (pageName == "Guncelle" && id > 0)
+            {
+                return View("Stok");
+            }
+            return View("StokListele");
+        }
+        public ActionResult Tedarikci(string pageName = "", int id = 0)
+        {
+            if (!Helpers.CheckAuthentication())
+            {
+                return RedirectToAction("Login");
+            }
+            if (pageName == "Ekle")
+            {
+                return View("TedarikciEkle");
+            }
+            else if (pageName == "Guncelle" && id > 0)
+            {
+                return View("TedarikciEkle");
+            }
+            return View("Tedarikci");
+        }
     }
 }

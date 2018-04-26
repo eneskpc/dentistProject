@@ -115,6 +115,9 @@
     <Content Include="Content\now-ui-dashboard.css" />
     <Content Include="Content\now-ui-dashboard.min.css" />
     <Content Include="Content\owl.carousel.css" />
+    <Content Include="Content\selectize.bootstrap3.css" />
+    <Content Include="Content\selectize.css" />
+    <Content Include="Content\selectize.default.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\tedarikci.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -214,6 +217,8 @@
     <Content Include="Scripts\plugins\chartjs.min.js" />
     <Content Include="Scripts\plugins\perfect-scrollbar.jquery.min.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\selectize.js" />
+    <Content Include="Scripts\selectize.min.js" />
     <Content Include="Scripts\waypoints.min.js" />
     <Content Include="Views\Dashboard\Web.config" />
   </ItemGroup>
@@ -250,7 +255,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\now-ui-dashboard.js.map" />
     <Content Include="Views\Dashboard\GiderEkle.cshtml" />
-    <Content Include="Views\Dashboard\GiderGuncelle.cshtml" />
     <Content Include="Views\Dashboard\GiderListele.cshtml" />
     <Content Include="Views\Dashboard\HastaKarti.cshtml" />
     <Content Include="Views\Dashboard\Hesap.cshtml" />
