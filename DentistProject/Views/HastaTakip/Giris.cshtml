@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Giris";
+    Layout = "~/Views/Shared/_HastaTakipLayout.cshtml";
+}
+
+<div class="d-flex align-items-center justify-content-center" style="height:100%;overflow-y:auto;">
+    <form class="w-50" role="form" method="POST" action="/login">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Hasta Girişi <small class="text-secondary" style="font-size:16px;">Randevu alın veya muayene geçmişinizi inceleyin.</small></h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group has-danger">
+                    <label class="sr-only" for="email">E-Mail Address</label>
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                        <input type="text" name="email" class="form-control" id="email"
+                               placeholder="you@example.com" required autofocus>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="sr-only" for="password">Parola</label>
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                        <input type="password" name="password" class="form-control" id="password"
+                               placeholder="Password" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding-top: 1rem">
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-success"><i class="fa fa-sign-in"></i> Giriş Yap</button>
+                <a class="btn btn-link" href="/password/reset">Şifrenizi unuttunuz mu?</a>
+            </div>
+        </div>
+    </form>
+</div>

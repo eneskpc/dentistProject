@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "UyeOL";
+    Layout = "~/Views/Shared/_HastaTakipLayout.cshtml";
+}
+
+<div class="d-flex w-100 h-100 justify-content-center align-items-center" style="overflow-y:auto;overflow-x:hidden;">
+    <form class="needs-validation" novalidate>
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Üye Ol <small class="text-secondary" style="font-size:16px;">Hasta kaydı yaparak randevu alın.</small></h2>
+                <hr>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="labelName">Adı:</label>
+                <input type="text" class="form-control" id="inputName" required>
+                <div class="invalid-feedback">
+                    Lütfen adınızı giriniz.
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="labelSurname">Soyadı:</label>
+                <input type="text" class="form-control" id="inputSurname" required>
+                <div class="invalid-feedback">
+                    Lütfen soyadınızı giriniz.
+                </div>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label for="labelTCKN">TC Kimlik No:</label>
+                <input type="text" class="form-control" id="inputTCKN" aria-describedby="inputGroupPrepend" required>
+                <div class="invalid-feedback">
+                    TC Kimlik Numarası giriniz.
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustomUsername">Email</label>
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                    <input type="text" name="email" class="form-control" id="email" required autofocus>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="labelPassword">Şifre:</label>
+                <div class="input-group">
+                    <input type="password" class="form-control" id="validationCustomPa" aria-describedby="inputGroupPrepend" required>
+                    <div class="invalid-feedback">
+                        Lütfen şifrenizi giriniz.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-4 mb-3">
+                <label for="labelTelNo">Telefon No:</label>
+                <input type="tel" class="form-control" id="inputTelno">
+                <div class="invalid-feedback">
+                    Lütfen telefon numarası giriniz.
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <inpu type="checkbox" value="" id="invalidCheck" required>
+                    <label class="form-check-label" for="invalidCheck">
+                        Kullanım koşullarını kabul ediyorum.
+                    </label>
+                    <div class="invalid-feedback">
+                        Kayıttan önce kullanıcı koşulları kabul etmeniz gerekiyor.
+                    </div>
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit">Kayıt Ol</button>
+    </form>
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function () {
+            'use strict';
+            window.addEventListener('load', function () {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                var validation = Array.prototype.filter.call(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</div>
