@@ -21,6 +21,10 @@ namespace DentistProject.Controllers
 
         public ActionResult Login()
         {
+            if (Helpers.CheckAuthentication())
+            {
+                return Redirect("/Dashboard");
+            }
             return View();
         }
 
@@ -124,6 +128,14 @@ namespace DentistProject.Controllers
                 return View("TedarikciEkle");
             }
             return View("Tedarikci");
+        }
+        public ActionResult Recete()
+        {
+            if (!Helpers.CheckAuthentication())
+            {
+                return RedirectToAction("Login");
+            }
+            return View("ReceteEkle");
         }
     }
 }

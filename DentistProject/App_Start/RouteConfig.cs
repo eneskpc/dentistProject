@@ -13,6 +13,11 @@ namespace DentistProject
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
+                name: "ReceteEkle",
+                url: "Dashboard/Recete",
+                defaults: new { controller = "Dashboard", action = "Recete" }
+            );
+            routes.MapRoute(
                 name: "TedarikciEkle",
                 url: "Dashboard/Tedarikci/Ekle",
                 defaults: new { controller = "Dashboard", action = "Tedarikci", pageName = "Ekle" }
