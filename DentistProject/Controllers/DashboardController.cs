@@ -52,7 +52,14 @@ namespace DentistProject.Controllers
             }
             else if (pageName == "Guncelle" && id > 0)
             {
-                return View("HastaKarti");
+                Patients thisPatient = null;
+                using (umitsoku_dbEntities db = new umitsoku_dbEntities())
+                {
+                    thisPatient = (from p in db.Patients
+                                   where p.IsDeleted == false
+                                   select p).FirstOrDefault();
+                }
+                return View("HastaKarti", thisPatient);
             }
             return View();
         }

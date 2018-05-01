@@ -44,10 +44,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -220,19 +228,107 @@
     <Content Include="Scripts\selectize.js" />
     <Content Include="Scripts\selectize.min.js" />
     <Content Include="Scripts\waypoints.min.js" />
+    <Content Include="UmitSokulluDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>UmitSokulluDB.Context.cs</LastGenOutput>
+      <DependentUpon>UmitSokulluDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="UmitSokulluDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UmitSokulluDB.edmx</DependentUpon>
+      <LastGenOutput>UmitSokulluDB.cs</LastGenOutput>
+    </Content>
     <Content Include="Views\Dashboard\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Appointments.cs">
+      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Assistants.cs">
+      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BloodGroups.cs">
+      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Classes\Helpers.cs" />
     <Compile Include="Classes\LoginModel.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HastaTakipController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Countries.cs">
+      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CountriesWithOrder.cs">
+      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Currencies.cs">
+      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dentists.cs">
+      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Expenses.cs">
+      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ExpenseTypes.cs">
+      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Images.cs">
+      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialTypes.cs">
+      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Medicines.cs">
+      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OtherEmployees.cs">
+      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Patients.cs">
+      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Prescriptions.cs">
+      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Stock.cs">
+      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupplierMaterials.cs">
+      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Suppliers.cs">
+      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Treatments.cs">
+      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TreatmentTypes.cs">
+      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UmitSokulluDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UmitSokulluDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UmitSokulluDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UmitSokulluDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UmitSokulluDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs">
+      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config">
@@ -278,6 +374,13 @@
     <Content Include="Views\Dashboard\TedarikciEkle.cshtml" />
     <Content Include="Views\Dashboard\HastaListesi.cshtml" />
     <Content Include="Views\Dashboard\ReceteEkle.cshtml" />
+    <EntityDeploy Include="UmitSokulluDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UmitSokulluDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="UmitSokulluDB.edmx.diagram">
+      <DependentUpon>UmitSokulluDB.edmx</DependentUpon>
+    </Content>
     <None Include="Views\Dashboard\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -299,6 +402,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
