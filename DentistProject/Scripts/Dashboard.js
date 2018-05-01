@@ -86,26 +86,29 @@ $(document).ready(function () {
         },
         editable: true,
         eventLimit: true,
-        events: [
-            {
-                id: 18,
-                title: 'Enes Kapucu',
-                start: '2018-03-12T12:00:00'
-            }, {
-                id: 19,
-                title: 'Emirhan Dağlıoğlu',
-                start: '2018-03-12T12:30:00'
-            },
-            {
-                id: 20,
-                title: 'Handan Keleş',
-                start: '2018-03-18T09:40:00'
-            }, {
-                id: 21,
-                title: 'Defne Aynur Gökgöz',
-                start: '2018-03-18T16:30:00'
-            }
-        ]
+        events: function (start, end, timezone, callback) {
+            $.ajax({
+                url: '/webservices/getappointments',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var events = [];
+                    $.each(data, function () {
+                        var appointmentDateUnix = this.AppointmentDate.match(/([0-9]{1,})/g);
+                        events.push({
+                            id: this.TCNo,
+                            title: this.NameSurname,
+                            start: moment(appointmentDateUnix * 1),
+                            end: moment(appointmentDateUnix * 1).add(30, 'minutes'),
+                            backgroundColor: (moment(appointmentDateUnix * 1).fromNow().indexOf('önce') > -1 ? '#f96332' : '#f8f9fa'),
+                            color: '#000'
+                        });
+                    });
+                    console.log(data);
+                    callback(events);
+                }
+            });
+        }
     });
 
     $('input[name=selectPatient]').selectize({
@@ -164,6 +167,8 @@ $(document).ready(function () {
         $('a#existingPatient').parents('.form-group').removeClass('d-none');
         $('input[name=TCNo]').parents('.form-group').removeClass('d-none');
         $('input[name=birthDate]').parents('.form-group').removeClass('d-none');
+        $('select[name=selectGender]').parents('.form-group').removeClass('d-none');
+        $('input[name=userType]').val('new');
     });
 
     $(document).on('click', 'a#existingPatient', function () {
@@ -171,6 +176,8 @@ $(document).ready(function () {
         $('a#newPatient').parents('.form-group').removeClass('d-none');
         $('input[name=TCNo]').parents('.form-group').addClass('d-none');
         $('input[name=birthDate]').parents('.form-group').addClass('d-none');
+        $('select[name=selectGender]').parents('.form-group').addClass('d-none');
+        $('input[name=userType]').val('existing');
     });
 
     createDateRange("[name=birthDate]", moment().subtract(5, 'years'), null, false, true);

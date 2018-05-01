@@ -5,27 +5,27 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="341da8e6970041dd9ff4cd81fa74f79e" Name="Diagram1">
-        <EntityTypeShape EntityType="DBModel.Appointments" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Assistants" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.BloodGroups" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Countries" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Currencies" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Dentists" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Expenses" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.ExpenseTypes" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Images" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.MaterialTypes" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Medicines" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.OtherEmployees" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Patients" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Prescriptions" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Stock" Width="1.5" PointX="4.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.SupplierMaterials" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Suppliers" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Treatments" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.TreatmentTypes" Width="1.5" PointX="10.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.Users" Width="1.5" PointX="10.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBModel.CountriesWithOrder" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBModel.Appointments" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBModel.Assistants" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBModel.BloodGroups" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBModel.Countries" Width="1.5" PointX="0.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DBModel.Currencies" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DBModel.Dentists" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DBModel.Expenses" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBModel.ExpenseTypes" Width="1.5" PointX="6.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DBModel.Images" Width="1.5" PointX="6.75" PointY="6.75" />
+        <EntityTypeShape EntityType="DBModel.MaterialTypes" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="DBModel.Medicines" Width="1.5" PointX="2.75" PointY="7.75" />
+        <EntityTypeShape EntityType="DBModel.OtherEmployees" Width="1.5" PointX="8.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBModel.Patients" Width="1.5" PointX="8.75" PointY="4.75" />
+        <EntityTypeShape EntityType="DBModel.Prescriptions" Width="1.5" PointX="8.75" PointY="8.75" />
+        <EntityTypeShape EntityType="DBModel.Stock" Width="1.5" PointX="4.75" PointY="9.75" />
+        <EntityTypeShape EntityType="DBModel.SupplierMaterials" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DBModel.Suppliers" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="DBModel.Treatments" Width="1.5" PointX="10.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DBModel.TreatmentTypes" Width="1.5" PointX="10.75" PointY="7.75" />
+        <EntityTypeShape EntityType="DBModel.Users" Width="1.5" PointX="10.75" PointY="10.75" />
+        <EntityTypeShape EntityType="DBModel.CountriesWithOrder" Width="1.5" PointX="6.75" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

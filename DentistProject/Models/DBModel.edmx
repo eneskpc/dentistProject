@@ -4,14 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Appointments">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PatientID" Type="int" />
-          <Property Name="AppointmentDate" Type="date" />
+          <Property Name="PatientID" Type="nvarchar" MaxLength="20" />
+          <Property Name="AppointmentDate" Type="datetime" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="Assistants">
@@ -253,18 +253,40 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
     FROM [umitsoku_user].[CountriesWithOrder] AS [CountriesWithOrder]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Appointments" EntityType="DBModel.Appointments" />
+          <EntitySet Name="Assistants" EntityType="DBModel.Assistants" />
+          <EntitySet Name="BloodGroups" EntityType="DBModel.BloodGroups" />
+          <EntitySet Name="Countries" EntityType="DBModel.Countries" />
+          <EntitySet Name="Currencies" EntityType="DBModel.Currencies" />
+          <EntitySet Name="Dentists" EntityType="DBModel.Dentists" />
+          <EntitySet Name="Expenses" EntityType="DBModel.Expenses" />
+          <EntitySet Name="ExpenseTypes" EntityType="DBModel.ExpenseTypes" />
+          <EntitySet Name="Images" EntityType="DBModel.Images" />
+          <EntitySet Name="MaterialTypes" EntityType="DBModel.MaterialTypes" />
+          <EntitySet Name="Medicines" EntityType="DBModel.Medicines" />
+          <EntitySet Name="OtherEmployees" EntityType="DBModel.OtherEmployees" />
+          <EntitySet Name="Patients" EntityType="DBModel.Patients" />
+          <EntitySet Name="Prescriptions" EntityType="DBModel.Prescriptions" />
+          <EntitySet Name="Stock" EntityType="DBModel.Stock" />
+          <EntitySet Name="SupplierMaterials" EntityType="DBModel.SupplierMaterials" />
+          <EntitySet Name="Suppliers" EntityType="DBModel.Suppliers" />
+          <EntitySet Name="Treatments" EntityType="DBModel.Treatments" />
+          <EntitySet Name="TreatmentTypes" EntityType="DBModel.TreatmentTypes" />
+          <EntitySet Name="Users" EntityType="DBModel.Users" />
+          <EntitySet Name="CountriesWithOrder" EntityType="DBModel.CountriesWithOrder" />
+        </EntityContainer>
         <EntityType Name="Appointments">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PatientID" Type="Int32" />
-          <Property Name="AppointmentDate" Type="DateTime" Precision="0" />
+          <Property Name="PatientID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AppointmentDate" Type="DateTime" Precision="3" />
           <Property Name="IsDeleted" Type="Boolean" />
         </EntityType>
         <EntityType Name="Assistants">
@@ -382,7 +404,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
           <Key>
             <PropertyRef Name="TCNo" />
           </Key>
-          <Property Name="TCNo" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TCNo" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -474,29 +496,6 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
           <Property Name="PriorityOrder" Type="Int32" />
           <Property Name="IsDeleted" Type="Boolean" />
         </EntityType>
-        <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Appointments" EntityType="Self.Appointments" />
-          <EntitySet Name="Assistants" EntityType="Self.Assistants" />
-          <EntitySet Name="BloodGroups" EntityType="Self.BloodGroups" />
-          <EntitySet Name="Countries" EntityType="Self.Countries" />
-          <EntitySet Name="Currencies" EntityType="Self.Currencies" />
-          <EntitySet Name="Dentists" EntityType="Self.Dentists" />
-          <EntitySet Name="Expenses" EntityType="Self.Expenses" />
-          <EntitySet Name="ExpenseTypes" EntityType="Self.ExpenseTypes" />
-          <EntitySet Name="Images" EntityType="Self.Images" />
-          <EntitySet Name="MaterialTypes" EntityType="Self.MaterialTypes" />
-          <EntitySet Name="Medicines" EntityType="Self.Medicines" />
-          <EntitySet Name="OtherEmployees" EntityType="Self.OtherEmployees" />
-          <EntitySet Name="Patients" EntityType="Self.Patients" />
-          <EntitySet Name="Prescriptions" EntityType="Self.Prescriptions" />
-          <EntitySet Name="Stock" EntityType="Self.Stock" />
-          <EntitySet Name="SupplierMaterials" EntityType="Self.SupplierMaterials" />
-          <EntitySet Name="Suppliers" EntityType="Self.Suppliers" />
-          <EntitySet Name="Treatments" EntityType="Self.Treatments" />
-          <EntitySet Name="TreatmentTypes" EntityType="Self.TreatmentTypes" />
-          <EntitySet Name="Users" EntityType="Self.Users" />
-          <EntitySet Name="CountriesWithOrder" EntityType="Self.CountriesWithOrder" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -506,237 +505,237 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
           <EntitySetMapping Name="Appointments">
             <EntityTypeMapping TypeName="DBModel.Appointments">
               <MappingFragment StoreEntitySet="Appointments">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
-                <ScalarProperty Name="AppointmentDate" ColumnName="AppointmentDate" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="AppointmentDate" ColumnName="AppointmentDate" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Assistants">
             <EntityTypeMapping TypeName="DBModel.Assistants">
               <MappingFragment StoreEntitySet="Assistants">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Salary" ColumnName="Salary" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BloodGroups">
             <EntityTypeMapping TypeName="DBModel.BloodGroups">
               <MappingFragment StoreEntitySet="BloodGroups">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Countries">
             <EntityTypeMapping TypeName="DBModel.Countries">
               <MappingFragment StoreEntitySet="Countries">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
-                <ScalarProperty Name="PriorityOrder" ColumnName="PriorityOrder" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="PriorityOrder" ColumnName="PriorityOrder" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Currencies">
             <EntityTypeMapping TypeName="DBModel.Currencies">
               <MappingFragment StoreEntitySet="Currencies">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
-                <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="ExchangeRate" ColumnName="ExchangeRate" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Dentists">
             <EntityTypeMapping TypeName="DBModel.Dentists">
               <MappingFragment StoreEntitySet="Dentists">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Salary" ColumnName="Salary" />
-                <ScalarProperty Name="PhotoID" ColumnName="PhotoID" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="PhotoID" ColumnName="PhotoID" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Expenses">
             <EntityTypeMapping TypeName="DBModel.Expenses">
               <MappingFragment StoreEntitySet="Expenses">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ExpenseType" ColumnName="ExpenseType" />
-                <ScalarProperty Name="ExpenseDescription" ColumnName="ExpenseDescription" />
-                <ScalarProperty Name="Payment" ColumnName="Payment" />
-                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="Payment" ColumnName="Payment" />
+                <ScalarProperty Name="ExpenseDescription" ColumnName="ExpenseDescription" />
+                <ScalarProperty Name="ExpenseType" ColumnName="ExpenseType" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ExpenseTypes">
             <EntityTypeMapping TypeName="DBModel.ExpenseTypes">
               <MappingFragment StoreEntitySet="ExpenseTypes">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ExpenseName" ColumnName="ExpenseName" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="ExpenseName" ColumnName="ExpenseName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Images">
             <EntityTypeMapping TypeName="DBModel.Images">
               <MappingFragment StoreEntitySet="Images">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MaterialTypes">
             <EntityTypeMapping TypeName="DBModel.MaterialTypes">
               <MappingFragment StoreEntitySet="MaterialTypes">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="MaterialTypeName" ColumnName="MaterialTypeName" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="MaterialTypeName" ColumnName="MaterialTypeName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Medicines">
             <EntityTypeMapping TypeName="DBModel.Medicines">
               <MappingFragment StoreEntitySet="Medicines">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="MedicineID" ColumnName="MedicineID" />
-                <ScalarProperty Name="Dosage" ColumnName="Dosage" />
-                <ScalarProperty Name="Usage" ColumnName="Usage" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Usage" ColumnName="Usage" />
+                <ScalarProperty Name="Dosage" ColumnName="Dosage" />
+                <ScalarProperty Name="MedicineID" ColumnName="MedicineID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OtherEmployees">
             <EntityTypeMapping TypeName="DBModel.OtherEmployees">
               <MappingFragment StoreEntitySet="OtherEmployees">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Salary" ColumnName="Salary" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Patients">
             <EntityTypeMapping TypeName="DBModel.Patients">
               <MappingFragment StoreEntitySet="Patients">
-                <ScalarProperty Name="TCNo" ColumnName="TCNo" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
-                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="BloodGroupID" ColumnName="BloodGroupID" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="CurrencyID" ColumnName="CurrencyID" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CurrencyID" ColumnName="CurrencyID" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BloodGroupID" ColumnName="BloodGroupID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TCNo" ColumnName="TCNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Prescriptions">
             <EntityTypeMapping TypeName="DBModel.Prescriptions">
               <MappingFragment StoreEntitySet="Prescriptions">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="TreatmentID" ColumnName="TreatmentID" />
-                <ScalarProperty Name="PrescriptionTime" ColumnName="PrescriptionTime" />
                 <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="PrescriptionTime" ColumnName="PrescriptionTime" />
+                <ScalarProperty Name="TreatmentID" ColumnName="TreatmentID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Stock">
             <EntityTypeMapping TypeName="DBModel.Stock">
               <MappingFragment StoreEntitySet="Stock">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="MaterailID" ColumnName="MaterailID" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="MaterailID" ColumnName="MaterailID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SupplierMaterials">
             <EntityTypeMapping TypeName="DBModel.SupplierMaterials">
               <MappingFragment StoreEntitySet="SupplierMaterials">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
-                <ScalarProperty Name="MaterialTypeID" ColumnName="MaterialTypeID" />
-                <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
-                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
+                <ScalarProperty Name="MaterialTypeID" ColumnName="MaterialTypeID" />
+                <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Suppliers">
             <EntityTypeMapping TypeName="DBModel.Suppliers">
               <MappingFragment StoreEntitySet="Suppliers">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Treatments">
             <EntityTypeMapping TypeName="DBModel.Treatments">
               <MappingFragment StoreEntitySet="Treatments">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="DentistID" ColumnName="DentistID" />
-                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
-                <ScalarProperty Name="TreatmentTypeID" ColumnName="TreatmentTypeID" />
-                <ScalarProperty Name="TreatmentDescription" ColumnName="TreatmentDescription" />
-                <ScalarProperty Name="TreatmentTime" ColumnName="TreatmentTime" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="TreatmentTime" ColumnName="TreatmentTime" />
+                <ScalarProperty Name="TreatmentDescription" ColumnName="TreatmentDescription" />
+                <ScalarProperty Name="TreatmentTypeID" ColumnName="TreatmentTypeID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="DentistID" ColumnName="DentistID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TreatmentTypes">
             <EntityTypeMapping TypeName="DBModel.TreatmentTypes">
               <MappingFragment StoreEntitySet="TreatmentTypes">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="TreatmentTypeName" ColumnName="TreatmentTypeName" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="TreatmentTypeName" ColumnName="TreatmentTypeName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="DBModel.Users">
               <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="UserType" ColumnName="UserType" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UserType" ColumnName="UserType" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CountriesWithOrder">
             <EntityTypeMapping TypeName="DBModel.CountriesWithOrder">
               <MappingFragment StoreEntitySet="CountriesWithOrder">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
-                <ScalarProperty Name="PriorityOrder" ColumnName="PriorityOrder" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="PriorityOrder" ColumnName="PriorityOrder" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -256,6 +256,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Classes\AppointmentView.cs" />
     <Compile Include="Classes\Helpers.cs" />
     <Compile Include="Classes\LoginModel.cs" />
     <Compile Include="Controllers\DashboardController.cs" />

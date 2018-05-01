@@ -15,7 +15,7 @@ namespace DentistProject.Models
     public partial class Appointments
     {
         public int ID { get; set; }
-        public Nullable<int> PatientID { get; set; }
+        public string PatientID { get; set; }
         public Nullable<System.DateTime> AppointmentDate { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     }
