@@ -48,5 +48,18 @@ namespace DentistProject.Controllers
                 return Json(appointments.ToList(), JsonRequestBehavior.AllowGet);
             }
         }
+
+        [HttpPost]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public JsonResult AddAppointment(Appointments app)
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                bool isSuccess = false;
+                db.Appointments.Add(app);
+                isSuccess = (db.SaveChanges() > 0 ? true : false);
+                return Json(isSuccess, JsonRequestBehavior.AllowGet);
+            }
+        }
     }
 }
