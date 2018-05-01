@@ -45,7 +45,7 @@ namespace DentistProject
             routes.MapRoute(
                 name: "MalzemeListele",
                 url: "Dashboard/Stok",
-                defaults: new { controller = "Dashboard", action = "Stok", pageName = "Listele"}
+                defaults: new { controller = "Dashboard", action = "Stok", pageName = "Listele" }
             );
             routes.MapRoute(
                 name: "GiderEkle",

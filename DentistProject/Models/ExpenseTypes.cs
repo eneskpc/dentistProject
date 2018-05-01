@@ -7,15 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DentistProject
+namespace DentistProject.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Images
+    public partial class ExpenseTypes
     {
         public int ID { get; set; }
-        public string ImagePath { get; set; }
+        public string ExpenseName { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     }
 }

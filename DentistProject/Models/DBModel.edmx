@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="umitsoku_dbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Appointments">
           <Key>
             <PropertyRef Name="ID" />
@@ -207,7 +207,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserEmail" Type="nvarchar" MaxLength="150" />
-          <Property Name="Password" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="250" />
           <Property Name="UserType" Type="int" />
           <Property Name="CreateDate" Type="datetime" />
           <Property Name="IsDeleted" Type="bit" />
@@ -223,7 +223,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
           <Property Name="PriorityOrder" Type="int" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
-        <EntityContainer Name="umitsoku_dbModelStoreContainer">
+        <EntityContainer Name="DBModelStoreContainer">
           <EntitySet Name="Appointments" EntityType="Self.Appointments" Schema="umitsoku_user" store:Type="Tables" />
           <EntitySet Name="Assistants" EntityType="Self.Assistants" Schema="umitsoku_user" store:Type="Tables" />
           <EntitySet Name="BloodGroups" EntityType="Self.BloodGroups" Schema="umitsoku_user" store:Type="Tables" />
@@ -257,7 +257,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="umitsoku_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Appointments">
           <Key>
             <PropertyRef Name="ID" />
@@ -460,7 +460,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserEmail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="UserType" Type="Int32" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
           <Property Name="IsDeleted" Type="Boolean" />
@@ -474,7 +474,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
           <Property Name="PriorityOrder" Type="Int32" />
           <Property Name="IsDeleted" Type="Boolean" />
         </EntityType>
-        <EntityContainer Name="umitsoku_dbEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Appointments" EntityType="Self.Appointments" />
           <EntitySet Name="Assistants" EntityType="Self.Assistants" />
           <EntitySet Name="BloodGroups" EntityType="Self.BloodGroups" />
@@ -502,9 +502,9 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="umitsoku_dbModelStoreContainer" CdmEntityContainer="umitsoku_dbEntities">
+        <EntityContainerMapping StorageEntityContainer="DBModelStoreContainer" CdmEntityContainer="DBEntities">
           <EntitySetMapping Name="Appointments">
-            <EntityTypeMapping TypeName="umitsoku_dbModel.Appointments">
+            <EntityTypeMapping TypeName="DBModel.Appointments">
               <MappingFragment StoreEntitySet="Appointments">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="PatientID" ColumnName="PatientID" />
@@ -514,7 +514,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Assistants">
-            <EntityTypeMapping TypeName="umitsoku_dbModel.Assistants">
+            <EntityTypeMapping TypeName="DBModel.Assistants">
               <MappingFragment StoreEntitySet="Assistants">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -528,7 +528,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BloodGroups">
-            <EntityTypeMapping TypeName="umitsoku_dbModel.BloodGroups">
+            <EntityTypeMapping TypeName="DBModel.BloodGroups">
               <MappingFragment StoreEntitySet="BloodGroups">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="GroupName" ColumnName="GroupName" />
@@ -537,7 +537,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Countries">
-            <EntityTypeMapping TypeName="umitsoku_dbModel.Countries">
+            <EntityTypeMapping TypeName="DBModel.Countries">
               <MappingFragment StoreEntitySet="Countries">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CountryName" ColumnName="CountryName" />
@@ -547,7 +547,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Currencies">
-            <EntityTypeMapping TypeName="umitsoku_dbModel.Currencies">
+            <EntityTypeMapping TypeName="DBModel.Currencies">
               <MappingFragment StoreEntitySet="Currencies">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
@@ -557,7 +557,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Dentists">
-            <EntityTypeMapping TypeName="umitsoku_dbModel.Dentists">
+            <EntityTypeMapping TypeName="DBModel.Dentists">
               <MappingFragment StoreEntitySet="Dentists">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -572,7 +572,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Expenses">
-            <EntityTypeMapping TypeName="umitsoku_dbModel.Expenses">
+            <EntityTypeMapping TypeName="DBModel.Expenses">
               <MappingFragment StoreEntitySet="Expenses">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ExpenseType" ColumnName="ExpenseType" />
@@ -584,7 +584,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ExpenseTypes">
-            <EntityTypeMapping TypeName="umitsoku_dbModel.ExpenseTypes">
+            <EntityTypeMapping TypeName="DBModel.ExpenseTypes">
               <MappingFragment StoreEntitySet="ExpenseTypes">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ExpenseName" ColumnName="ExpenseName" />
@@ -593,7 +593,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Images">
-            <EntityTypeMapping TypeName="umitsoku_dbModel.Images">
+            <EntityTypeMapping TypeName="DBModel.Images">
               <MappingFragment StoreEntitySet="Images">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
@@ -602,7 +602,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MaterialTypes">
-            <EntityTypeMapping TypeName="umitsoku_dbModel.MaterialTypes">
+            <EntityTypeMapping TypeName="DBModel.MaterialTypes">
               <MappingFragment StoreEntitySet="MaterialTypes">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="MaterialTypeName" ColumnName="MaterialTypeName" />
@@ -611,7 +611,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Medicines">
-            <EntityTypeMapping TypeName="umitsoku_dbModel.Medicines">
+            <EntityTypeMapping TypeName="DBModel.Medicines">
               <MappingFragment StoreEntitySet="Medicines">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="MedicineID" ColumnName="MedicineID" />
@@ -623,7 +623,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OtherEmployees">
-            <EntityTypeMapping TypeName="umitsoku_dbModel.OtherEmployees">
+            <EntityTypeMapping TypeName="DBModel.OtherEmployees">
               <MappingFragment StoreEntitySet="OtherEmployees">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -636,7 +636,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Patients">
-            <EntityTypeMapping TypeName="umitsoku_dbModel.Patients">
+            <EntityTypeMapping TypeName="DBModel.Patients">
               <MappingFragment StoreEntitySet="Patients">
                 <ScalarProperty Name="TCNo" ColumnName="TCNo" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -653,7 +653,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Prescriptions">
-            <EntityTypeMapping TypeName="umitsoku_dbModel.Prescriptions">
+            <EntityTypeMapping TypeName="DBModel.Prescriptions">
               <MappingFragment StoreEntitySet="Prescriptions">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TreatmentID" ColumnName="TreatmentID" />
@@ -663,7 +663,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Stock">
-            <EntityTypeMapping TypeName="umitsoku_dbModel.Stock">
+            <EntityTypeMapping TypeName="DBModel.Stock">
               <MappingFragment StoreEntitySet="Stock">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="MaterailID" ColumnName="MaterailID" />
@@ -673,7 +673,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SupplierMaterials">
-            <EntityTypeMapping TypeName="umitsoku_dbModel.SupplierMaterials">
+            <EntityTypeMapping TypeName="DBModel.SupplierMaterials">
               <MappingFragment StoreEntitySet="SupplierMaterials">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SupplierID" ColumnName="SupplierID" />
@@ -685,7 +685,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Suppliers">
-            <EntityTypeMapping TypeName="umitsoku_dbModel.Suppliers">
+            <EntityTypeMapping TypeName="DBModel.Suppliers">
               <MappingFragment StoreEntitySet="Suppliers">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="SupplierName" ColumnName="SupplierName" />
@@ -697,7 +697,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Treatments">
-            <EntityTypeMapping TypeName="umitsoku_dbModel.Treatments">
+            <EntityTypeMapping TypeName="DBModel.Treatments">
               <MappingFragment StoreEntitySet="Treatments">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="DentistID" ColumnName="DentistID" />
@@ -710,7 +710,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TreatmentTypes">
-            <EntityTypeMapping TypeName="umitsoku_dbModel.TreatmentTypes">
+            <EntityTypeMapping TypeName="DBModel.TreatmentTypes">
               <MappingFragment StoreEntitySet="TreatmentTypes">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TreatmentTypeName" ColumnName="TreatmentTypeName" />
@@ -719,7 +719,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="umitsoku_dbModel.Users">
+            <EntityTypeMapping TypeName="DBModel.Users">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="UserEmail" ColumnName="UserEmail" />
@@ -731,7 +731,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CountriesWithOrder">
-            <EntityTypeMapping TypeName="umitsoku_dbModel.CountriesWithOrder">
+            <EntityTypeMapping TypeName="DBModel.CountriesWithOrder">
               <MappingFragment StoreEntitySet="CountriesWithOrder">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="CountryName" ColumnName="CountryName" />

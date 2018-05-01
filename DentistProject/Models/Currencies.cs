@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DentistProject
+namespace DentistProject.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class CountriesWithOrder
+    public partial class Currencies
     {
         public int ID { get; set; }
-        public string CountryName { get; set; }
-        public Nullable<int> PriorityOrder { get; set; }
+        public string CurrencyName { get; set; }
+        public Nullable<double> ExchangeRate { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     }
 }

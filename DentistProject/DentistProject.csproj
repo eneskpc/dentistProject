@@ -54,6 +54,14 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -65,6 +73,12 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -131,6 +145,16 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\Linearicons-Free.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Models\DBModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBModel.edmx</DependentUpon>
+      <LastGenOutput>DBModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DBModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBModel.edmx</DependentUpon>
+      <LastGenOutput>DBModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\countdown.js" />
     <Content Include="Scripts\custom.js" />
@@ -228,107 +252,99 @@
     <Content Include="Scripts\selectize.js" />
     <Content Include="Scripts\selectize.min.js" />
     <Content Include="Scripts\waypoints.min.js" />
-    <Content Include="UmitSokulluDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>UmitSokulluDB.Context.cs</LastGenOutput>
-      <DependentUpon>UmitSokulluDB.edmx</DependentUpon>
-    </Content>
-    <Content Include="UmitSokulluDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>UmitSokulluDB.edmx</DependentUpon>
-      <LastGenOutput>UmitSokulluDB.cs</LastGenOutput>
-    </Content>
     <Content Include="Views\Dashboard\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Appointments.cs">
-      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Assistants.cs">
-      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="BloodGroups.cs">
-      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Classes\Helpers.cs" />
     <Compile Include="Classes\LoginModel.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HastaTakipController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Countries.cs">
-      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CountriesWithOrder.cs">
-      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Currencies.cs">
-      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Dentists.cs">
-      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Expenses.cs">
-      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ExpenseTypes.cs">
-      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Controllers\WebServicesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Images.cs">
-      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    <Compile Include="Classes\CryptoHelper.cs" />
+    <Compile Include="Models\Appointments.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="MaterialTypes.cs">
-      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    <Compile Include="Models\Assistants.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Medicines.cs">
-      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    <Compile Include="Models\BloodGroups.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="OtherEmployees.cs">
-      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    <Compile Include="Models\Countries.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Patients.cs">
-      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    <Compile Include="Models\CountriesWithOrder.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Prescriptions.cs">
-      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
+    <Compile Include="Models\Currencies.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Dentists.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Expenses.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ExpenseTypes.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Images.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MaterialTypes.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Medicines.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OtherEmployees.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Patients.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Prescriptions.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Stock.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SupplierMaterials.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Suppliers.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Treatments.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TreatmentTypes.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Users.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Stock.cs">
-      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SupplierMaterials.cs">
-      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Suppliers.cs">
-      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Treatments.cs">
-      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TreatmentTypes.cs">
-      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UmitSokulluDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UmitSokulluDB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UmitSokulluDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UmitSokulluDB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>UmitSokulluDB.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Users.cs">
-      <DependentUpon>UmitSokulluDB.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config">
@@ -349,6 +365,13 @@
     <Content Include="fonts\nucleo-outline.ttf" />
     <Content Include="fonts\nucleo-outline.woff" />
     <Content Include="fonts\nucleo-outline.woff2" />
+    <EntityDeploy Include="Models\DBModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DBModel.edmx.diagram">
+      <DependentUpon>DBModel.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Scripts\now-ui-dashboard.js.map" />
     <Content Include="Views\Dashboard\GiderEkle.cshtml" />
@@ -374,13 +397,6 @@
     <Content Include="Views\Dashboard\TedarikciEkle.cshtml" />
     <Content Include="Views\Dashboard\HastaListesi.cshtml" />
     <Content Include="Views\Dashboard\ReceteEkle.cshtml" />
-    <EntityDeploy Include="UmitSokulluDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>UmitSokulluDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="UmitSokulluDB.edmx.diagram">
-      <DependentUpon>UmitSokulluDB.edmx</DependentUpon>
-    </Content>
     <None Include="Views\Dashboard\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -401,7 +417,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="UploadedFiles\" />
+    <Folder Include="Views\WebServices\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

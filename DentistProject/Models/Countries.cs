@@ -7,18 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DentistProject
+namespace DentistProject.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class Countries
     {
         public int ID { get; set; }
-        public string UserEmail { get; set; }
-        public string Password { get; set; }
-        public Nullable<int> UserType { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
+        public string CountryName { get; set; }
+        public Nullable<int> PriorityOrder { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using DentistProject.Classes;
+using DentistProject.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace DentistProject.Controllers
         // GET: Dashboard
         public ActionResult Index()
         {
-            if (!Helpers.CheckAuthentication())
+            if (!Classes.Helpers.CheckAuthentication())
             {
                 return RedirectToAction("Login");
             }
@@ -21,7 +22,7 @@ namespace DentistProject.Controllers
 
         public ActionResult Login()
         {
-            if (Helpers.CheckAuthentication())
+            if (Classes.Helpers.CheckAuthentication())
             {
                 return Redirect("/Dashboard");
             }
@@ -31,14 +32,14 @@ namespace DentistProject.Controllers
         [HttpPost]
         public ActionResult Login(LoginModel loginModel)
         {
-            if (Helpers.Login(loginModel.txtUserName, loginModel.txtPassword))
+            if (Classes.Helpers.Login(loginModel.txtUserName, loginModel.txtPassword))
                 return Redirect("/Dashboard");
             return View();
         }
 
         public ActionResult HastaKarti(string pageName = "", int id = 0)
         {
-            if (!Helpers.CheckAuthentication())
+            if (!Classes.Helpers.CheckAuthentication())
             {
                 return RedirectToAction("Login");
             }
@@ -53,7 +54,7 @@ namespace DentistProject.Controllers
             else if (pageName == "Guncelle" && id > 0)
             {
                 Patients thisPatient = null;
-                using (umitsoku_dbEntities db = new umitsoku_dbEntities())
+                using (DBEntities db = new DBEntities())
                 {
                     thisPatient = (from p in db.Patients
                                    where p.IsDeleted == false
@@ -66,7 +67,7 @@ namespace DentistProject.Controllers
 
         public ActionResult Tedavi(string pageName = "", int id = 0)
         {
-            if (!Helpers.CheckAuthentication())
+            if (!Classes.Helpers.CheckAuthentication())
             {
                 return RedirectToAction("Login");
             }
@@ -82,7 +83,7 @@ namespace DentistProject.Controllers
         }
         public ActionResult Randevu()
         {
-            if (!Helpers.CheckAuthentication())
+            if (!Classes.Helpers.CheckAuthentication())
             {
                 return RedirectToAction("Login");
             }
@@ -90,7 +91,7 @@ namespace DentistProject.Controllers
         }
         public ActionResult Gider(string pageName = "", int id = 0)
         {
-            if (!Helpers.CheckAuthentication())
+            if (!Classes.Helpers.CheckAuthentication())
             {
                 return RedirectToAction("Login");
             }
@@ -106,7 +107,7 @@ namespace DentistProject.Controllers
         }
         public ActionResult Stok(string pageName = "", int id = 0)
         {
-            if (!Helpers.CheckAuthentication())
+            if (!Classes.Helpers.CheckAuthentication())
             {
                 return RedirectToAction("Login");
             }
@@ -122,7 +123,7 @@ namespace DentistProject.Controllers
         }
         public ActionResult Tedarikci(string pageName = "", int id = 0)
         {
-            if (!Helpers.CheckAuthentication())
+            if (!Classes.Helpers.CheckAuthentication())
             {
                 return RedirectToAction("Login");
             }
@@ -138,7 +139,7 @@ namespace DentistProject.Controllers
         }
         public ActionResult Recete()
         {
-            if (!Helpers.CheckAuthentication())
+            if (!Classes.Helpers.CheckAuthentication())
             {
                 return RedirectToAction("Login");
             }

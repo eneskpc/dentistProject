@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DentistProject
+namespace DentistProject.Models
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class umitsoku_dbEntities : DbContext
+    public partial class DBEntities : DbContext
     {
-        public umitsoku_dbEntities()
-            : base("name=umitsoku_dbEntities")
+        public DBEntities()
+            : base("name=DBEntities")
         {
         }
     

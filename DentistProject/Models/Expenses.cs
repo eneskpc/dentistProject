@@ -7,15 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DentistProject
+namespace DentistProject.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TreatmentTypes
+    public partial class Expenses
     {
         public int ID { get; set; }
-        public string TreatmentTypeName { get; set; }
+        public Nullable<int> ExpenseType { get; set; }
+        public string ExpenseDescription { get; set; }
+        public Nullable<double> Payment { get; set; }
+        public Nullable<System.DateTime> PaymentDate { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     }
 }

@@ -7,16 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DentistProject
+namespace DentistProject.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Stock
+    public partial class Assistants
     {
         public int ID { get; set; }
-        public Nullable<int> MaterailID { get; set; }
-        public Nullable<double> Quantity { get; set; }
+        public string Name { get; set; }
+        public string Surname { get; set; }
+        public string Email { get; set; }
+        public string Telephone { get; set; }
+        public string Address { get; set; }
+        public Nullable<double> Salary { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     }
 }

@@ -7,15 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DentistProject
+namespace DentistProject.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class BloodGroups
+    public partial class SupplierMaterials
     {
         public int ID { get; set; }
-        public string GroupName { get; set; }
+        public Nullable<int> SupplierID { get; set; }
+        public Nullable<int> MaterialTypeID { get; set; }
+        public string MaterialName { get; set; }
+        public Nullable<double> UnitPrice { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     }
 }
