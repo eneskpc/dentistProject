@@ -18,71 +18,32 @@
     </nav>
     <div class="card">
         <div class="card-body" style="position:relative;">
-            <input type="text" name="q" class="form-control" style="position:absolute;right:15px;top:25px;width:225px;" placeholder="Ara..." />
+            <input type="text" id="tedarikciAra" class="form-control" style="position:absolute;right:15px;top:25px;width:225px;" placeholder="Ara..." />
 
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>Firma Adı</th>
-                        <th>Alınan Ürün</th>
+                        <th>Adres</th>
+                        <th>Telefon</th>
+                        <th>Email</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Alfreds Futterkiste</td>
-                        <td>Maria Anders</td>
-                        <td class="text-right">
-                            <a href="#"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
-                            <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Centro comercial Moctezuma</td>
-                        <td>Francisco Chang</td>
-                        <td class="text-right">
-                            <a href="#"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
-                            <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Ernst Handel</td>
-                        <td>Roland Mendel</td>
-                        <td class="text-right">
-                            <a href="#"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
-                            <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Island Trading</td>
-                        <td>Helen Bennett</td>
-                        <td class="text-right">
-                            <a href="#"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
-                            <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Laughing Bacchus Winecellars</td>
-                        <td>Yoshi Tannamuri</td>
-                        <td class="text-right">
-                            <a href="#"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
-                            <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Magazzini Alimentari Riuniti</td>
-                        <td>Giovanni Rovelli</td>
-                        <td class="text-right">
-                            <a href="#"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
-                            <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
-                        </td>
-                    </tr>
-                </tbody>
+                <tbody id="tedarikciListesi"></tbody>
             </table>
         </div>
     </div>
 </div>
 
-
-
-
-
+<script type="text/x-tmpl" id="supplierTemplate">
+    <tr>
+        <td>${SupplierName}</td>
+        <td>${Address} ₺</td>
+        <td>${Telephone} ₺</td>
+        <td>${Email} ₺</td>
+        <td class="text-right">
+            <a href="/Dashboard/Gider/${ID}"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
+            <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+        </td>
+    </tr>
+</script>

@@ -63,7 +63,6 @@ function createDateRange(selector, start, end, isTimePicker, isNoRange) {
 
         changeDateRange(start, end, thisDateRangePicker, isTimePicker, isNoRange);
     });
-
 }
 
 $(document).ready(function () {
@@ -87,26 +86,21 @@ $(document).ready(function () {
         editable: true,
         eventLimit: true,
         events: function (start, end, timezone, callback) {
-            $.ajax({
-                url: '/webservices/getappointments',
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    var events = [];
-                    $.each(data, function () {
-                        var appointmentDateUnix = this.AppointmentDate.match(/([0-9]{1,})/g);
-                        events.push({
-                            id: this.TCNo,
-                            title: this.NameSurname,
-                            start: moment(appointmentDateUnix * 1),
-                            end: moment(appointmentDateUnix * 1).add(30, 'minutes'),
-                            backgroundColor: (moment(appointmentDateUnix * 1).fromNow().indexOf('önce') > -1 ? '#f96332' : '#f8f9fa'),
-                            color: '#000'
-                        });
+            GetAppointments(null,function (data) {
+                var events = [];
+                $.each(data, function () {
+                    var appointmentDateUnix = this.AppointmentDate.match(/([0-9]{1,})/g);
+                    events.push({
+                        id: this.TCNo,
+                        title: this.NameSurname,
+                        start: moment(appointmentDateUnix * 1),
+                        end: moment(appointmentDateUnix * 1).add(30, 'minutes'),
+                        backgroundColor: (moment(appointmentDateUnix * 1).fromNow().indexOf('önce') > -1 ? '' : '#f96332'),
+                        color: (moment(appointmentDateUnix * 1).fromNow().indexOf('önce') > -1 ? '' : '#f96332'),
+                        textColor: '#fff'
                     });
-                    console.log(data);
-                    callback(events);
-                }
+                });
+                callback(events);
             });
         }
     });
@@ -184,5 +178,88 @@ $(document).ready(function () {
 
     randevuEkle.on('show.bs.modal', function (e) {
         $('a#existingPatient').trigger('click');
-    })
+    });
+
+    if ($("#hastaListesi").length > 0) {
+        GetPatients(null, function (data) {
+            $.each(data, function () {
+                var birthDateUnix = this.BirthDate.match(/([0-9]{1,})/g);
+                this.BirthDate = moment(birthDateUnix * 1).format('DD MMMM YYYY');
+            });
+            $("#hastaListesi").html('');
+            $.template("patientTemplate", $('#patientTemplate').html());
+            $.tmpl("patientTemplate", data).appendTo("#hastaListesi");
+        });
+        $(document).on('input', '#hastaAra', function () {
+            GetPatients($(this).val(), function (data) {
+                $.each(data, function () {
+                    var birthDateUnix = this.BirthDate.match(/([0-9]{1,})/g);
+                    this.BirthDate = moment(birthDateUnix * 1).format('DD MMMM YYYY');
+                });
+                $("#hastaListesi").html('');
+                $.template("patientTemplate", $('#patientTemplate').html());
+                $.tmpl("patientTemplate", data).appendTo("#hastaListesi");
+            });
+        });
+    }
+
+    if ($("#giderListesi").length > 0) {
+        GetExpenses(null, function (data) {
+            $.each(data, function () {
+                var PaymentDateUnix = this.PaymentDate.match(/([0-9]{1,})/g);
+                this.PaymentDate = moment(PaymentDateUnix * 1).format('DD MMMM YYYY');
+            });
+            $("#giderListesi").html('');
+            $.template("expenseTemplate", $('#expenseTemplate').html());
+            $.tmpl("expenseTemplate", data).appendTo("#giderListesi");
+        });
+        $(document).on('input', '#giderAra', function () {
+            GetPatients($(this).val(), function (data) {
+                $.each(data, function () {
+                    var PaymentDateUnix = this.PaymentDate.match(/([0-9]{1,})/g);
+                    this.PaymentDate = moment(PaymentDateUnix * 1).format('DD MMMM YYYY');
+                });
+                $("#hastaListesi").html('');
+                $.template("patientTemplate", $('#patientTemplate').html());
+                $.tmpl("patientTemplate", data).appendTo("#hastaListesi");
+            });
+        });
+    }
+    if ($("#stokListesi").length > 0) {
+        GetStocks(null, function (data) {
+            $("#stokListesi").html('');
+            $.template("stockTemplate", $('#stockTemplate').html());
+            $.tmpl("stockTemplate", data).appendTo("#stokListesi");
+        });
+        $(document).on('input', '#stokAra', function () {
+            GetStocks($(this).val(), function (data) {
+                $("#stokListesi").html('');
+                $.template("stockTemplate", $('#stockTemplate').html());
+                $.tmpl("stockTemplate", data).appendTo("#stokListesi");
+            });
+        });
+    }
+
+    if ($("#tedarikciListesi").length > 0) {
+        GetSupp(null, function (data) {
+            $.each(data, function () {
+                var PaymentDateUnix = this.PaymentDate.match(/([0-9]{1,})/g);
+                this.PaymentDate = moment(PaymentDateUnix * 1).format('DD MMMM YYYY');
+            });
+            $("#tedarikciListesi").html('');
+            $.template("supplierTemplate", $('#supplierTemplate').html());
+            $.tmpl("supplierTemplate", data).appendTo("#tedarikciListesi");
+        });
+        $(document).on('input', '#tedarikciAra', function () {
+            GetStocks($(this).val(), function (data) {
+                $.each(data, function () {
+                    var PaymentDateUnix = this.PaymentDate.match(/([0-9]{1,})/g);
+                    this.PaymentDate = moment(PaymentDateUnix * 1).format('DD MMMM YYYY');
+                });
+                $("#tedarikciListesi").html('');
+                $.template("supplierTemplate", $('#supplierTemplate').html());
+                $.tmpl("supplierTemplate", data).appendTo("#tedarikciListesi");
+            });
+        });
+    }
 });

@@ -16,57 +16,33 @@
     </nav>
     <div class="card">
         <div class="card-body" style="position:relative;">
-            <input type="text" name="q" class="form-control" style="position:absolute;right:15px;top:25px;width:225px;" placeholder="Ara..." />
-            <form class="form-inline" action="/action_page.php">
+            <input type="text" id="stokAra" class="form-control" style="position:absolute;right:15px;top:25px;width:225px;" placeholder="Ara..." />
+            <form class="form-inline">
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">Malzeme Kodu</th>
                             <th scope="col">Malzeme Adı</th>
                             <th scope="col">Adeti</th>
-                            <th scope="col">Eklendiği Tarih</th>
-                            <th scope="col">Son Kullanma Tarihi</th>
+                            <th scope="col">Birim Fiyatı</th>
+                            <th scope="col">Malzeme Türü</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">A5B6C7</th>
-                            <td>SİMAN FULVARI</td>
-                            <td scope="auto">20</td>
-                            <td>20.04.2018</td>
-                            <td>20.04.2018</td>
-                            <td class="text-right">
-                                <a href="#"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
-                                <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row">E15R3F</th>
-                            <td>SOND(ORAK)</td>
-                            <td scope="auto">20</td>
-                            <td>20.04.2018</td>
-                            <td>20.04.2018</td>
-                            <td class="text-right">
-                                <a href="#"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
-                                <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">F5F5F5</th>
-                            <td>KUMPAS</td>
-                            <td scope="auto">55</td>
-                            <td>20.04.2018</td>
-                            <td>20.04.2018</td>
-                            <td class="text-right">
-                                <a href="#"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
-                                <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
-                            </td>
-                        </tr>
-                    </tbody>
+                    <tbody id="stokListesi"></tbody>
                 </table>
             </form>
         </div>
     </div>
 </div>
 
+<script type="text/x-tmpl" id="stockTemplate">
+    <tr>
+        <td>${MaterialName}</td>
+        <td scope="auto">${Quantity}</td>
+        <td>${UnitPrice}</td>
+        <td>${MaterialTypeName}</td>
+        <td class="text-right">
+            <a href="#"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
+            <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+        </td>
+    </tr>
+</script>

@@ -21,76 +21,31 @@
                 <input class="form-control" type="text" name="q" id="hastaAra" placeholder="Aranacak Hastayı Girin" />
             </div>
         </div>
-        <ul class="list-group list-group-flush" id="hastaListesi">
-            <li class="list-group-item">
-                <div class="media">
-                    <img class="mr-3 border rounded" src="https://i.cnnturk.com/ps/cnnturk/75/650x0/56b450776ce4362f1c60b552.jpg" width="100" height="100" alt="Aslı Demiroğ">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-2 font-weight-bold text-uppercase">Aslı Demiroğ</h5>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <p class="mb-0 text-nowrap">Doğum Tarihi : <i>18.08.1988</i></p>
-                                <p class="mb-0 text-nowrap">Kan Grubu : <i>A Rh +</i></p>
-                                <p class="mb-0 text-nowrap">Cinsiyet : <i class="text-danger">Bayan</i></p>
-                            </div>
-                            <div class="col-md-6 col-sm-4">
-                                <p class="mb-0 text-nowrap">Cep Telefonu : <i>0987 123 45 67</i></p>
-                                <p class="mb-0 text-nowrap">E-Posta : <i>asli.demirog@mail.com</i></p>
-                            </div>
-                            <div class="col-md-2 col-sm-4">
-                                <a href="#" class="btn btn-block btn-sm btn-warning mt-0">Düzenle</a>
-                                <a href="#" class="btn btn-block btn-sm btn-danger mt-0">Kaldır</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="media">
-                    <img class="mr-3 border rounded" src="https://i.cnnturk.com/ps/cnnturk/75/650x0/56b450776ce4362f1c60b552.jpg" width="100" height="100" alt="Aslı Demiroğ">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-2 font-weight-bold text-uppercase">Aslı Demiroğ</h5>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <p class="mb-0 text-nowrap">Doğum Tarihi : <i>18.08.1988</i></p>
-                                <p class="mb-0 text-nowrap">Kan Grubu : <i>A Rh +</i></p>
-                                <p class="mb-0 text-nowrap">Cinsiyet : <i class="text-danger">Bayan</i></p>
-                            </div>
-                            <div class="col-md-6 col-sm-4">
-                                <p class="mb-0 text-nowrap">Cep Telefonu : <i>0987 123 45 67</i></p>
-                                <p class="mb-0 text-nowrap">E-Posta : <i>asli.demirog@mail.com</i></p>
-                            </div>
-                            <div class="col-md-2 col-sm-4">
-                                <a href="#" class="btn btn-block btn-sm btn-warning mt-0">Düzenle</a>
-                                <a href="#" class="btn btn-block btn-sm btn-danger mt-0">Kaldır</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="media">
-                    <img class="mr-3 border rounded" src="https://i.cnnturk.com/ps/cnnturk/75/650x0/56b450776ce4362f1c60b552.jpg" width="100" height="100" alt="Aslı Demiroğ">
-                    <div class="media-body">
-                        <h5 class="mt-0 mb-2 font-weight-bold text-uppercase">Aslı Demiroğ</h5>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <p class="mb-0 text-nowrap">Doğum Tarihi : <i>18.08.1988</i></p>
-                                <p class="mb-0 text-nowrap">Kan Grubu : <i>A Rh +</i></p>
-                                <p class="mb-0 text-nowrap">Cinsiyet : <i class="text-danger">Bayan</i></p>
-                            </div>
-                            <div class="col-md-6 col-sm-4">
-                                <p class="mb-0 text-nowrap">Cep Telefonu : <i>0987 123 45 67</i></p>
-                                <p class="mb-0 text-nowrap">E-Posta : <i>asli.demirog@mail.com</i></p>
-                            </div>
-                            <div class="col-md-2 col-sm-4">
-                                <a href="#" class="btn btn-block btn-sm btn-warning mt-0">Düzenle</a>
-                                <a href="#" class="btn btn-block btn-sm btn-danger mt-0">Kaldır</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
+        <ul class="list-group list-group-flush" id="hastaListesi"></ul>
     </div>
 </div>
+<script type="text/x-tmpl" id="patientTemplate">
+    <li class="list-group-item">
+        <div class="media">
+            <img class="mr-3 border rounded" src="/Content/images/{{if Gender=='Bay'}}male.png{{else}}female.png{{/if}}" width="100" height="100" alt="Aslı Demiroğ">
+            <div class="media-body">
+                <h5 class="mt-0 mb-2 font-weight-bold text-uppercase">${NameSurname}</h5>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p class="mb-0 text-nowrap">Doğum Tarihi : <i>${BirthDate}</i></p>
+                        <p class="mb-0 text-nowrap">Kan Grubu : <i>${BloodGroup}</i></p>
+                        <p class="mb-0 text-nowrap">Cinsiyet : <i class="text-danger">${Gender}</i></p>
+                    </div>
+                    <div class="col-md-6 col-sm-4">
+                        <p class="mb-0 text-nowrap">Telefon : <i>${Telephone}</i></p>
+                        <p class="mb-0 text-nowrap">E-Posta : <i>${Email}</i></p>
+                    </div>
+                    <div class="col-md-2 col-sm-4">
+                        <a href="/Dashboard/Hasta/${TCNo}" class="btn btn-block btn-sm btn-warning mt-0">Düzenle</a>
+                        <a href="#" class="btn btn-block btn-sm btn-danger mt-0">Kaldır</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</script>

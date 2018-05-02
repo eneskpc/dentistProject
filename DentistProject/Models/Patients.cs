@@ -25,5 +25,6 @@ namespace DentistProject.Models
         public string Gender { get; set; }
         public Nullable<int> CurrencyID { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
+        public Nullable<int> CountryID { get; set; }
     }
 }

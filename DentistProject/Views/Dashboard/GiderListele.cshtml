@@ -17,77 +17,32 @@
     </nav>
     <div class="card">
         <div class="card-body" style="position:relative;">
-            <input type="text" name="q" class="form-control" style="position:absolute;right:15px;top:25px;width:225px;" placeholder="Ara..."/>
+            <input type="text" id="giderAra" class="form-control" style="position:absolute;right:15px;top:25px;width:225px;" placeholder="Ara..." />
             <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">Gider Türü</th>
                         <th scope="col">Tutar</th>
-                        <th scope="col">Ödeme Şekli</th>
                         <th scope="col">Tarih</th>
                         <th scope="col">Açıklama</th>
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Diğer Giderler</td>
-                        <td>300 TL</td>
-                        <td>Kredi Kartı</td>
-                        <td>20.03.2018</td>
-                        <td>Elektirk Fatura Ödemesi</td>
-                        <td class="text-right">
-                            <a href="~/Dashboard/Gider/Guncelle/5"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
-                            <a href=""><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Diğer Giderler</td>
-                        <td>300 TL</td>
-                        <td>Kredi Kartı</td>
-                        <td>20.03.2018</td>
-                        <td>Elektirk Fatura Ödemesi</td>
-                        <td class="text-right">
-                            <a href=""><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
-                            <a href=""><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Diğer Giderler</td>
-                        <td>300 TL</td>
-                        <td>Kredi Kartı</td>
-                        <td>20.03.2018</td>
-                        <td>Elektirk Fatura Ödemesi</td>
-                        <td class="text-right">
-                            <a href=""><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
-                            <a href=""><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Asistan</td>
-                        <td>2000 TL</td>
-                        <td>Havale</td>
-                        <td>20.03.2018</td>
-                        <td>Maaş Ödemesi</td>
-                        <td class="text-right">
-                            <a href=""><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
-                            <a href=""><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Dişçi</td>
-                        <td>6000 TL</td>
-                        <td>Havale</td>
-                        <td>20.03.2018</td>
-                        <td>Maaş Ödemesi</td>
-                        <td class="text-right">
-                            <a href="#"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
-                            <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
-                        </td>
-                    </tr>
+                <tbody id="giderListesi">
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
+<script type="text/x-tmpl" id="expenseTemplate">
+    <tr>
+        <td>${ExpenseName}</td>
+        <td>${Payment} ₺</td>
+        <td>${PaymentDate}</td>
+        <td>${ExpenseDescription}</td>
+        <td class="text-right">
+            <a href="/Dashboard/Gider/${ID}"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
+            <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+        </td>
+    </tr>
+</script>

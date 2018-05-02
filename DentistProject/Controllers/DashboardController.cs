@@ -37,7 +37,7 @@ namespace DentistProject.Controllers
             return View();
         }
 
-        public ActionResult HastaKarti(string pageName = "", int id = 0)
+        public ActionResult HastaKarti(string pageName = "", string id = "0")
         {
             if (!Classes.Helpers.CheckAuthentication())
             {
@@ -47,11 +47,11 @@ namespace DentistProject.Controllers
             {
                 return View("HastaKarti");
             }
-            else if (pageName == "Guncelle" && id == 0)
+            else if (pageName == "Guncelle" && id == "0")
             {
                 return View("HastaListesi");
             }
-            else if (pageName == "Guncelle" && id > 0)
+            else if (pageName == "Guncelle" && id != "0")
             {
                 Patients thisPatient = null;
                 using (DBEntities db = new DBEntities())

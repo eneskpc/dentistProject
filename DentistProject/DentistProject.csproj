@@ -160,6 +160,7 @@
     <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\Dashboard.js" />
     <Content Include="Scripts\fullcalendar.min.js" />
+    <Content Include="Scripts\functions.js" />
     <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.ajaxchimp.min.js" />
     <Content Include="Scripts\jquery.counterup.min.js" />
@@ -168,6 +169,8 @@
     <Content Include="Scripts\jquery.nav.js" />
     <Content Include="Scripts\jquery.nice-select.min.js" />
     <Content Include="Scripts\jquery.sticky.js" />
+    <Content Include="Scripts\jquery.tmpl.js" />
+    <Content Include="Scripts\jquery.tmpl.min.js" />
     <Content Include="Scripts\locale\af.js" />
     <Content Include="Scripts\locale\ar-dz.js" />
     <Content Include="Scripts\locale\ar-kw.js" />
@@ -251,14 +254,36 @@
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\selectize.js" />
     <Content Include="Scripts\selectize.min.js" />
+    <Content Include="Scripts\tmpl.js" />
+    <Content Include="Scripts\tmpl.min.js" />
     <Content Include="Scripts\waypoints.min.js" />
     <Content Include="Views\Dashboard\Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Classes\AppointmentView.cs" />
+    <Compile Include="Classes\AssistantView.cs" />
+    <Compile Include="Classes\BloodGroupsView.cs" />
+    <Compile Include="Classes\CountryView.cs" />
+    <Compile Include="Classes\CurrenciesView.cs" />
+    <Compile Include="Classes\DentistView.cs" />
+    <Compile Include="Classes\ExpensesView.cs" />
+    <Compile Include="Classes\ExpenseTypeView.cs" />
     <Compile Include="Classes\Helpers.cs" />
+    <Compile Include="Classes\ImageView.cs" />
     <Compile Include="Classes\LoginModel.cs" />
+    <Compile Include="Classes\MaterialTypeView.cs" />
+    <Compile Include="Classes\MedicineView.cs" />
+    <Compile Include="Classes\OtherEmployeeView.cs" />
+    <Compile Include="Classes\PatientView.cs" />
+    <Compile Include="Classes\PrescriptionMedicinesView.cs" />
+    <Compile Include="Classes\PrescriptionView.cs" />
+    <Compile Include="Classes\StockView.cs" />
+    <Compile Include="Classes\SupplierMeterialView.cs" />
+    <Compile Include="Classes\SupplierView.cs" />
+    <Compile Include="Classes\TreatmentTypeView.cs" />
+    <Compile Include="Classes\TreatmentView.cs" />
+    <Compile Include="Classes\UsersView.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HastaTakipController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -322,6 +347,9 @@
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Patients.cs">
+      <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PrescriptionMedicines.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Prescriptions.cs">
@@ -398,6 +426,7 @@
     <Content Include="Views\Dashboard\TedarikciEkle.cshtml" />
     <Content Include="Views\Dashboard\HastaListesi.cshtml" />
     <Content Include="Views\Dashboard\ReceteEkle.cshtml" />
+    <Content Include="Scripts\tmpl.min.js.map" />
     <None Include="Views\Dashboard\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

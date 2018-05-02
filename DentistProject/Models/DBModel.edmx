@@ -107,7 +107,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MedicineID" Type="int" />
+          <Property Name="MedicineName" Type="nvarchar" MaxLength="150" />
           <Property Name="Dosage" Type="nvarchar" MaxLength="25" />
           <Property Name="Usage" Type="nvarchar" MaxLength="150" />
           <Property Name="Description" Type="nvarchar" MaxLength="250" />
@@ -129,16 +129,27 @@
           <Key>
             <PropertyRef Name="TCNo" />
           </Key>
-          <Property Name="TCNo" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="TCNo" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="150" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="Surname" Type="nvarchar" MaxLength="50" />
           <Property Name="BirthDate" Type="date" />
           <Property Name="Telephone" Type="nvarchar" MaxLength="20" />
-          <Property Name="Address" Type="nchar" MaxLength="10" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" />
           <Property Name="BloodGroupID" Type="int" />
           <Property Name="Gender" Type="char" MaxLength="1" />
           <Property Name="CurrencyID" Type="int" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CountryID" Type="int" />
+        </EntityType>
+        <EntityType Name="PrescriptionMedicines">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MedicineID" Type="int" />
+          <Property Name="PrescriptionID" Type="int" />
+          <Property Name="Quantity" Type="int" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="Prescriptions">
@@ -148,7 +159,7 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TreatmentID" Type="int" />
           <Property Name="PrescriptionTime" Type="datetime" />
-          <Property Name="IsDelete" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="Stock">
           <Key>
@@ -187,7 +198,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DentistID" Type="int" />
-          <Property Name="PatientID" Type="int" />
+          <Property Name="PatientID" Type="nvarchar" MaxLength="20" />
           <Property Name="TreatmentTypeID" Type="int" />
           <Property Name="TreatmentDescription" Type="nvarchar" MaxLength="400" />
           <Property Name="TreatmentTime" Type="datetime" />
@@ -237,6 +248,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
           <EntitySet Name="Medicines" EntityType="Self.Medicines" Schema="umitsoku_user" store:Type="Tables" />
           <EntitySet Name="OtherEmployees" EntityType="Self.OtherEmployees" Schema="umitsoku_user" store:Type="Tables" />
           <EntitySet Name="Patients" EntityType="Self.Patients" Schema="umitsoku_user" store:Type="Tables" />
+          <EntitySet Name="PrescriptionMedicines" EntityType="Self.PrescriptionMedicines" Schema="umitsoku_user" store:Type="Tables" />
           <EntitySet Name="Prescriptions" EntityType="Self.Prescriptions" Schema="umitsoku_user" store:Type="Tables" />
           <EntitySet Name="Stock" EntityType="Self.Stock" Schema="umitsoku_user" store:Type="Tables" />
           <EntitySet Name="SupplierMaterials" EntityType="Self.SupplierMaterials" Schema="umitsoku_user" store:Type="Tables" />
@@ -271,6 +283,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
           <EntitySet Name="Medicines" EntityType="DBModel.Medicines" />
           <EntitySet Name="OtherEmployees" EntityType="DBModel.OtherEmployees" />
           <EntitySet Name="Patients" EntityType="DBModel.Patients" />
+          <EntitySet Name="PrescriptionMedicines" EntityType="DBModel.PrescriptionMedicines" />
           <EntitySet Name="Prescriptions" EntityType="DBModel.Prescriptions" />
           <EntitySet Name="Stock" EntityType="DBModel.Stock" />
           <EntitySet Name="SupplierMaterials" EntityType="DBModel.SupplierMaterials" />
@@ -382,7 +395,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MedicineID" Type="Int32" />
+          <Property Name="MedicineName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Dosage" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
           <Property Name="Usage" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
@@ -404,16 +417,27 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
           <Key>
             <PropertyRef Name="TCNo" />
           </Key>
-          <Property Name="TCNo" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="TCNo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="BirthDate" Type="DateTime" Precision="0" />
           <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="BloodGroupID" Type="Int32" />
           <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CurrencyID" Type="Int32" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CountryID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PrescriptionMedicines">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MedicineID" Type="Int32" />
+          <Property Name="PrescriptionID" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
           <Property Name="IsDeleted" Type="Boolean" />
         </EntityType>
         <EntityType Name="Prescriptions">
@@ -423,7 +447,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TreatmentID" Type="Int32" />
           <Property Name="PrescriptionTime" Type="DateTime" Precision="3" />
-          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
         </EntityType>
         <EntityType Name="Stock">
           <Key>
@@ -462,7 +486,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DentistID" Type="Int32" />
-          <Property Name="PatientID" Type="Int32" />
+          <Property Name="PatientID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="TreatmentTypeID" Type="Int32" />
           <Property Name="TreatmentDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
           <Property Name="TreatmentTime" Type="DateTime" Precision="3" />
@@ -496,7 +520,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
           <Property Name="PriorityOrder" Type="Int32" />
           <Property Name="IsDeleted" Type="Boolean" />
         </EntityType>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -616,7 +640,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Usage" ColumnName="Usage" />
                 <ScalarProperty Name="Dosage" ColumnName="Dosage" />
-                <ScalarProperty Name="MedicineID" ColumnName="MedicineID" />
+                <ScalarProperty Name="MedicineName" ColumnName="MedicineName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -637,6 +661,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
           <EntitySetMapping Name="Patients">
             <EntityTypeMapping TypeName="DBModel.Patients">
               <MappingFragment StoreEntitySet="Patients">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="CurrencyID" ColumnName="CurrencyID" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
@@ -651,10 +676,21 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PrescriptionMedicines">
+            <EntityTypeMapping TypeName="DBModel.PrescriptionMedicines">
+              <MappingFragment StoreEntitySet="PrescriptionMedicines">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="PrescriptionID" ColumnName="PrescriptionID" />
+                <ScalarProperty Name="MedicineID" ColumnName="MedicineID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Prescriptions">
             <EntityTypeMapping TypeName="DBModel.Prescriptions">
               <MappingFragment StoreEntitySet="Prescriptions">
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="PrescriptionTime" ColumnName="PrescriptionTime" />
                 <ScalarProperty Name="TreatmentID" ColumnName="TreatmentID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />

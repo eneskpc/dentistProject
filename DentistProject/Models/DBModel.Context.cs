@@ -38,6 +38,7 @@ namespace DentistProject.Models
         public virtual DbSet<Medicines> Medicines { get; set; }
         public virtual DbSet<OtherEmployees> OtherEmployees { get; set; }
         public virtual DbSet<Patients> Patients { get; set; }
+        public virtual DbSet<PrescriptionMedicines> PrescriptionMedicines { get; set; }
         public virtual DbSet<Prescriptions> Prescriptions { get; set; }
         public virtual DbSet<Stock> Stock { get; set; }
         public virtual DbSet<SupplierMaterials> SupplierMaterials { get; set; }

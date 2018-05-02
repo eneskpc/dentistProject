@@ -17,6 +17,6 @@ namespace DentistProject.Models
         public int ID { get; set; }
         public Nullable<int> TreatmentID { get; set; }
         public Nullable<System.DateTime> PrescriptionTime { get; set; }
-        public Nullable<bool> IsDelete { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     }
 }

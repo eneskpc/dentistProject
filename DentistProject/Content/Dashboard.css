@@ -55,3 +55,9 @@ table td:not(.fc-day-top):not(.fc-event-container) > a {
 div.form-control {
     font-size: 1em;
 }
+
+.fc-today.alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
