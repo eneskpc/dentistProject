@@ -21,18 +21,18 @@ namespace DentistProject.Controllers
             using (DBEntities db = new DBEntities())
             {
                 var appointments = (from a in db.Appointments
-                                    from p in db.Patients
-                                    from bg in db.BloodGroups
-                                    from c in db.Currencies
+                                    join p in db.Patients on a.PatientID equals p.TCNo
+                                    join bg in db.BloodGroups on p.BloodGroupID equals bg.ID into pbg
+                                    from bg in pbg.DefaultIfEmpty()
+                                    join c in db.Currencies on p.CurrencyID equals c.ID into cp
+                                    from c in cp.DefaultIfEmpty()
                                     where a.IsDeleted == false || a.IsDeleted == null
                                     where p.IsDeleted == false || p.IsDeleted == null
                                     where bg.IsDeleted == false || bg.IsDeleted == null
                                     where c.IsDeleted == false || c.IsDeleted == null
-                                    where a.PatientID == p.TCNo
-                                    where p.BloodGroupID == bg.ID
-                                    where c.ID == p.CurrencyID
                                     select new AppointmentView
                                     {
+                                        ID = a.ID,
                                         TCNo = a.PatientID,
                                         Email = p.Email,
                                         NameSurname = p.Name + " " + p.Surname,
@@ -66,10 +66,19 @@ namespace DentistProject.Controllers
             using (DBEntities db = new DBEntities())
             {
                 bool isSuccess = false;
+                string reelID = PatientID;
+                if (string.IsNullOrEmpty(PatientID) || PatientID == "0")
+                {
+                    var patient = (from p in db.Patients
+                                   where p.IsDeleted == false || p.IsDeleted == null
+                                   select p).OrderByDescending(p => p.CreateDate).FirstOrDefault();
+                    reelID = patient.TCNo;
+                }
                 db.Appointments.Add(new Appointments()
                 {
-                    PatientID = PatientID,
-                    AppointmentDate = Convert.ToDateTime(AppointmentDate)
+                    PatientID = reelID,
+                    AppointmentDate = Convert.ToDateTime(AppointmentDate),
+                    IsDeleted = false
                 });
                 isSuccess = (db.SaveChanges() > 0 ? true : false);
                 return Json(isSuccess, JsonRequestBehavior.AllowGet);
@@ -91,6 +100,8 @@ namespace DentistProject.Controllers
             }
         }
 
+        [HttpPost]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public JsonResult UpdateAppointment(int id, string PatientID, string AppointmentDate)
         {
             using (DBEntities db = new DBEntities())
@@ -215,8 +226,6 @@ namespace DentistProject.Controllers
                 return Json(bloodgroups.ToList(), JsonRequestBehavior.AllowGet);
             }
         }
-
-
 
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public JsonResult GetCountries(string plainText)
@@ -396,6 +405,31 @@ namespace DentistProject.Controllers
             }
         }
 
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public JsonResult GetExpense(int id)
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                var expenses = (from e in db.Expenses
+                                from et in db.ExpenseTypes
+                                from bg in db.BloodGroups
+                                from c in db.Currencies
+                                where e.IsDeleted == false || e.IsDeleted == null
+                                where et.IsDeleted == false || et.IsDeleted == null
+                                where e.ExpenseType == et.ID
+                                where e.ID == id
+                                select new ExpensesView
+                                {
+                                    ID = e.ID,
+                                    ExpenseName = et.ExpenseName,
+                                    ExpenseDescription = e.ExpenseDescription,
+                                    Payment = e.Payment,
+                                    PaymentDate = e.PaymentDate
+                                }).Distinct();
+                return Json(expenses.FirstOrDefault(), JsonRequestBehavior.AllowGet);
+            }
+        }
+
         [HttpPost]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public JsonResult AddExpenses(int ExpenseType, string ExpenseDescription, double Payment, string PaymentDate)
@@ -455,11 +489,7 @@ namespace DentistProject.Controllers
             using (DBEntities db = new DBEntities())
             {
                 var expensetype = (from et in db.ExpenseTypes
-                                   from e in db.Expenses
-                                   where e.IsDeleted == false || e.IsDeleted == null
                                    where et.IsDeleted == false || et.IsDeleted == null
-
-                                   where e.ExpenseType == et.ID
                                    select new ExpenseTypeView
                                    {
                                        ID = et.ID,
@@ -907,14 +937,14 @@ namespace DentistProject.Controllers
             using (DBEntities db = new DBEntities())
             {
                 var patients = (from p in db.Patients
-                                from bg in db.BloodGroups
+                                join bg in db.BloodGroups on p.BloodGroupID equals bg.ID into pbg
+                                from bg in pbg.DefaultIfEmpty()
                                 from c in db.Currencies
                                 from co in db.Countries
                                 where co.IsDeleted == false || co.IsDeleted == null
                                 where p.IsDeleted == false || p.IsDeleted == null
                                 where bg.IsDeleted == false || bg.IsDeleted == null
                                 where c.IsDeleted == false || c.IsDeleted == null
-                                where p.BloodGroupID == bg.ID
                                 where c.ID == p.CurrencyID
                                 where co.ID == p.CountryID
                                 select new PatientView
@@ -928,7 +958,8 @@ namespace DentistProject.Controllers
                                     BloodGroup = bg.GroupName,
                                     Gender = (p.Gender == "E" ? "Bay" : "Bayan"),
                                     Currency = c.CurrencyName,
-                                    Country = co.CountryName
+                                    Country = co.CountryName,
+                                    CreateDate = p.CreateDate
                                 });
                 if (!string.IsNullOrEmpty(plainText))
                 {
@@ -940,7 +971,41 @@ namespace DentistProject.Controllers
                         x.BloodGroup.Contains(plainText)
                     );
                 }
-                return Json(patients.ToList(), JsonRequestBehavior.AllowGet);
+                return Json(patients.OrderBy(p => p.CreateDate).ToList(), JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public JsonResult GetPatient(string patientID)
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                var patients = (from p in db.Patients
+                                from bg in db.BloodGroups
+                                from c in db.Currencies
+                                from co in db.Countries
+                                where co.IsDeleted == false || co.IsDeleted == null
+                                where p.IsDeleted == false || p.IsDeleted == null
+                                where bg.IsDeleted == false || bg.IsDeleted == null
+                                where c.IsDeleted == false || c.IsDeleted == null
+                                where p.BloodGroupID == bg.ID
+                                where c.ID == p.CurrencyID
+                                where co.ID == p.CountryID
+                                where p.TCNo == patientID
+                                select new PatientView
+                                {
+                                    TCNo = p.TCNo,
+                                    Email = p.Email,
+                                    NameSurname = p.Name + " " + p.Surname,
+                                    BirthDate = p.BirthDate,
+                                    Telephone = p.Telephone,
+                                    Address = p.Address,
+                                    BloodGroup = bg.GroupName,
+                                    Gender = (p.Gender == "E" ? "Bay" : "Bayan"),
+                                    Currency = c.CurrencyName,
+                                    Country = co.CountryName
+                                });
+                return Json(patients.FirstOrDefault(), JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -963,7 +1028,9 @@ namespace DentistProject.Controllers
                     BloodGroupID = BloodGroupID,
                     Gender = Gender,
                     CurrencyID = CurrencyID,
-                    CountryID = CountryID
+                    CountryID = CountryID,
+                    CreateDate = DateTime.Now,
+                    IsDeleted = false
                 });
                 isSuccess = (db.SaveChanges() > 0 ? true : false);
                 return Json(isSuccess, JsonRequestBehavior.AllowGet);
@@ -998,7 +1065,8 @@ namespace DentistProject.Controllers
                 pat.Email = Email;
                 pat.Name = Name;
                 pat.Surname = Surname;
-                pat.BirthDate = Convert.ToDateTime(BirthDate);
+                if (!string.IsNullOrEmpty(BirthDate))
+                    pat.BirthDate = Convert.ToDateTime(BirthDate);
                 pat.Telephone = Telephone;
                 pat.Address = Address;
                 pat.BloodGroupID = BloodGroupID;
@@ -1016,7 +1084,6 @@ namespace DentistProject.Controllers
             using (DBEntities db = new DBEntities())
             {
                 var stocks = (from st in db.Stock
-
                               from sm in db.SupplierMaterials
                               from s in db.Suppliers
                               from mt in db.MaterialTypes
@@ -1024,15 +1091,14 @@ namespace DentistProject.Controllers
                               where sm.IsDeleted == false || sm.IsDeleted == null
                               where s.IsDeleted == false || s.IsDeleted == null
                               where mt.IsDeleted == false || mt.IsDeleted == null
-
                               where st.MaterailID == sm.ID
                               where sm.MaterialTypeID == mt.ID
                               where sm.SupplierID == s.ID
-
-
                               select new StockView
                               {
+                                  ID = st.ID,
                                   Quantity = st.Quantity,
+                                  MaterialID = sm.ID,
                                   MaterialName = sm.MaterialName,
                                   UnitPrice = sm.UnitPrice,
                                   SupplierName = s.SupplierName,
@@ -1055,6 +1121,74 @@ namespace DentistProject.Controllers
             }
         }
 
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public JsonResult GetStock(int id)
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                var stocks = (from st in db.Stock
+                              from sm in db.SupplierMaterials
+                              from s in db.Suppliers
+                              from mt in db.MaterialTypes
+                              where st.IsDeleted == false || st.IsDeleted == null
+                              where sm.IsDeleted == false || sm.IsDeleted == null
+                              where s.IsDeleted == false || s.IsDeleted == null
+                              where mt.IsDeleted == false || mt.IsDeleted == null
+                              where st.MaterailID == sm.ID
+                              where sm.MaterialTypeID == mt.ID
+                              where sm.SupplierID == s.ID
+                              where st.ID == id
+                              select new StockView
+                              {
+                                  ID = st.ID,
+                                  Quantity = st.Quantity,
+                                  MaterialID = sm.ID,
+                                  MaterialName = sm.MaterialName,
+                                  UnitPrice = sm.UnitPrice,
+                                  SupplierName = s.SupplierName,
+                                  Email = s.Email,
+                                  Telephone = s.Telephone,
+                                  Address = s.Address,
+                                  MaterialTypeName = mt.MaterialTypeName,
+                              }).Distinct();
+                return Json(stocks.FirstOrDefault(), JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public JsonResult GetStocksWithTotal(string plainText)
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                var stocks = (from s in db.Stock
+                              join sm in db.SupplierMaterials on s.MaterailID equals sm.ID
+                              join mt in db.MaterialTypes on sm.MaterialTypeID equals mt.ID
+                              group new { s, sm, mt } by new
+                              {
+                                  s.MaterailID,
+                                  sm.MaterialName,
+                                  sm.UnitPrice,
+                                  mt.MaterialTypeName
+                              } into g
+                              select new
+                              {
+                                  g.Key.MaterailID,
+                                  g.Key.MaterialName,
+                                  g.Key.UnitPrice,
+                                  g.Key.MaterialTypeName,
+                                  Quantity = g.Sum(p => p.s.Quantity)
+                              }).Distinct();
+                if (!string.IsNullOrEmpty(plainText))
+                {
+                    stocks = stocks.Where(
+                        x => x.MaterialName.Contains(plainText) ||
+                        x.MaterialTypeName.Contains(plainText)
+                    );
+                }
+                return Json(stocks.ToList(), JsonRequestBehavior.AllowGet);
+            }
+        }
+
         [HttpPost]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public JsonResult AddStock(int MaterailID, double Quantity)
@@ -1062,12 +1196,24 @@ namespace DentistProject.Controllers
             using (DBEntities db = new DBEntities())
             {
                 bool isSuccess = false;
-                db.Stock.Add(new Stock()
+                var stockMaterial = (from sm in db.Stock
+                                     where sm.IsDeleted == false || sm.IsDeleted == null
+                                     where sm.MaterailID == MaterailID
+                                     select sm).FirstOrDefault();
+                if (stockMaterial == null)
                 {
-                    MaterailID = MaterailID,
-                    Quantity = Quantity
-                });
-                isSuccess = (db.SaveChanges() > 0 ? true : false);
+                    db.Stock.Add(new Stock()
+                    {
+                        MaterailID = MaterailID,
+                        Quantity = Quantity
+                    });
+                    isSuccess = (db.SaveChanges() > 0 ? true : false);
+                }
+                else
+                {
+                    stockMaterial.Quantity = Quantity;
+                    isSuccess = (db.SaveChanges() > 0 ? true : false);
+                }
                 return Json(isSuccess, JsonRequestBehavior.AllowGet);
             }
         }
@@ -1111,17 +1257,16 @@ namespace DentistProject.Controllers
             using (DBEntities db = new DBEntities())
             {
                 var suppliermaterials = (from sm in db.SupplierMaterials
-
                                          from s in db.Suppliers
                                          from mt in db.MaterialTypes
                                          where s.IsDeleted == false || s.IsDeleted == null
                                          where mt.IsDeleted == false || mt.IsDeleted == null
                                          where sm.IsDeleted == false || sm.IsDeleted == null
-
                                          where sm.MaterialTypeID == mt.ID
                                          where sm.SupplierID == s.ID
                                          select new SupplierMeterialView
                                          {
+                                             ID = sm.ID,
                                              MaterialName = sm.MaterialName,
                                              UnitPrice = sm.UnitPrice,
                                              SupplierName = s.SupplierName,
@@ -1137,7 +1282,6 @@ namespace DentistProject.Controllers
                         x.SupplierName.Contains(plainText) ||
                         x.Telephone.Contains(plainText) ||
                         x.MaterialTypeName.Contains(plainText)
-
                     );
                 }
                 return Json(suppliermaterials.ToList(), JsonRequestBehavior.AllowGet);
@@ -1226,6 +1370,27 @@ namespace DentistProject.Controllers
                     );
                 }
                 return Json(suppliers.ToList(), JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public JsonResult GetSupplier(int id)
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                var suppliers = (from s in db.Suppliers
+                                 where s.IsDeleted == false || s.IsDeleted == null
+                                 where s.ID == id
+                                 select new SupplierView
+                                 {
+                                     ID = s.ID,
+                                     SupplierName = s.SupplierName,
+                                     Email = s.Email,
+                                     Telephone = s.Telephone,
+                                     Address = s.Address,
+
+                                 }).Distinct();
+                return Json(suppliers.FirstOrDefault(), JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -1461,7 +1626,6 @@ namespace DentistProject.Controllers
             }
         }
 
-
         [HttpPost]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public JsonResult AddUser(string UserEmail, string Password, int UserType, string CreateDate)
@@ -1480,7 +1644,6 @@ namespace DentistProject.Controllers
                 return Json(isSuccess, JsonRequestBehavior.AllowGet);
             }
         }
-
 
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public JsonResult DeleteUser(int id)
@@ -1514,6 +1677,5 @@ namespace DentistProject.Controllers
 
             }
         }
-
     }
 }

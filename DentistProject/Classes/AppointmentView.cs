@@ -7,6 +7,7 @@ namespace DentistProject.Classes
 {
     public class AppointmentView
     {
+        public int ID { get; set; }
         public string TCNo { get; set; }
         public string Email { get; set; }
         public string NameSurname { get; set; }

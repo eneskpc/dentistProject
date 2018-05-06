@@ -9,6 +9,7 @@ namespace DentistProject.Classes
     {
         public int ID { get; set; }
         public double? Quantity { get; set; }
+        public int MaterialID { get; set; }
         public string MaterialName { get; set; }
         public double? UnitPrice { get; set; }
         public string SupplierName { get; set; }

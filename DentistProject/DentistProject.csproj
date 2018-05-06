@@ -254,8 +254,6 @@
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\selectize.js" />
     <Content Include="Scripts\selectize.min.js" />
-    <Content Include="Scripts\tmpl.js" />
-    <Content Include="Scripts\tmpl.min.js" />
     <Content Include="Scripts\waypoints.min.js" />
     <Content Include="Views\Dashboard\Web.config" />
   </ItemGroup>
@@ -405,7 +403,6 @@
     <Content Include="Scripts\now-ui-dashboard.js.map" />
     <Content Include="Views\Dashboard\GiderEkle.cshtml" />
     <Content Include="Views\Dashboard\GiderListele.cshtml" />
-    <Content Include="Views\Dashboard\HastaKarti.cshtml" />
     <Content Include="Views\Dashboard\Hesap.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
     <Content Include="Views\Dashboard\Kullanici.cshtml" />
@@ -426,7 +423,7 @@
     <Content Include="Views\Dashboard\TedarikciEkle.cshtml" />
     <Content Include="Views\Dashboard\HastaListesi.cshtml" />
     <Content Include="Views\Dashboard\ReceteEkle.cshtml" />
-    <Content Include="Scripts\tmpl.min.js.map" />
+    <Content Include="Views\Dashboard\HastaKarti.cshtml" />
     <None Include="Views\Dashboard\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -139,8 +139,9 @@
           <Property Name="BloodGroupID" Type="int" />
           <Property Name="Gender" Type="char" MaxLength="1" />
           <Property Name="CurrencyID" Type="int" />
-          <Property Name="IsDeleted" Type="bit" />
           <Property Name="CountryID" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="PrescriptionMedicines">
           <Key>
@@ -429,6 +430,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
           <Property Name="CurrencyID" Type="Int32" />
           <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="CountryID" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="PrescriptionMedicines">
           <Key>
@@ -661,6 +663,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
           <EntitySetMapping Name="Patients">
             <EntityTypeMapping TypeName="DBModel.Patients">
               <MappingFragment StoreEntitySet="Patients">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="CountryID" ColumnName="CountryID" />
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="CurrencyID" ColumnName="CurrencyID" />

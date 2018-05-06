@@ -17,105 +17,56 @@
     </nav>
     <div class="card">
         <div class="card-body">
-            <form class="" action="/action_page.php">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="gider1">Gider Türü</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <select class="form-control">
-                                <option>Asistan</option>
-                                <option>Genel Gider</option>
-                                <option>Laboratuvar</option>
-                                <option>Diş Deposu</option>
-                            </select>
-                        </div>
+            <div class="loading">
+                <i class="fa fa-fw fa-spin fa-circle-o-notch fa-3x text-info"></i>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="gider1">Gider Türü</label>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="Tarih">Tarih</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <input type="date" class="form-control" id="tarih">
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="prbrm">Para Birimi</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <select class="form-control">
-                                <option>Türk Lirası(TRY)</option>
-                                <option>ABD Doları(USD)</option>
-                                <option>Euro(EUR)</option>
-                                <option>İngiliz Sterlini(GBP)</option>
-                            </select>
-                        </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <select id="giderTuru" class="form-control"></select>
                     </div>
                 </div>
-
-
-
-                <div class="row">
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="od1">Ödenen Tutar</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="od2">
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="od">Ödeme Şekli</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <select class="form-control">
-                                <option>Nakit</option>
-                                <option>Kredi Kartı</option>
-                                <option>Çek</option>
-                                <option>Havale</option>
-
-                            </select>
-                        </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="Tarih">Tarih</label>
                     </div>
                 </div>
-                <div class="row">
-
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <label for="aciklama">Açıklama</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="acik">
-                        </div>
-                    </div>
-
-                </div>
-                <div class="row">
-
-                    <div class="col-sm-12">
-                        <button type="submit" class="btn btn-default" style="float:right;">Kaydet</button>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <input type="date" class="form-control" id="odemeTarihi">
                     </div>
                 </div>
-
-            </form>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="od1">Ödenen Tutar</label>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="odenenTutar">
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label for="aciklama">Açıklama</label>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="aciklama">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <a id="giderKaydet" class="btn btn-primary text-white">Kaydet</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

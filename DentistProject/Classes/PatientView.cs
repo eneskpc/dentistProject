@@ -17,7 +17,7 @@ namespace DentistProject.Classes
         public string Gender { get; set; }
         public string Currency { get; set; }
         public string Country { get; set; }
-       
+        public DateTime? CreateDate { get; set; }
         public double? ExchangeRate { get; set; }
         public DateTime? AppointmentDate { get; set; }
     }

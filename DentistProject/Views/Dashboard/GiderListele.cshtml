@@ -18,7 +18,7 @@
     <div class="card">
         <div class="card-body" style="position:relative;">
             <input type="text" id="giderAra" class="form-control" style="position:absolute;right:15px;top:25px;width:225px;" placeholder="Ara..." />
-            <table class="table">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Gider Türü</th>
@@ -42,7 +42,7 @@
         <td>${ExpenseDescription}</td>
         <td class="text-right">
             <a href="/Dashboard/Gider/${ID}"><i class="now-ui-icons ui-1_settings-gear-63" style="font-size:25px"></i></a>
-            <a href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
+            <a data-id="${ID}" class="btnGiderKaldir" href="#"><i class="now-ui-icons ui-1_simple-remove" style="font-size:25px"></i></a>
         </td>
     </tr>
 </script>

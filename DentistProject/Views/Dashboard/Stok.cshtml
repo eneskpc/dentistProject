@@ -17,39 +17,26 @@
 
     <div class="card">
         <div class="card-body">
-            <form class="row" action="/action_page.php">
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="hsp1">Malzeme Kodu</label>
-                        <input type="text" class="form-control" name="kodu">
-                    </div>
-                </div>
+            <div class="loading">
+                <i class="fa fa-fw fa-spin fa-circle-o-notch fa-3x text-info"></i>
+            </div>
+            <div class="row">
                 <div class="col-6">
                     <div class="form-group">
                         <label for="verg1">Malzeme Adı</label>
-                        <select name="tedarikci" class="form-control">
-                            <option value="UmitSokullu">Lütfen Seçiniz...</option>
-                            <option value="TD1">ASD</option>
-                            <option value="TD2">SDFGH</option>
-                        </select>
+                        <select name="tedarikci" class="form-control"></select>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="form-group">
                         <label for="hspno">Stok Adeti</label>
-                        <input type="text" class="form-control" name="soyad">
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="form-group">
-                        <label for="verg1">Son Kullanma Tarihi</label>
-                        <input type="date" class="form-control" name="kayitTarihi">
+                        <input type="number" class="form-control" name="stokAdedi">
                     </div>
                 </div>
                 <div class="col-12">
-                    <button type="submit" class="btn btn-default">Kaydet</button>
+                    <a id="btnMalzemeKaydet" class="btn btn-primary text-white">Kaydet</a>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>
