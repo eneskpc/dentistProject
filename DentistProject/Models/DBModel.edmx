@@ -158,7 +158,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="TreatmentID" Type="int" />
+          <Property Name="PatientID" Type="nvarchar" MaxLength="20" />
           <Property Name="PrescriptionTime" Type="datetime" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
@@ -201,6 +201,7 @@
           <Property Name="DentistID" Type="int" />
           <Property Name="PatientID" Type="nvarchar" MaxLength="20" />
           <Property Name="TreatmentTypeID" Type="int" />
+          <Property Name="ToothNumber" Type="int" />
           <Property Name="TreatmentDescription" Type="nvarchar" MaxLength="400" />
           <Property Name="TreatmentTime" Type="datetime" />
           <Property Name="IsDeleted" Type="bit" />
@@ -211,6 +212,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TreatmentTypeName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Price" Type="float" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
         <EntityType Name="Users">
@@ -235,6 +237,15 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
           <Property Name="PriorityOrder" Type="int" />
           <Property Name="IsDeleted" Type="bit" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'umitsoku_db.umitsoku_user.StockWithTotal' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="StockWithTotal">
+          <Property Name="MaterailID" Type="int" />
+          <Property Name="MaterialName" Type="nvarchar" MaxLength="75" />
+          <Property Name="UnitPrice" Type="float" />
+          <Property Name="MaterialTypeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Quantity" Type="float" />
+        </EntityType>-->
         <EntityContainer Name="DBModelStoreContainer">
           <EntitySet Name="Appointments" EntityType="Self.Appointments" Schema="umitsoku_user" store:Type="Tables" />
           <EntitySet Name="Assistants" EntityType="Self.Assistants" Schema="umitsoku_user" store:Type="Tables" />
@@ -428,9 +439,9 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
           <Property Name="BloodGroupID" Type="Int32" />
           <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="CurrencyID" Type="Int32" />
-          <Property Name="IsDeleted" Type="Boolean" />
           <Property Name="CountryID" Type="Int32" />
           <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDeleted" Type="Boolean" />
         </EntityType>
         <EntityType Name="PrescriptionMedicines">
           <Key>
@@ -447,7 +458,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TreatmentID" Type="Int32" />
+          <Property Name="PatientID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="PrescriptionTime" Type="DateTime" Precision="3" />
           <Property Name="IsDeleted" Type="Boolean" />
         </EntityType>
@@ -490,6 +501,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
           <Property Name="DentistID" Type="Int32" />
           <Property Name="PatientID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="TreatmentTypeID" Type="Int32" />
+          <Property Name="ToothNumber" Type="Int32" />
           <Property Name="TreatmentDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
           <Property Name="TreatmentTime" Type="DateTime" Precision="3" />
           <Property Name="IsDeleted" Type="Boolean" />
@@ -500,6 +512,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TreatmentTypeName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Double" />
           <Property Name="IsDeleted" Type="Boolean" />
         </EntityType>
         <EntityType Name="Users">
@@ -663,9 +676,9 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
           <EntitySetMapping Name="Patients">
             <EntityTypeMapping TypeName="DBModel.Patients">
               <MappingFragment StoreEntitySet="Patients">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="CountryID" ColumnName="CountryID" />
-                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="CurrencyID" ColumnName="CurrencyID" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="BloodGroupID" ColumnName="BloodGroupID" />
@@ -695,7 +708,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
               <MappingFragment StoreEntitySet="Prescriptions">
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="PrescriptionTime" ColumnName="PrescriptionTime" />
-                <ScalarProperty Name="TreatmentID" ColumnName="TreatmentID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -740,6 +753,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
                 <ScalarProperty Name="TreatmentTime" ColumnName="TreatmentTime" />
                 <ScalarProperty Name="TreatmentDescription" ColumnName="TreatmentDescription" />
+                <ScalarProperty Name="ToothNumber" ColumnName="ToothNumber" />
                 <ScalarProperty Name="TreatmentTypeID" ColumnName="TreatmentTypeID" />
                 <ScalarProperty Name="PatientID" ColumnName="PatientID" />
                 <ScalarProperty Name="DentistID" ColumnName="DentistID" />
@@ -751,6 +765,7 @@ warning 6002: The table/view 'umitsoku_db.umitsoku_user.CountriesWithOrder' does
             <EntityTypeMapping TypeName="DBModel.TreatmentTypes">
               <MappingFragment StoreEntitySet="TreatmentTypes">
                 <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="TreatmentTypeName" ColumnName="TreatmentTypeName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>

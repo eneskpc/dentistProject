@@ -351,7 +351,7 @@ function UpdateSupplier(id, SupplierName, Address, Telephone, Email, callback) {
     });
 }
 
-function AddTreatment(DentistID, PatientID, TreatmentTypeID, TreatmentDescription, TreatmentTime, callback) {
+function AddTreatment(DentistID, PatientID, TreatmentTypeID, ToothNumber, TreatmentDescription, callback) {
     $.ajax({
         url: '/webservices/AddTreatment',
         type: 'POST',
@@ -360,8 +360,8 @@ function AddTreatment(DentistID, PatientID, TreatmentTypeID, TreatmentDescriptio
             DentistID: DentistID,
             PatientID: PatientID,
             TreatmentTypeID: TreatmentTypeID,
-            TreatmentDescription: TreatmentDescription,
-            TreatmentTime: TreatmentTime
+            ToothNumber: ToothNumber,
+            TreatmentDescription: TreatmentDescription
         },
         success: function (data) {
             callback(data);
@@ -443,7 +443,7 @@ function GetCurrencies(callback) {
     });
 }
 
-function GetDentists(callback) {
+function GetDentists(plainText, callback) {
     $.ajax({
         url: '/webservices/GetDentists',
         type: 'GET',
@@ -659,19 +659,54 @@ function GetSupplier(ID, callback) {
     });
 }
 
-function GetTreatments(callback) {
+function Login(userName, password, callback) {
     $.ajax({
-        url: '/webservices/GetTreatments',
+        url: '/webservices/Login',
         type: 'GET',
         dataType: 'json', async: typeof isAsync == "undefined" ? false : true,
-        data: { plainText: plainText },
+        data: { userName: userName, password: password },
         success: function (data) {
             callback(data);
         }
     });
 }
 
-function GetTreatmentTypes(callback) {
+function Logout(callback) {
+    $.ajax({
+        url: '/webservices/Logout',
+        type: 'GET',
+        dataType: 'json', async: typeof isAsync == "undefined" ? false : true,
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+
+function DeleteSupplier(ID, callback) {
+    $.ajax({
+        url: '/webservices/DeleteSupplier',
+        type: 'POST',
+        dataType: 'json', async: typeof isAsync == "undefined" ? false : true,
+        data: { id: ID },
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+
+function GetTreatments(plainText, patientID, callback) {
+    $.ajax({
+        url: '/webservices/GetTreatments',
+        type: 'GET',
+        dataType: 'json', async: typeof isAsync == "undefined" ? false : true,
+        data: { plainText: plainText, patientID: patientID },
+        success: function (data) {
+            callback(data);
+        }
+    });
+}
+
+function GetTreatmentTypes(plainText, callback) {
     $.ajax({
         url: '/webservices/GetTreatmentTypes',
         type: 'GET',

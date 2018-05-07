@@ -22,25 +22,21 @@
             <div class="card-body text-primary">
                 <h5 class="card-title">Giriş Formu</h5>
                 <div class="card-text">
-                    @Html.ValidationSummary(false, "")
-                    @using (Html.BeginForm())
-                    {
-                        <div class="form-group">
-                            <label for="txtUserName">Kullanıcı Adı</label>
-                            @Html.TextBox("txtUserName", null, new { @class = "form-control login-input-with-icon" })
-                            <i class="now-ui-icons users_circle-08 login-input-icon"></i>
-                        </div>
-                        <div class="form-group">
-                            <label for="txtPassword">Parola</label>
-                            @Html.Password("txtPassword", null, new { @class = "form-control login-input-with-icon" })
-                            <i class="now-ui-icons objects_key-25 login-input-icon"></i>
-                        </div>
-                        <hr />
-                        <div class="d-flex justify-content-between">
-                            <a class="btn btn-default" href="#RememberPassword">Parolanızı unuttunuz mu?</a>
-                            <input type="submit" class="btn btn-warning" value="Giriş Yap">
-                        </div>
-                    }
+                    <div class="form-group">
+                        <label for="txtUserName">Kullanıcı Adı</label>
+                        <input type="text" id="txtUserName" class="form-control login-input-with-icon" />
+                        <i class="now-ui-icons users_circle-08 login-input-icon"></i>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtPassword">Parola</label>
+                        <input type="password" id="txtPassword" class="form-control login-input-with-icon" />
+                        <i class="now-ui-icons objects_key-25 login-input-icon"></i>
+                    </div>
+                    <hr />
+                    <div class="d-flex justify-content-between">
+                        <a class="btn btn-default text-white" id="btnForgotPassword">Parolanızı unuttunuz mu?</a>
+                        <a class="btn btn-warning text-white" id="btnLogin">Giriş Yap</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -52,5 +48,7 @@
     <script src="~/Scripts/plugins/chartjs.min.js"></script>
     <script src="~/Scripts/plugins/bootstrap-notify.js"></script>
     <script src="~/Scripts/now-ui-dashboard.min.js?v=1.0.1"></script>
+    <script src="~/Scripts/functions.js"></script>
+    <script src="~/Scripts/Dashboard.js"></script>
 </body>
 </html>

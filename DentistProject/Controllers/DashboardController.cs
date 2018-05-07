@@ -17,7 +17,7 @@ namespace DentistProject.Controllers
             {
                 return RedirectToAction("Login");
             }
-            return View();
+            return RedirectToAction("Randevu");
         }
 
         public ActionResult Login()
@@ -26,14 +26,6 @@ namespace DentistProject.Controllers
             {
                 return Redirect("/Dashboard");
             }
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Login(LoginModel loginModel)
-        {
-            if (Classes.Helpers.Login(loginModel.txtUserName, loginModel.txtPassword))
-                return Redirect("/Dashboard");
             return View();
         }
 
@@ -71,15 +63,7 @@ namespace DentistProject.Controllers
             {
                 return RedirectToAction("Login");
             }
-            if (pageName == "Ekle")
-            {
-                return View("Oral");
-            }
-            else if (pageName == "Guncelle" && id == 0)
-            {
-                return View("HastaListesi");
-            }
-            return View();
+            return View("Oral");
         }
         public ActionResult Randevu()
         {

@@ -18,6 +18,7 @@ namespace DentistProject.Models
         public Nullable<int> DentistID { get; set; }
         public string PatientID { get; set; }
         public Nullable<int> TreatmentTypeID { get; set; }
+        public Nullable<int> ToothNumber { get; set; }
         public string TreatmentDescription { get; set; }
         public Nullable<System.DateTime> TreatmentTime { get; set; }
         public Nullable<bool> IsDeleted { get; set; }

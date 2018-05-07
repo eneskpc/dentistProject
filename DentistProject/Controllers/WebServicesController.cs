@@ -280,7 +280,7 @@ namespace DentistProject.Controllers
         }
 
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public JsonResult GetDentist(string plainText)
+        public JsonResult GetDentists(string plainText)
         {
             using (DBEntities db = new DBEntities())
             {
@@ -311,6 +311,32 @@ namespace DentistProject.Controllers
                     );
                 }
                 return Json(dentist.ToList(), JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public JsonResult GetDentist(int id)
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                var dentist = (from d in db.Dentists
+                               from i in db.Images
+                               where d.IsDeleted == false || d.IsDeleted == null
+                               where i.IsDeleted == false || i.IsDeleted == null
+                               where d.ID == id
+                               where d.PhotoID == i.ID
+                               select new DentistView
+                               {
+                                   ID = d.ID,
+                                   NameSurname = d.Name + " " + d.Surname,
+                                   Email = d.Email,
+                                   Telephone = d.Telephone,
+                                   Address = d.Address,
+                                   Salary = d.Salary,
+                                   ImagePath = i.ImagePath,
+
+                               }).Distinct();
+                return Json(dentist.FirstOrDefault(), JsonRequestBehavior.AllowGet);
             }
         }
 
@@ -764,29 +790,16 @@ namespace DentistProject.Controllers
             using (DBEntities db = new DBEntities())
             {
                 var prescriptions = (from pr in db.Prescriptions
-                                     from t in db.Treatments
                                      from d in db.Dentists
                                      from p in db.Patients
-                                     from tt in db.TreatmentTypes
-
                                      where pr.IsDeleted == false || pr.IsDeleted == null
-                                     where t.IsDeleted == false || t.IsDeleted == null
                                      where d.IsDeleted == false || d.IsDeleted == null
                                      where p.IsDeleted == false || p.IsDeleted == null
-                                     where tt.IsDeleted == false || tt.IsDeleted == null
-
-                                     where pr.TreatmentID == t.ID
-                                     where t.PatientID == p.TCNo
-                                     where t.TreatmentTypeID == tt.ID
-                                     where t.DentistID == d.ID
+                                     where pr.PatientID == p.TCNo
                                      select new PrescriptionView
                                      {
                                          ID = pr.ID,
                                          DentistNameSurname = d.Name + " " + d.Surname,
-                                         TreatmentTime = t.TreatmentTime,
-                                         TreatmentDescription = t.TreatmentDescription,
-                                         PatientNameSurname = p.Name + " " + p.Surname,
-                                         TreatmentTypeName = tt.TreatmentTypeName,
                                          PrescriptionTime = pr.PrescriptionTime,
                                      }).Distinct();
                 if (!string.IsNullOrEmpty(plainText))
@@ -803,14 +816,14 @@ namespace DentistProject.Controllers
 
         [HttpPost]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public JsonResult AddPrescription(int TreatmentID, string PrescriptionTime)
+        public JsonResult AddPrescription(string TcNo, string PrescriptionTime)
         {
             using (DBEntities db = new DBEntities())
             {
                 bool isSuccess = false;
                 db.Prescriptions.Add(new Prescriptions()
                 {
-                    TreatmentID = TreatmentID,
+                    PatientID = TcNo,
                     PrescriptionTime = Convert.ToDateTime(PrescriptionTime)
                 });
                 isSuccess = (db.SaveChanges() > 0 ? true : false);
@@ -834,7 +847,7 @@ namespace DentistProject.Controllers
         }
 
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public JsonResult UpdatePrescription(int id, int TreatmentID, string PrescriptionTime)
+        public JsonResult UpdatePrescription(int id, string TCNo, string PrescriptionTime)
         {
             using (DBEntities db = new DBEntities())
             {
@@ -842,7 +855,7 @@ namespace DentistProject.Controllers
                                       where a.IsDeleted == false || a.IsDeleted == null
                                       where a.ID == id
                                       select a).FirstOrDefault();
-                pres.TreatmentID = TreatmentID;
+                pres.PatientID = TCNo;
                 pres.PrescriptionTime = Convert.ToDateTime(PrescriptionTime);
                 return Json(db.SaveChanges() > 0, JsonRequestBehavior.AllowGet);
 
@@ -1449,7 +1462,7 @@ namespace DentistProject.Controllers
         }
 
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public JsonResult GetTreatments(string plainText)
+        public JsonResult GetTreatments(string plainText, string patientID)
         {
             using (DBEntities db = new DBEntities())
             {
@@ -1461,20 +1474,20 @@ namespace DentistProject.Controllers
                                   where d.IsDeleted == false || d.IsDeleted == null
                                   where p.IsDeleted == false || p.IsDeleted == null
                                   where tt.IsDeleted == false || tt.IsDeleted == null
-
                                   where t.PatientID == p.TCNo
                                   where t.TreatmentTypeID == tt.ID
                                   where t.DentistID == d.ID
-
                                   select new TreatmentView
                                   {
                                       ID = t.ID,
                                       DentistNameSurname = d.Name + " " + d.Surname,
                                       TreatmentTime = t.TreatmentTime,
                                       TreatmentDescription = t.TreatmentDescription,
+                                      PatientID = p.TCNo,
                                       PatientNameSurname = p.Name + " " + p.Surname,
-                                      TreatmentTypeName = tt.TreatmentTypeName
-
+                                      TreatmentTypeName = tt.TreatmentTypeName,
+                                      ToothNumber = t.ToothNumber,
+                                      Price = tt.Price
                                   }).Distinct();
                 if (!string.IsNullOrEmpty(plainText))
                 {
@@ -1486,13 +1499,17 @@ namespace DentistProject.Controllers
 
                     );
                 }
+                if (!string.IsNullOrEmpty(patientID))
+                {
+                    treatments = treatments.Where(x => x.PatientID == patientID);
+                }
                 return Json(treatments.ToList(), JsonRequestBehavior.AllowGet);
             }
         }
 
         [HttpPost]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public JsonResult AddTreatment(int DentistID, string PatientID, int TreatmentTypeID, string TreatmentDescription, string TreatmentTime)
+        public JsonResult AddTreatment(int DentistID, string PatientID, int TreatmentTypeID, int ToothNumber, string TreatmentDescription)
         {
             using (DBEntities db = new DBEntities())
             {
@@ -1502,9 +1519,9 @@ namespace DentistProject.Controllers
                     DentistID = DentistID,
                     PatientID = PatientID,
                     TreatmentTypeID = TreatmentTypeID,
+                    ToothNumber = ToothNumber,
                     TreatmentDescription = TreatmentDescription,
-                    TreatmentTime = Convert.ToDateTime(TreatmentTime),
-
+                    TreatmentTime = DateTime.Now
                 });
                 isSuccess = (db.SaveChanges() > 0 ? true : false);
                 return Json(isSuccess, JsonRequestBehavior.AllowGet);
@@ -1557,9 +1574,8 @@ namespace DentistProject.Controllers
                                       select new TreatmentTypeView
                                       {
                                           ID = tt.ID,
-                                          TreatmentTypeName = tt.TreatmentTypeName
-
-
+                                          TreatmentTypeName = tt.TreatmentTypeName,
+                                          Price = tt.Price
                                       });
                 return Json(treatmenttypes.ToList(), JsonRequestBehavior.AllowGet);
             }
@@ -1624,6 +1640,65 @@ namespace DentistProject.Controllers
                 }
                 return Json(users.ToList(), JsonRequestBehavior.AllowGet);
             }
+        }
+
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public JsonResult Login(string userName, string password)
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                string encyptedPassword = CryptoHelper.EncrytCustomMD5(password);
+                var user = (from u in db.Users
+                            where u.IsDeleted == false || u.IsDeleted == null
+                            where u.UserEmail == userName
+                            where u.Password == encyptedPassword
+                            select new UsersView
+                            {
+                                ID = u.ID,
+                                UserEmail = u.UserEmail,
+                                Password = u.Password,
+                                CreateDate = u.CreateDate,
+                                UserType = u.UserType
+                            }).FirstOrDefault();
+                if (user != null)
+                {
+                    switch (user.UserType)
+                    {
+                        case 1://Dentist
+                            var doctorInfo = (from ui in db.Dentists
+                                              where ui.IsDeleted == false || ui.IsDeleted == null
+                                              where ui.Email == userName
+                                              select ui).FirstOrDefault();
+                            HttpContext.Session["DoctorInfo"] = doctorInfo;
+                            return Json(true, JsonRequestBehavior.AllowGet);
+                        case 2://Asistant
+                            var asistantInfo = (from ui in db.Assistants
+                                                where ui.IsDeleted == false || ui.IsDeleted == null
+                                                where ui.Email == userName
+                                                select ui).FirstOrDefault();
+                            HttpContext.Session["AsistantInfo"] = asistantInfo;
+                            return Json(true, JsonRequestBehavior.AllowGet);
+                        case 3://Patient
+                            var patientInfo = (from ui in db.Patients
+                                               where ui.IsDeleted == false || ui.IsDeleted == null
+                                               where ui.Email == userName
+                                               select ui).FirstOrDefault();
+                            HttpContext.Session["PatientInfo"] = patientInfo;
+                            return Json(true, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public JsonResult Logout()
+        {
+            HttpContext.Session["DoctorInfo"] = null;
+            HttpContext.Session["AsistantInfo"] = null;
+            HttpContext.Session["PatientInfo"] = null;
+
+            return Json(true, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]

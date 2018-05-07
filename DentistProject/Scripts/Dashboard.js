@@ -336,6 +336,20 @@ $(document).ready(function () {
                 }
             });
         });
+        $(document).on('click', '.btnTedarikciKaldir', function () {
+            DeleteSupplier($(this).data('id'), function (data) {
+                if (data) {
+                    showNotification('success', 'Gider kaldırma işlemi başarıyla gerçekleştirildi.');
+                } else {
+                    showNotification('danger', 'Gider kaldırma işlemi gerçekleştirilirken bir hata ile karşılaştık. Tekrar deneyin veya sistem yöneticisi ile görüşün.');
+                }
+                GetSuppliers($('#tedarikciAra').val(), function (data) {
+                    $("#tedarikciListesi").html('');
+                    $.template("supplierTemplate", $('#supplierTemplate').html());
+                    $.tmpl("supplierTemplate", data).appendTo("#tedarikciListesi");
+                });
+            });
+        });
     }
 
     if (document.URL.toLowerCase().indexOf("hasta/ekle") > -1) {
@@ -390,6 +404,8 @@ $(document).ready(function () {
         var urlArray = (hastaGuncelle + '').split('/');
         var id = urlArray[2];
 
+        $('#btnTedaviler').removeClass('d-none');
+
         GetBloodGroups(function (data) {
             data.forEach(function (blood) {
                 $('#kanGrubu').append('<option value="' + blood.ID + '">' + blood.BloudGroupName + '</option>');
@@ -421,6 +437,8 @@ $(document).ready(function () {
                         $('#dogumTarihi').val(data.BirthDate);
                         $('#cepTelefonu').val(data.Telephone);
                         $('#adres').val(data.Address);
+
+                        $('#btnTedaviler').attr('href', '/Dashboard/Tedavi/' + data.TCNo);
 
                         if (data.Gender == "Bay") {
                             $('#erkek').attr("checked", "checked");
@@ -658,6 +676,147 @@ $(document).ready(function () {
                     showNotification('danger', 'Tedarikci ekleme işlemi gerçekleştirilirken bir hata oluştu! İşleminizi kontrol ederek tekrar deneyin veya sistem yöneticiniz ile görüşün.');
                 }
             });
+        });
+    }
+
+    if (document.URL.toLowerCase().indexOf("login") > -1) {
+        $(document).on('keypress', '#txtUserName', function (event) {
+            if (event.which == 13)
+                $('#btnLogin:not(.disabled)').trigger('click');
+        });
+        $(document).on('keypress', '#txtPassword', function (event) {
+            if (event.which == 13)
+                $('#btnLogin:not(.disabled)').trigger('click');
+        });
+        $(document).on('click', '#btnLogin:not(.disabled)', function () {
+            var thisBtn = $(this);
+            var btnText = thisBtn.html();
+            thisBtn.addClass('disabled');
+            thisBtn.html('<i class="fa fa-fw fa-spin fa-circle-o-notch"></i> Giriş Yapılıyor...');
+            Login($('#txtUserName').val(), $('#txtPassword').val(), function (data) {
+                if (data) {
+                    window.location.href = '/Dashboard/Randevu';
+                } else {
+                    thisBtn.html(btnText);
+                    thisBtn.removeClass('disabled');
+                    showNotification('danger', 'Kullanıcı adı veya şifre yanlış! Lütfen değerleri kontrol ederek tekrar deneyiniz.');
+                }
+            });
+        });
+    } else {
+        $(document).on('click', '#btnLogout', function () {
+            Logout(function (data) {
+                if (data) {
+                    window.location.href = '/Dashboard/Login';
+                } else {
+                    showNotification('danger', 'Çıkış yapılırken bir hata oluştu. Tarayıcınızı kapatarak da çıkış yapabilirsiniz.');
+                }
+            });
+        });
+    }
+
+    var tedaviGuncelle = document.URL.toLowerCase().match(/dashboard\/tedavi\/([0-9]{1,})/g);
+    if (tedaviGuncelle) {
+        var urlArray = (tedaviGuncelle + '').split('/');
+        var id = urlArray[2];
+
+        var tedaviEkleModal = $('#modalTedaviEkle');
+
+        GetPatient(id, function (data) {
+            $('#hastaAdi').html(data.NameSurname);
+            $('#hastaAdi').attr('href', '/Dashboard/Hasta/' + id);
+
+            var birthDateUnix = data.BirthDate.match(/([0-9]{1,})/g);
+            data.BirthDate = moment(birthDateUnix * 1).format('DD MMMM YYYY');
+            $('#hastaDogumTarihi').html(data.BirthDate);
+
+            $('#hastaKanGrubu').html(data.BloodGroup);
+            $('#hastaCinsiyet').html(data.Gender);
+            $('#hastaAvatar').attr('src', '/Content/images/' + (data.Gender === 'Bay' ? 'male' : 'female') + '.png');
+
+            GetDentists('', function (data) {
+                data.forEach(function (dentist) {
+                    $('#disHekimi').append('<option value="' + dentist.ID + '">' + dentist.NameSurname + '</option>');
+                });
+            });
+        });
+
+        GetTreatments('', id, function (data) {
+            var totalPrice = 0;
+            $.each(data, function () {
+                var TreatmentTimeUnix = this.TreatmentTime.match(/([0-9]{1,})/g);
+                this.TreatmentTime = moment(TreatmentTimeUnix * 1).format('DD MMMM YYYY');
+
+                totalPrice += this.Price;
+                this.Price = this.Price.toFixed(2);
+            });
+            $('#toplamTedaviTutari').html('' + totalPrice.toFixed(2) + ' ₺');
+
+            $("#tedaviListesi").html('');
+            $.template("treatmentTemplate", $('#treatmentTemplate').html());
+            $.tmpl("treatmentTemplate", data).appendTo("#tedaviListesi");
+        });
+
+        $('#tedaviTuru').selectize({
+            valueField: 'ID',
+            labelField: 'TreatmentTypeName',
+            searchField: 'TreatmentTypeName',
+            create: false,
+            maxItems: 1,
+            render: {
+                option: function (item, escape) {
+                    return '<div class="media"><div class="media-body"><h6 class="my-0">' + escape(item.TreatmentTypeName) + '</h6>' +
+                        '<span class="description">' + escape(item.Price.toFixed(2)) + ' ₺</span></div></div>';
+                },
+                item: function (item, escape) {
+                    return '<div class="media"><div class="media-body"><h6 class="my-0">' + escape(item.TreatmentTypeName) + '</h6>' +
+                        '<span class="description">' + escape(item.Price.toFixed(2)) + ' ₺</span></div></div>';
+                }
+            },
+            load: function (query, callback) {
+                if (!query.length) return callback();
+
+                GetTreatmentTypes("", function (data) {
+                    callback(data);
+                });
+            }
+        });
+
+        $(document).on('click', '#disSecimAlani a', function () {
+            tedaviEkleModal.find('#disNumarasi').html($(this).parent().find('div:first-of-type').html());
+            tedaviEkleModal.modal('show');
+        });
+
+        $(document).on('click', '#btnTedaviEkle:not(.disabled)', function () {
+            var thisBtn = $(this);
+            var btnText = thisBtn.html();
+            thisBtn.addClass('disabled');
+            thisBtn.html('<i class="fa fa-fw fa-spin fa-circle-o-notch"></i> İşlem Yapılıyor. Lütfen Bekleyin...');
+            AddTreatment($('#disHekimi option:selected').val(), id, $('#tedaviTuru').val(), tedaviEkleModal.find('#disNumarasi').html(), $('#tedaviAciklmasi').val(), function (data) {
+                if (data) {
+                    GetTreatments('', function (data) {
+                        var totalPrice = 0;
+                        $.each(data, function () {
+                            var TreatmentTimeUnix = this.TreatmentTime.match(/([0-9]{1,})/g);
+                            this.TreatmentTime = moment(TreatmentTimeUnix * 1).format('DD MMMM YYYY');
+
+                            totalPrice += this.Price;
+                            this.Price = this.Price.toFixed(2);
+                        });
+                        $('#toplamTedaviTutari').html('' + totalPrice.toFixed(2) + ' ₺');
+
+                        $("#tedaviListesi").html('');
+                        $.template("treatmentTemplate", $('#treatmentTemplate').html());
+                        $.tmpl("treatmentTemplate", data).appendTo("#tedaviListesi");
+                    });
+                    tedaviEkleModal.modal('hide');
+                    $(document).scrollTop($('#tedaviListesi').offset().top);
+                    showNotification('success', 'Tedavi başarıyla eklenmiştir.');
+                } else {
+                    showNotification('danger', 'Tedavi eklenirken bir hata meydana geldi. Girdilerinizi kontrol ederek tekrar deneyin veya sistem yöneticiniz ile görüşün.');
+
+                }
+            })
         });
     }
 });

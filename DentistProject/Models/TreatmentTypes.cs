@@ -16,6 +16,7 @@ namespace DentistProject.Models
     {
         public int ID { get; set; }
         public string TreatmentTypeName { get; set; }
+        public Nullable<double> Price { get; set; }
         public Nullable<bool> IsDeleted { get; set; }
     }
 }

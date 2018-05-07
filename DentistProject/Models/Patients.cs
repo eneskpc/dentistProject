@@ -24,8 +24,8 @@ namespace DentistProject.Models
         public Nullable<int> BloodGroupID { get; set; }
         public string Gender { get; set; }
         public Nullable<int> CurrencyID { get; set; }
-        public Nullable<bool> IsDeleted { get; set; }
         public Nullable<int> CountryID { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
+        public Nullable<bool> IsDeleted { get; set; }
     }
 }

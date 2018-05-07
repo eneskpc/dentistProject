@@ -15,16 +15,18 @@
         </ul>
     </nav>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
                     <div class="media">
-                        <img class="mr-3 border rounded" src="https://i.cnnturk.com/ps/cnnturk/75/650x0/56b450776ce4362f1c60b552.jpg" width="100" height="100" alt="Aslı Demiroğ">
+                        <img class="mr-3 border rounded" id="hastaAvatar" src="~/Content/images/male.png" width="100" height="100" alt="Aslı Demiroğ">
                         <div class="media-body">
-                            <h5 class="m-0"><a href="/Dashboard/Hasta/Ekle" class="mt-0 mb-2 font-weight-bold text-uppercase">Aslı Demiroğ</a></h5>
-                            <p class="mb-0 text-nowrap">Doğum Tarihi : <i>18.08.1988</i></p>
-                            <p class="mb-0 text-nowrap">Kan Grubu : <i>A Rh +</i></p>
-                            <p class="mb-0 text-nowrap">Cinsiyet : <i class="text-danger">Bayan</i></p>
+                            <h5 class="m-0">
+                                <a id="hastaAdi" href="/Dashboard/Hasta/Ekle" class="mt-0 mb-2 font-weight-bold text-uppercase"></a>
+                            </h5>
+                            <p class="mb-0 text-nowrap">Doğum Tarihi : <i id="hastaDogumTarihi"></i></p>
+                            <p class="mb-0 text-nowrap">Kan Grubu : <i id="hastaKanGrubu"></i></p>
+                            <p class="mb-0 text-nowrap">Cinsiyet : <i id="hastaCinsiyet" class="text-danger"></i></p>
                         </div>
                     </div>
                 </div>
@@ -33,9 +35,42 @@
                 <div class="card-header">
                     <h5 class="card-category">Diş Seçim Alanı</h5>
                 </div>
-                <div class="card-body">
-                    <div class="table-full-width table-responsive">
-                        <img src="~/Content/images/32teeth.jpg" />
+                <div class="card-body pb-4" id="disSecimAlani">
+                    <div class="d-flex justify-content-center align-items-end pb-3">
+                        <div><div class="text-center bg-light">18</div><a class="text-white"><img src="~/Content/images/disler/dis-18.png" alt="" class="dis" /></a></div>
+                        <div><div class="text-center bg-light">17</div><a class="text-white"><img src="~/Content/images/disler/dis-17.png" alt="" class="dis" /></a></div>
+                        <div><div class="text-center bg-light">16</div><a class="text-white"><img src="~/Content/images/disler/dis-16.png" alt="" class="dis" /></a></div>
+                        <div><div class="text-center bg-light">15</div><a class="text-white"><img src="~/Content/images/disler/dis-15.png" alt="" class="dis" /></a></div>
+                        <div><div class="text-center bg-light">14</div><a class="text-white"><img src="~/Content/images/disler/dis-14.png" alt="" class="dis" /></a></div>
+                        <div><div class="text-center bg-light">13</div><a class="text-white"><img src="~/Content/images/disler/dis-13.png" alt="" class="dis" /></a></div>
+                        <div><div class="text-center bg-light">12</div><a class="text-white"><img src="~/Content/images/disler/dis-12.png" alt="" class="dis" /></a></div>
+                        <div><div class="text-center bg-light">11</div><a class="text-white"><img src="~/Content/images/disler/dis-11.png" alt="" class="dis" /></a></div>
+                        <div><div class="text-center bg-light">21</div><a class="text-white"><img src="~/Content/images/disler/dis-21.png" alt="" class="dis" /></a></div>
+                        <div><div class="text-center bg-light">22</div><a class="text-white"><img src="~/Content/images/disler/dis-22.png" alt="" class="dis" /></a></div>
+                        <div><div class="text-center bg-light">23</div><a class="text-white"><img src="~/Content/images/disler/dis-23.png" alt="" class="dis" /></a></div>
+                        <div><div class="text-center bg-light">24</div><a class="text-white"><img src="~/Content/images/disler/dis-24.png" alt="" class="dis" /></a></div>
+                        <div><div class="text-center bg-light">25</div><a class="text-white"><img src="~/Content/images/disler/dis-25.png" alt="" class="dis" /></a></div>
+                        <div><div class="text-center bg-light">26</div><a class="text-white"><img src="~/Content/images/disler/dis-26.png" alt="" class="dis" /></a></div>
+                        <div><div class="text-center bg-light">27</div><a class="text-white"><img src="~/Content/images/disler/dis-27.png" alt="" class="dis" /></a></div>
+                        <div><div class="text-center bg-light">28</div><a class="text-white"><img src="~/Content/images/disler/dis-28.png" alt="" class="dis" /></a></div>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-start pt-3">
+                        <div><a href="#"><img src="~/Content/images/disler/dis-48.png" alt="" class="dis" /></a><div class="text-center bg-light">48</div></div>
+                        <div><a href="#"><img src="~/Content/images/disler/dis-47.png" alt="" class="dis" /></a><div class="text-center bg-light">47</div></div>
+                        <div><a href="#"><img src="~/Content/images/disler/dis-46.png" alt="" class="dis" /></a><div class="text-center bg-light">46</div></div>
+                        <div><a href="#"><img src="~/Content/images/disler/dis-45.png" alt="" class="dis" /></a><div class="text-center bg-light">45</div></div>
+                        <div><a href="#"><img src="~/Content/images/disler/dis-44.png" alt="" class="dis" /></a><div class="text-center bg-light">44</div></div>
+                        <div><a href="#"><img src="~/Content/images/disler/dis-43.png" alt="" class="dis" /></a><div class="text-center bg-light">43</div></div>
+                        <div><a href="#"><img src="~/Content/images/disler/dis-42.png" alt="" class="dis" /></a><div class="text-center bg-light">42</div></div>
+                        <div><a href="#"><img src="~/Content/images/disler/dis-41.png" alt="" class="dis" /></a><div class="text-center bg-light">41</div></div>
+                        <div><a href="#"><img src="~/Content/images/disler/dis-31.png" alt="" class="dis" /></a><div class="text-center bg-light">31</div></div>
+                        <div><a href="#"><img src="~/Content/images/disler/dis-32.png" alt="" class="dis" /></a><div class="text-center bg-light">32</div></div>
+                        <div><a href="#"><img src="~/Content/images/disler/dis-33.png" alt="" class="dis" /></a><div class="text-center bg-light">33</div></div>
+                        <div><a href="#"><img src="~/Content/images/disler/dis-34.png" alt="" class="dis" /></a><div class="text-center bg-light">34</div></div>
+                        <div><a href="#"><img src="~/Content/images/disler/dis-35.png" alt="" class="dis" /></a><div class="text-center bg-light">35</div></div>
+                        <div><a href="#"><img src="~/Content/images/disler/dis-36.png" alt="" class="dis" /></a><div class="text-center bg-light">36</div></div>
+                        <div><a href="#"><img src="~/Content/images/disler/dis-37.png" alt="" class="dis" /></a><div class="text-center bg-light">37</div></div>
+                        <div><a href="#"><img src="~/Content/images/disler/dis-38.png" alt="" class="dis" /></a><div class="text-center bg-light">38</div></div>
                     </div>
                 </div>
             </div>
@@ -62,220 +97,87 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="tedaviListesi"></tbody>
+                            <tfoot>
                                 <tr>
-                                    <td>
-                                        01.01.2018
-                                    </td>
-                                    <td>
-                                        Sol 3
-                                    </td>
-                                    <td>
-                                        Diş Çekimi
-                                    </td>
-                                    <td>
-                                        Dt. Ümit Sokullu
-                                    </td>
-                                    <td class="text-right">
-                                        130.00 TL
-                                    </td>
+                                    <td colspan="4" class="text-right">Toplam:</td>
+                                    <td class="text-right" id="toplamTedaviTutari"></td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        01.01.2018
-                                    </td>
-                                    <td>
-                                        Curaçao
-                                    </td>
-                                    <td>
-                                        Sinaai-Waas
-                                    </td>
-                                    <td>
-                                        Dt. Ümit Sokullu
-                                    </td>
-                                    <td class="text-right">
-                                        170.00 TL
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        01.01.2018
-                                    </td>
-                                    <td>
-                                        Netherlands
-                                    </td>
-                                    <td>
-                                        Baileux
-                                    </td>
-                                    <td>
-                                        Dt. Ümit Sokullu
-                                    </td>
-                                    <td class="text-right">
-                                        120.00 TL
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        01.01.2018
-                                    </td>
-                                    <td>
-                                        kök 2
-                                    </td>
-                                    <td>
-                                        Beyazlatma
-                                    </td>
-                                    <td>
-                                        Dt. Ümit Sokullu
-                                    </td>
-                                    <td class="text-right">
-                                        150.00 TL
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        01.01.2018
-                                    </td>
-                                    <td>
-                                        Chile
-                                    </td>
-                                    <td>
-                                        Gloucester
-                                    </td>
-                                    <td>
-                                        Dt. Ümit Sokullu
-                                    </td>
-                                    <td class="text-right">
-                                        200.00 TL
-                                    </td>
-                                </tr>
-                            </tbody>
+                            </tfoot>
                         </table>
                     </div>
-
-
-
-                </div>
-
-
-
-                <div class="card-footer">
-
-                    <table class="table">
-                        <tr>
-                            <td>
-                                <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-secondary">SİL</button>
-                                    <button type="button" class="btn btn-secondary">DÜZENLE</button>
-                                    <button type="button" class="btn btn-secondary">YAZDIR</button>
-                                </div>
-                            </td>
-                            <td class="text-right"> Toplam :</td>
-                            <td class="text-right"> 700.00TL</td>
-
-                        </tr>
-
-                    </table>
-
                 </div>
             </div>
         </div>
-
-        <div class="col-md-4 ">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-category">Oral Bilgileri</h5>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td>Diş Hekimi </td>
-                                    <td>
-                                        <div class="form-group">
-                                            <select class="form-control">
-                                                <option>Ümit Sokullu</option>
-                                                <option>Dt.2</option>
-                                                <option>Dt.3</option>
-                                                <option>Dt.4</option>
-                                            </select>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Tarih </td>
-                                    <td>
-                                        <div class="form-group">
-                                            <input class="form-control" type="date" />
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="card-category">İşlemler</h5>
-                </div>
-                <div class="card-body">
-                    <div class="table-full-width table-responsive">
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="form-group">
-                                            <select class="form-control">
-                                                <option>Tedavi</option>
-                                                <option>Td.1</option>
-                                                <option>Td.2</option>
-                                                <option>Td.3</option>
-                                                <option>Td.4</option>
-                                            </select>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="form-group">
-                                            <select class="form-control">
-                                                <option>Cerrahi</option>
-                                                <option>Endodonti</option>
-                                                <option>Ortodonti</option>
-                                            </select>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-
-                                    <td colspan="2">
-                                        <div class="form-group">
-                                            <input class="form-control" type="text" placeholder="Bul" />
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Tedavi</th>
-                                    <th>Toplam</th>
-                                </tr>
-                                <tr>
-                                    <td>Diş Çekimi</td>
-                                    <td>150</td>
-                                </tr>
-                                <tr>
-                                    <td>Dolgu</td>
-                                    <td>100</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
-
-
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalTedaviEkle" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Diş Numarası (<strong id="disNumarasi"></strong>)</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="İptal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Diş Hekimi</label>
+                    <select class="form-control" id="disHekimi"></select>
+                </div>
+                <div class="form-group">
+                    <label>İşlem</label>
+                    <input type="text" id="tedaviTuru" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <textarea id="tedaviAciklmasi" class="form-control" placeholder="Tedavi Açıklaması (İsteğe Bağlı)"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnTedaviEkle" class="btn btn-primary">Tedaviyi Ekle</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalReceteYaz" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Reçete Yaz</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="İptal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Diş Hekimi</label>
+                    <select class="form-control" id="disHekimi"></select>
+                </div>
+                <div class="form-group">
+                    <label>İşlem</label>
+                    <input type="text" id="tedaviTuru" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <textarea id="tedaviAciklmasi" class="form-control" placeholder="Tedavi Açıklaması (İsteğe Bağlı)"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnTedaviEkle" class="btn btn-primary">Tedaviyi Ekle</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/x-tmpl" id="treatmentTemplate">
+    <tr>
+        <td>${TreatmentTime}</td>
+        <td>${ToothNumber}</td>
+        <td>${TreatmentTypeName}</td>
+        <td>${DentistNameSurname}</td>
+        <td class="text-right">${Price} ₺</td>
+    </tr>
+</script>
